@@ -13,6 +13,8 @@ dependencies:
   mobx: ^2.0.4
   flutter_mobx: ^2.0.2
   http: ^0.13.3
+  flutter_staggered_animations: ^1.0.0
+  cached_network_image: ^3.1.0
 
 dev_dependencies:
   flutter_test:
@@ -27,6 +29,7 @@ flutter:
   assets:
     - assets/images/pokeball_white.png
     - assets/images/pokeball_dark.png
+    - assets/images/pokeball_loading.png
 
   fonts:
     - family: ProductSans

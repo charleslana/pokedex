@@ -32,6 +32,20 @@ mixin _$PokeApiStore on _PokeApiStoreBase, Store {
     return _$fetchPokemonListAsyncAction.run(() => super.fetchPokemonList());
   }
 
+  final _$_PokeApiStoreBaseActionController =
+      ActionController(name: '_PokeApiStoreBase');
+
+  @override
+  Pokemon getPokemon(int index) {
+    final _$actionInfo = _$_PokeApiStoreBaseActionController.startAction(
+        name: '_PokeApiStoreBase.getPokemon');
+    try {
+      return super.getPokemon(index);
+    } finally {
+      _$_PokeApiStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''

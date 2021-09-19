@@ -18,6 +18,11 @@ abstract class _PokeApiStoreBase with Store {
     pokeApi = pokeList;
   }
 
+  @action
+  Pokemon getPokemon(int index) {
+    return pokeApi!.pokemon[index];
+  }
+
   Future<dynamic> getPokeApi() async {
     try {
       final response = await http.get(Uri.parse(ConstantsApp.baseURL));
