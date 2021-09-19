@@ -14,18 +14,20 @@ abstract class _PokeApiStoreBase with Store {
 
   @action
   Future<void> fetchPokemonList() async {
-    final pokeList = await loadPokeApi();
+    final pokeList = await getPokeApi();
     pokeApi = pokeList;
   }
 
-  Future<dynamic> loadPokeApi() async {
+  Future<PokeApi> getPokeApi() async {
     try {
       final response = await http.get(Uri.parse(ConstantsApp.baseURL));
-      final dynamic decodeJson = jsonDecode(response.body);
-      return PokeApi.fromJson(decodeJson);
+      if (response.statusCode == 200) {
+        final dynamic decodeJson = jsonDecode(response.body);
+        return PokeApi.fromJson(decodeJson);
+      }
+      throw Exception('Response status was not 200.');
     } on Exception catch (error) {
-      print('Ocorreu um erro: $error');
-      return null;
+      throw Exception('Error finding url $error');
     }
   }
 }
