@@ -79,10 +79,10 @@ class Pokemon {
   late String height;
   late String weight;
   late String candy;
-  late int? candyCount;
+  late dynamic candyCount;
   late String egg;
-  late double spawnChance;
-  late double avgSpawns;
+  late dynamic spawnChance;
+  late dynamic avgSpawns;
   late String spawnTime;
   List<double> multipliers = [];
   late List<String> weaknesses;

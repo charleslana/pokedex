@@ -18,14 +18,14 @@ abstract class _PokeApiStoreBase with Store {
     pokeApi = pokeList;
   }
 
-  Future<PokeApi> getPokeApi() async {
+  Future<dynamic> getPokeApi() async {
     try {
       final response = await http.get(Uri.parse(ConstantsApp.baseURL));
       if (response.statusCode == 200) {
         final dynamic decodeJson = jsonDecode(response.body);
         return PokeApi.fromJson(decodeJson);
       }
-      throw Exception('Response status was not 200.');
+      return null;
     } on Exception catch (error) {
       throw Exception('Error finding url $error');
     }
