@@ -7,8 +7,12 @@ void main() {
   test('Get a list of pokemons', () async {
     await pokeApiStore.fetchPokemonList();
     final PokeApi? pokeApi = pokeApiStore.pokeApi;
-
     expect(pokeApi!.pokemon.isNotEmpty, equals(true));
-    expect(pokeApi.pokemon.first.name, equals('Bulbasaur'));
+  });
+
+  test('Match the first name on the list', () async {
+    await pokeApiStore.fetchPokemonList();
+    final PokeApi? pokeApi = pokeApiStore.pokeApi;
+    expect(pokeApi!.pokemon.first.name, equals('Bulbasaur'));
   });
 }
