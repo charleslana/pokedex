@@ -53,9 +53,7 @@ class Pokemon {
     spawnChance = json['spawn_chance'];
     avgSpawns = json['avg_spawns'];
     spawnTime = json['spawn_time'];
-    if (multipliers.isNotEmpty) {
-      multipliers = json['multipliers']!.cast<double>();
-    }
+    multipliers = json['multipliers'].cast<double>();
     weaknesses = json['weaknesses'].cast<String>();
     if (json['next_evolution'] != null) {
       final List<NextEvolution> nextEvolution = [];
@@ -79,12 +77,12 @@ class Pokemon {
   late String height;
   late String weight;
   late String candy;
-  late dynamic candyCount;
+  late int candyCount;
   late String egg;
-  late dynamic spawnChance;
-  late dynamic avgSpawns;
+  late double spawnChance;
+  late double avgSpawns;
   late String spawnTime;
-  List<double> multipliers = [];
+  late List<double> multipliers;
   late List<String> weaknesses;
   late List<NextEvolution> nextEvolution;
   late List<PrevEvolution> prevEvolution;

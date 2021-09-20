@@ -7,10 +7,7 @@ class ConstantsApp {
   static const String baseURL =
       'https://raw.githubusercontent.com/charleslana/pokemon-go-pokedex-api/main/pokedex.json';
 
-  String getPokeImage(String image) =>
-      'https://raw.githubusercontent.com/charleslana/pokemon-go-pokedex-api/main/images/$image.png';
-
-  static Color? getColorType(String type) {
+  Color? getColorType(String type) {
     switch (type) {
       case 'Normal':
         return Colors.brown[400];

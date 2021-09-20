@@ -65,7 +65,7 @@ class PokeItem extends StatelessWidget {
       placeholder: (_, url) => const Center(
         child: PokeLoading(),
       ),
-      imageUrl: ConstantsApp().getPokeImage(image),
+      imageUrl: image,
     );
   }
 
@@ -75,7 +75,7 @@ class PokeItem extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       child: Container(
         decoration: BoxDecoration(
-          color: ConstantsApp.getColorType(types[0]),
+          color: ConstantsApp().getColorType(types[0]),
           borderRadius: const BorderRadius.all(Radius.circular(20)),
         ),
         child: Padding(
@@ -95,7 +95,10 @@ class PokeItem extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.bottomRight,
-                child: getImage(image),
+                child: AspectRatio(
+                  aspectRatio: 5 / 7,
+                  child: getImage(image),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8),
