@@ -1,26 +1,22 @@
 import 'dart:convert';
 
+import 'package:get/state_manager.dart';
 import 'package:http/http.dart' as http;
-import 'package:mobx/mobx.dart';
 import 'package:pokedex/src/constants/constants_app.dart';
 import 'package:pokedex/src/models/poke_api.dart';
-part 'poke_api_store.g.dart';
 
-class PokeApiStore = _PokeApiStoreBase with _$PokeApiStore;
+class PokeApiController extends GetxController {
+  RxList<Pokemon> pokeList = <Pokemon>[].obs;
 
-abstract class _PokeApiStoreBase with Store {
-  @observable
-  PokeApi? pokeApi;
-
-  @action
-  Future<void> fetchPokemonList() async {
-    final pokeList = await getPokeApi();
-    pokeApi = pokeList;
+  @override
+  void onInit() {
+    fetchPokemonList();
+    super.onInit();
   }
 
-  @action
-  Pokemon getPokemon(int index) {
-    return pokeApi!.pokemon[index];
+  Future<void> fetchPokemonList() async {
+    final pokeApi = await getPokeApi();
+    pokeList.value = pokeApi.pokemon;
   }
 
   Future<dynamic> getPokeApi() async {
@@ -31,8 +27,8 @@ abstract class _PokeApiStoreBase with Store {
         return PokeApi.fromJson(decodeJson);
       }
       return null;
-    } on Exception catch (error) {
-      throw Exception('Error finding url $error');
+    } on Exception {
+      return null;
     }
   }
 }

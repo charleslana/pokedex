@@ -1,18 +1,18 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pokedex/src/models/poke_api.dart';
-import 'package:pokedex/src/stores/poke_api_store.dart';
+import 'package:get/get.dart';
+import 'package:pokedex/src/controllers/poke_api_controller.dart';
 
 void main() {
-  final PokeApiStore pokeApiStore = PokeApiStore();
+  final PokeApiController pokeApiController = Get.put(PokeApiController());
   test('Get a list of pokemons', () async {
-    await pokeApiStore.fetchPokemonList();
-    final PokeApi? pokeApi = pokeApiStore.pokeApi;
-    expect(pokeApi!.pokemon.isNotEmpty, equals(true));
+    await pokeApiController.fetchPokemonList();
+    final pokeList = pokeApiController.pokeList;
+    expect(pokeList.isNotEmpty, equals(true));
   });
 
   test('Match the first name on the list', () async {
-    await pokeApiStore.fetchPokemonList();
-    final PokeApi? pokeApi = pokeApiStore.pokeApi;
-    expect(pokeApi!.pokemon.first.name, equals('Bulbasaur'));
+    await pokeApiController.fetchPokemonList();
+    final pokeList = pokeApiController.pokeList;
+    expect(pokeList.first.name, equals('Bulbasaur'));
   });
 }

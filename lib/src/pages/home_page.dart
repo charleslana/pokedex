@@ -1,38 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:get/get.dart';
 import 'package:pokedex/src/constants/constants_app.dart';
+import 'package:pokedex/src/controllers/poke_api_controller.dart';
 import 'package:pokedex/src/models/poke_api.dart';
-import 'package:pokedex/src/stores/poke_api_store.dart';
 import 'package:pokedex/src/widgets/poke_item.dart';
 import 'package:pokedex/src/widgets/poke_loading.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  late PokeApiStore pokeApiStore;
-
-  Future<void> init() async {
-    pokeApiStore = PokeApiStore();
-    await pokeApiStore.fetchPokemonList();
-  }
-
-  @override
-  void initState() {
-    init();
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double statusBarHeight = MediaQuery.of(context).padding.top;
+    final PokeApiController pokeApiController = Get.put(PokeApiController());
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -57,11 +40,11 @@ class _HomePageState extends State<HomePage> {
               ),
               _appBarHome(screenWidth, statusBarHeight),
               Expanded(
-                child: Observer(
-                  builder: (_) {
-                    final PokeApi? pokeApi = pokeApiStore.pokeApi;
+                child: Obx(
+                  () {
+                    final List<Pokemon> pokeList = pokeApiController.pokeList;
 
-                    return pokeApi == null
+                    return pokeList.isEmpty
                         ? const Center(child: PokeLoading())
                         : AnimationLimiter(
                             child: GridView.builder(
@@ -73,10 +56,10 @@ class _HomePageState extends State<HomePage> {
                                 childAspectRatio: screenWidth /
                                     (MediaQuery.of(context).size.height / 2),
                               ),
-                              itemCount: pokeApi.pokemon.length,
+                              itemCount: pokeList.length,
                               itemBuilder: (_, index) {
                                 final Pokemon pokemon =
-                                    pokeApiStore.getPokemon(index);
+                                    pokeApiController.pokeList[index];
 
                                 return AnimationConfiguration.staggeredGrid(
                                   position: index,

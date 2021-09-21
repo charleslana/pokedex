@@ -10,8 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  mobx: ^2.0.4
-  flutter_mobx: ^2.0.2
+  get: ^4.3.8
   http: ^0.13.3
   flutter_staggered_animations: ^1.0.0
   cached_network_image: ^3.1.0
@@ -20,8 +19,6 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.0
-  build_runner: ^2.1.2
-  mobx_codegen: ^2.0.3
 
 flutter:
   uses-material-design: true
