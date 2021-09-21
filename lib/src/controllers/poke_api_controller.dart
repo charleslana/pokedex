@@ -1,9 +1,12 @@
 import 'package:get/state_manager.dart';
+import 'package:http/http.dart';
 import 'package:pokedex/src/models/poke_api.dart';
 import 'package:pokedex/src/services/poke_api_service.dart';
 
 class PokeApiController extends GetxController {
   RxList<Pokemon> pokeList = <Pokemon>[].obs;
+
+  Client client = Client();
 
   @override
   void onInit() {
@@ -12,7 +15,7 @@ class PokeApiController extends GetxController {
   }
 
   Future<void> fetchPokemonList() async {
-    final pokeApi = await PokeApiService().getPokeApi();
+    final pokeApi = await PokeApiService(client).getPokeApi();
     pokeList.value = pokeApi.pokemon;
   }
 }

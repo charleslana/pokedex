@@ -4,13 +4,13 @@ import 'package:pokedex/src/controllers/poke_api_controller.dart';
 
 void main() {
   final PokeApiController pokeApiController = Get.put(PokeApiController());
-  test('Get a list of pokemons', () async {
+  test('Get pokemon list', () async {
     await pokeApiController.fetchPokemonList();
     final pokeList = pokeApiController.pokeList;
     expect(pokeList.isNotEmpty, equals(true));
   });
 
-  test('Match the first name on the list', () async {
+  test('Get Bulbasaur name in the first pokemon list object', () async {
     await pokeApiController.fetchPokemonList();
     final pokeList = pokeApiController.pokeList;
     expect(pokeList.first.name, equals('Bulbasaur'));
