@@ -3,7 +3,7 @@ import 'package:http/http.dart';
 import 'package:pokedex/src/models/poke_api.dart';
 import 'package:pokedex/src/services/poke_api_service.dart';
 
-class PokeApiController extends GetxController {
+class PokeHomeController extends GetxController {
   RxList<Pokemon> pokeList = <Pokemon>[].obs;
 
   Client client = Client();

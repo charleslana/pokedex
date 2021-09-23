@@ -3,8 +3,10 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:pokedex/src/constants/constants_app.dart';
-import 'package:pokedex/src/controllers/poke_api_controller.dart';
+import 'package:pokedex/src/controllers/poke_details_controller.dart';
+import 'package:pokedex/src/controllers/poke_home_controller.dart';
 import 'package:pokedex/src/models/poke_api.dart';
+import 'package:pokedex/src/pages/poke_details_page.dart';
 import 'package:pokedex/src/widgets/poke_item.dart';
 import 'package:pokedex/src/widgets/poke_loading.dart';
 
@@ -15,7 +17,20 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double statusBarHeight = MediaQuery.of(context).padding.top;
-    final PokeApiController pokeApiController = Get.put(PokeApiController());
+    final PokeHomeController pokeHomeController = Get.put(PokeHomeController());
+    final PokeDetailsController pokeDetailsController =
+        Get.put(PokeDetailsController());
+
+    void viewPokemon(int index, List<Pokemon> pokeList) {
+      pokeDetailsController.index = index;
+      Navigator.push(
+        context,
+        MaterialPageRoute<dynamic>(
+          builder: (_) => const PokeDetailsPage(),
+          fullscreenDialog: true,
+        ),
+      );
+    }
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -42,7 +57,7 @@ class HomePage extends StatelessWidget {
               Expanded(
                 child: Obx(
                   () {
-                    final List<Pokemon> pokeList = pokeApiController.pokeList;
+                    final List<Pokemon> pokeList = pokeHomeController.pokeList;
 
                     return pokeList.isEmpty
                         ? const Center(child: PokeLoading())
@@ -59,7 +74,7 @@ class HomePage extends StatelessWidget {
                               itemCount: pokeList.length,
                               itemBuilder: (_, index) {
                                 final Pokemon pokemon =
-                                    pokeApiController.pokeList[index];
+                                    pokeHomeController.pokeList[index];
 
                                 return AnimationConfiguration.staggeredGrid(
                                   position: index,
@@ -73,7 +88,7 @@ class HomePage extends StatelessWidget {
                                         image: pokemon.img,
                                         types: pokemon.type,
                                       ),
-                                      onTap: () {},
+                                      onTap: () => viewPokemon(index, pokeList),
                                     ),
                                   ),
                                 );
@@ -99,7 +114,7 @@ class HomePage extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.only(left: 20),
             child: Text(
-              'Pokedex',
+              'Pokédex',
               style: TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
