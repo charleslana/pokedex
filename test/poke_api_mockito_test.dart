@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:mocktail/mocktail.dart';
-import 'package:pokedex/src/constants/constants_app.dart';
+import 'package:pokedex/src/constants/app_constants.dart';
 import 'package:pokedex/src/models/poke_api.dart';
 import 'package:pokedex/src/services/poke_api_service.dart';
 
@@ -11,7 +11,7 @@ void main() {
   final client = ClientMock();
   final pokeApiSerive = PokeApiService(client);
   test('Get pokemon list with mock', () async {
-    when(() => client.get(Uri.parse(ConstantsApp.baseURL)))
+    when(() => client.get(Uri.parse(AppConstants.baseURL)))
         .thenAnswer((_) async => http.Response(jsonReturn, 200));
 
     final PokeApi pokeApi = await pokeApiSerive.getPokeApi();
@@ -20,7 +20,7 @@ void main() {
 
   test('Throws an exception if the http call completes with an error',
       () async {
-    when(() => client.get(Uri.parse(ConstantsApp.baseURL)))
+    when(() => client.get(Uri.parse(AppConstants.baseURL)))
         .thenAnswer((_) async => http.Response('Not found', 404));
 
     expect(pokeApiSerive.getPokeApi, throwsException);

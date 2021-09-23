@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:pokedex/src/constants/constants_app.dart';
+import 'package:pokedex/src/constants/app_constants.dart';
 
 class PokeLoading extends StatefulWidget {
   const PokeLoading({Key? key}) : super(key: key);
@@ -40,7 +40,7 @@ class _PokeLoadingState extends State<PokeLoading>
         );
       },
       child: Image.asset(
-        ConstantsApp.loadingPokeball,
+        AppConstants.loadingPokeball,
         width: 42,
       ),
     );

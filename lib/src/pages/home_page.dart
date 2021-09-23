@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
-import 'package:pokedex/src/constants/constants_app.dart';
+import 'package:pokedex/src/constants/app_constants.dart';
 import 'package:pokedex/src/controllers/poke_details_controller.dart';
 import 'package:pokedex/src/controllers/poke_home_controller.dart';
 import 'package:pokedex/src/models/poke_api.dart';
@@ -43,7 +43,7 @@ class HomePage extends StatelessWidget {
             child: Opacity(
               opacity: 0.1,
               child: Image.asset(
-                ConstantsApp.imagePokeballDark,
+                AppConstants.imagePokeballDark,
                 width: 240,
               ),
             ),

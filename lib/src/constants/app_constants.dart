@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ConstantsApp {
+class AppConstants {
   static const String imagePokeballWhite = 'assets/images/pokeball_white.png';
   static const String imagePokeballDark = 'assets/images/pokeball_dark.png';
   static const String loadingPokeball = 'assets/images/pokeball_loading.png';

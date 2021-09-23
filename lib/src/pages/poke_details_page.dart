@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pokedex/src/constants/constants_app.dart';
+import 'package:pokedex/src/constants/app_constants.dart';
 import 'package:pokedex/src/controllers/poke_details_controller.dart';
 import 'package:pokedex/src/controllers/poke_home_controller.dart';
 import 'package:pokedex/src/models/poke_api.dart';
@@ -25,7 +25,7 @@ class PokeDetailsPage extends StatelessWidget {
       return Scaffold(
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: ConstantsApp().getColorType(pokemon.type[0]),
+          backgroundColor: AppConstants().getColorType(pokemon.type[0]),
           leading: IconButton(
             onPressed: () => Navigator.pop(context),
             icon: const Icon(Icons.arrow_back),
@@ -37,7 +37,7 @@ class PokeDetailsPage extends StatelessWidget {
             ),
           ],
         ),
-        backgroundColor: ConstantsApp().getColorType(pokemon.type[0]),
+        backgroundColor: AppConstants().getColorType(pokemon.type[0]),
         body: Stack(
           children: [
             Container(

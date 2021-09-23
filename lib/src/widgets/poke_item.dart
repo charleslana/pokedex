@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:pokedex/src/constants/constants_app.dart';
+import 'package:pokedex/src/constants/app_constants.dart';
 import 'package:pokedex/src/widgets/poke_loading.dart';
 
 class PokeItem extends StatelessWidget {
@@ -75,7 +75,7 @@ class PokeItem extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       child: Container(
         decoration: BoxDecoration(
-          color: ConstantsApp().getColorType(types[0]),
+          color: AppConstants().getColorType(types[0]),
           borderRadius: const BorderRadius.all(Radius.circular(20)),
         ),
         child: Padding(
@@ -87,7 +87,7 @@ class PokeItem extends StatelessWidget {
                 child: Opacity(
                   opacity: 0.2,
                   child: Image.asset(
-                    ConstantsApp.imagePokeballWhite,
+                    AppConstants.imagePokeballWhite,
                     width: 100,
                     height: 100,
                   ),
