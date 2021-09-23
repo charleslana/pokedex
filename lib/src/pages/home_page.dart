@@ -6,7 +6,7 @@ import 'package:pokedex/src/constants/app_constants.dart';
 import 'package:pokedex/src/controllers/poke_details_controller.dart';
 import 'package:pokedex/src/controllers/poke_home_controller.dart';
 import 'package:pokedex/src/models/poke_api.dart';
-import 'package:pokedex/src/pages/poke_details_page.dart';
+import 'package:pokedex/src/routes/app_routes.dart';
 import 'package:pokedex/src/widgets/poke_item.dart';
 import 'package:pokedex/src/widgets/poke_loading.dart';
 
@@ -23,13 +23,7 @@ class HomePage extends StatelessWidget {
 
     void viewPokemon(int index, List<Pokemon> pokeList) {
       pokeDetailsController.index = index;
-      Navigator.push(
-        context,
-        MaterialPageRoute<dynamic>(
-          builder: (_) => const PokeDetailsPage(),
-          fullscreenDialog: true,
-        ),
-      );
+      Get.toNamed<dynamic>(AppRoutes.pokeDetails);
     }
 
     return Scaffold(

@@ -27,7 +27,7 @@ class PokeDetailsPage extends StatelessWidget {
           elevation: 0,
           backgroundColor: AppConstants().getColorType(pokemon.type[0]),
           leading: IconButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: Get.back,
             icon: const Icon(Icons.arrow_back),
           ),
           actions: [
