@@ -8,38 +8,19 @@ import 'package:pokedex/src/models/poke_api.dart';
 import 'package:pokedex/src/widgets/poke_loading.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
-class PokeDetailsPage extends StatefulWidget {
+class PokeDetailsPage extends StatelessWidget {
   const PokeDetailsPage({Key? key}) : super(key: key);
-
-  @override
-  State<PokeDetailsPage> createState() => _PokeDetailsPageState();
-}
-
-class _PokeDetailsPageState extends State<PokeDetailsPage> {
-  PageController _controller = PageController();
-  final PokeDetailsController _pokeDetailsController =
-      Get.put(PokeDetailsController());
-  final PokeHomeController _pokeHomeController = Get.put(PokeHomeController());
-
-  @override
-  void initState() {
-    _controller = PageController(initialPage: _pokeDetailsController.index);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
+    final PokeDetailsController pokeDetailsController =
+        Get.put(PokeDetailsController());
+    final PokeHomeController pokeHomeController = Get.put(PokeHomeController());
 
     return Obx(() {
       final Pokemon pokemon =
-          _pokeHomeController.pokeList[_pokeDetailsController.index];
+          pokeHomeController.pokeList[pokeDetailsController.index];
 
       return Scaffold(
         appBar: AppBar(
@@ -82,17 +63,17 @@ class _PokeDetailsPageState extends State<PokeDetailsPage> {
             SizedBox(
               height: height / 3.2,
               child: PageView.builder(
-                controller: _controller,
+                controller: pokeDetailsController.pageController.value,
                 onPageChanged: (int index) =>
-                    _pokeDetailsController.index = index,
+                    pokeDetailsController.index = index,
                 physics: const BouncingScrollPhysics(),
-                itemCount: _pokeHomeController.pokeList.length,
+                itemCount: pokeHomeController.pokeList.length,
                 itemBuilder: (_, int index) {
                   return CachedNetworkImage(
                     placeholder: (_, url) => const Center(
                       child: PokeLoading(),
                     ),
-                    imageUrl: _pokeHomeController.pokeList[index].img,
+                    imageUrl: pokeHomeController.pokeList[index].img,
                   );
                 },
               ),
