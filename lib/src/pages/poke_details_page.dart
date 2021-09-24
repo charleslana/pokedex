@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -44,7 +46,7 @@ class PokeDetailsPage extends StatelessWidget {
               height: height / 3,
             ),
             SlidingSheet(
-              cornerRadius: 16,
+              cornerRadius: 30,
               snapSpec: const SnapSpec(
                 snappings: [0.7, 1.0],
               ),
@@ -69,11 +71,47 @@ class PokeDetailsPage extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 itemCount: pokeHomeController.pokeList.length,
                 itemBuilder: (_, int index) {
-                  return CachedNetworkImage(
-                    placeholder: (_, url) => const Center(
-                      child: PokeLoading(),
-                    ),
-                    imageUrl: pokeHomeController.pokeList[index].img,
+                  return Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      AnimatedBuilder(
+                        animation: pokeDetailsController.animationController,
+                        builder: (_, child) {
+                          return Transform.rotate(
+                            angle: pokeDetailsController
+                                    .animationController.value *
+                                2 *
+                                math.pi,
+                            child: child,
+                          );
+                        },
+                        child: Hero(
+                          tag: index,
+                          child: Opacity(
+                            opacity: 0.2,
+                            child: Image.asset(
+                              AppConstants.imagePokeballWhite,
+                              height: height / 3.2,
+                            ),
+                          ),
+                        ),
+                      ),
+                      AnimatedPadding(
+                        duration: const Duration(milliseconds: 400),
+                        padding: EdgeInsets.all(
+                            pokeDetailsController.index == index ? 0 : 60),
+                        curve: Curves.bounceInOut,
+                        child: CachedNetworkImage(
+                          placeholder: (_, url) => const Center(
+                            child: PokeLoading(),
+                          ),
+                          color: pokeDetailsController.index == index
+                              ? null
+                              : Colors.black.withOpacity(0.5),
+                          imageUrl: pokeHomeController.pokeList[index].img,
+                        ),
+                      ),
+                    ],
                   );
                 },
               ),

@@ -18,11 +18,9 @@ class HomePage extends StatelessWidget {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double statusBarHeight = MediaQuery.of(context).padding.top;
     final PokeHomeController pokeHomeController = Get.put(PokeHomeController());
-    final PokeDetailsController pokeDetailsController =
-        Get.put(PokeDetailsController());
 
     void viewPokemon(int index, List<Pokemon> pokeList) {
-      pokeDetailsController.index = index;
+      Get.put(PokeDetailsController()).index = index;
       Get.toNamed<dynamic>(AppRoutes.pokeDetails);
     }
 
