@@ -85,14 +85,11 @@ class PokeDetailsPage extends StatelessWidget {
                             child: child,
                           );
                         },
-                        child: Hero(
-                          tag: index,
-                          child: Opacity(
-                            opacity: 0.2,
-                            child: Image.asset(
-                              AppConstants.imagePokeballWhite,
-                              height: height / 3.2,
-                            ),
+                        child: Opacity(
+                          opacity: 0.2,
+                          child: Image.asset(
+                            AppConstants.imagePokeballWhite,
+                            height: height / 3.2,
                           ),
                         ),
                       ),
@@ -101,14 +98,17 @@ class PokeDetailsPage extends StatelessWidget {
                         padding: EdgeInsets.all(
                             pokeDetailsController.index == index ? 0 : 60),
                         curve: Curves.bounceInOut,
-                        child: CachedNetworkImage(
-                          placeholder: (_, url) => const Center(
-                            child: PokeLoading(),
+                        child: Hero(
+                          tag: index,
+                          child: CachedNetworkImage(
+                            placeholder: (_, url) => const Center(
+                              child: PokeLoading(),
+                            ),
+                            color: pokeDetailsController.index == index
+                                ? null
+                                : Colors.black.withOpacity(0.5),
+                            imageUrl: pokeHomeController.pokeList[index].img,
                           ),
-                          color: pokeDetailsController.index == index
-                              ? null
-                              : Colors.black.withOpacity(0.5),
-                          imageUrl: pokeHomeController.pokeList[index].img,
                         ),
                       ),
                     ],
