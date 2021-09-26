@@ -96,7 +96,20 @@ class PokeDetailsPage extends StatelessWidget {
                 duration: const Duration(milliseconds: 400),
                 width: double.infinity,
                 height: height / 3,
-                color: AppConstants().getColorType(pokemon.type[0]),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      AppConstants().getColorType(pokemon.type[0])!,
+                      if (pokemon.type.length > 1)
+                        AppConstants().getColorType(pokemon.type[1])!
+                      else
+                        AppConstants().getColorType(pokemon.type[0])!,
+                    ],
+                    stops: const [0, 1],
+                    begin: FractionalOffset.topCenter,
+                    end: FractionalOffset.bottomCenter,
+                  ),
+                ),
                 child: Opacity(
                   opacity: pokeDetailsController.opacity.value,
                   child: Padding(
