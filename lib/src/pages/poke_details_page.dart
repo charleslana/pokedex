@@ -24,101 +24,217 @@ class PokeDetailsPage extends StatelessWidget {
       final Pokemon pokemon =
           pokeHomeController.pokeList[pokeDetailsController.index];
 
-      return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: AppConstants().getColorType(pokemon.type[0]),
-          leading: IconButton(
-            onPressed: Get.back,
-            icon: const Icon(Icons.arrow_back),
-          ),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.favorite_border),
+      return SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            title: Opacity(
+              opacity: pokeDetailsController.opacityAppBarTitle.value,
+              child: Text(pokemon.name),
             ),
-          ],
-        ),
-        backgroundColor: AppConstants().getColorType(pokemon.type[0]),
-        body: Stack(
-          children: [
-            Container(
-              height: height / 3,
+            centerTitle: true,
+            elevation: 0,
+            backgroundColor: AppConstants().getColorType(pokemon.type[0]),
+            leading: IconButton(
+              onPressed: Get.back,
+              icon: const Icon(Icons.arrow_back),
             ),
-            SlidingSheet(
-              cornerRadius: 30,
-              snapSpec: const SnapSpec(
-                snappings: [0.7, 1.0],
-              ),
-              body: const Center(
-                child: Text('This widget is below the SlidingSheet'),
-              ),
-              builder: (_, __) {
-                return SizedBox(
-                  height: height,
-                  child: const Center(
-                    child: Text('This is the content of the sheet'),
+            actions: [
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  AnimatedBuilder(
+                    animation: pokeDetailsController.animationController,
+                    builder: (_, child) {
+                      return Transform.rotate(
+                        angle: pokeDetailsController.animationController.value *
+                            2 *
+                            math.pi,
+                        child: child,
+                      );
+                    },
+                    child: Opacity(
+                      opacity: pokeDetailsController.opacityAppBarTitle >= 0.2
+                          ? 0.2
+                          : 0.0,
+                      child: Image.asset(
+                        AppConstants.imagePokeballWhite,
+                        width: 50,
+                        height: 50,
+                      ),
+                    ),
                   ),
-                );
-              },
-            ),
-            SizedBox(
-              height: height / 3.2,
-              child: PageView.builder(
-                controller: pokeDetailsController.pageController.value,
-                onPageChanged: (int index) =>
-                    pokeDetailsController.index = index,
-                physics: const BouncingScrollPhysics(),
-                itemCount: pokeHomeController.pokeList.length,
-                itemBuilder: (_, int index) {
-                  return Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      AnimatedBuilder(
-                        animation: pokeDetailsController.animationController,
-                        builder: (_, child) {
-                          return Transform.rotate(
-                            angle: pokeDetailsController
-                                    .animationController.value *
-                                2 *
-                                math.pi,
-                            child: child,
-                          );
-                        },
-                        child: Opacity(
-                          opacity: 0.2,
-                          child: Image.asset(
-                            AppConstants.imagePokeballWhite,
-                            height: height / 3.2,
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.favorite_border),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          body: Stack(
+            children: [
+              Container(
+                width: double.infinity,
+                height: height / 3,
+                color: AppConstants().getColorType(pokemon.type[0]),
+                child: Opacity(
+                  opacity: pokeDetailsController.opacity.value,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Column(
+                      children: [
+                        Text(
+                          pokemon.name,
+                          style: const TextStyle(
+                            fontSize: 23,
+                            color: Colors.white,
                           ),
                         ),
-                      ),
-                      AnimatedPadding(
-                        duration: const Duration(milliseconds: 400),
-                        padding: EdgeInsets.all(
-                            pokeDetailsController.index == index ? 0 : 60),
-                        curve: Curves.bounceInOut,
-                        child: Hero(
-                          tag: index,
-                          child: CachedNetworkImage(
-                            placeholder: (_, url) => const Center(
-                              child: PokeLoading(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            listTypes(pokemon.type),
+                            Text(
+                              pokemon.num,
+                              style: const TextStyle(
+                                fontSize: 20,
+                                color: Colors.white,
+                              ),
                             ),
-                            color: pokeDetailsController.index == index
-                                ? null
-                                : Colors.black.withOpacity(0.5),
-                            imageUrl: pokeHomeController.pokeList[index].img,
-                          ),
+                          ],
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SlidingSheet(
+                listener: pokeDetailsController.changeSlidingSheet,
+                cornerRadius: 30,
+                snapSpec: const SnapSpec(
+                  snappings: [0.6, 1.0],
+                ),
+                body: const Center(
+                  child: Text('This widget is below the SlidingSheet'),
+                ),
+                builder: (_, __) {
+                  return SizedBox(
+                    height: height,
+                    child: const Center(
+                      child: Text('This is the content of the sheet'),
+                    ),
                   );
                 },
               ),
-            ),
-          ],
+              Opacity(
+                opacity: pokeDetailsController.opacity.value,
+                child: Padding(
+                  padding: EdgeInsets.only(
+                      top: pokeDetailsController.opacityAppBarTitle.value == 1
+                          ? 1000
+                          : 60 - pokeDetailsController.progress.value * 50),
+                  child: SizedBox(
+                    height: height / 3.2,
+                    child: PageView.builder(
+                      controller: pokeDetailsController.pageController.value,
+                      onPageChanged: (int index) =>
+                          pokeDetailsController.index = index,
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: pokeHomeController.pokeList.length,
+                      itemBuilder: (_, int index) {
+                        return Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            AnimatedBuilder(
+                              animation:
+                                  pokeDetailsController.animationController,
+                              builder: (_, child) {
+                                return Transform.rotate(
+                                  angle: pokeDetailsController
+                                          .animationController.value *
+                                      2 *
+                                      math.pi,
+                                  child: child,
+                                );
+                              },
+                              child: Opacity(
+                                opacity: 0.2,
+                                child: Image.asset(
+                                  AppConstants.imagePokeballWhite,
+                                  height: height / 3.2,
+                                ),
+                              ),
+                            ),
+                            AnimatedPadding(
+                              duration: const Duration(milliseconds: 400),
+                              padding: EdgeInsets.all(
+                                  pokeDetailsController.index == index
+                                      ? 0
+                                      : 20),
+                              curve: Curves.bounceInOut,
+                              child: Hero(
+                                tag: index,
+                                child: CachedNetworkImage(
+                                  placeholder: (_, url) => const Center(
+                                    child: PokeLoading(),
+                                  ),
+                                  color: pokeDetailsController.index == index
+                                      ? null
+                                      : Colors.black.withOpacity(0.5),
+                                  imageUrl:
+                                      pokeHomeController.pokeList[index].img,
+                                ),
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       );
     });
+  }
+
+  Widget listTypes(List<String> types) {
+    final List<Widget> listWidgets = [];
+
+    for (final name in types) {
+      listWidgets.add(
+        Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(0),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: const Color.fromARGB(80, 255, 255, 255)),
+              child: Padding(
+                padding: const EdgeInsets.all(6),
+                child: Text(
+                  name.trim(),
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 5,
+            )
+          ],
+        ),
+      );
+    }
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: listWidgets,
+    );
   }
 }

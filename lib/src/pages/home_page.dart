@@ -24,75 +24,79 @@ class HomePage extends StatelessWidget {
       Get.toNamed<dynamic>(AppRoutes.pokeDetails);
     }
 
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Stack(
-        clipBehavior: Clip.none,
-        children: [
-          Positioned(
-            top: -240 / 4.7,
-            left: screenWidth - 240 / 1.7,
-            child: Opacity(
-              opacity: 0.1,
-              child: Image.asset(
-                AppConstants.imagePokeballDark,
-                width: 240,
-              ),
-            ),
-          ),
-          Column(
-            children: [
-              Container(
-                height: statusBarHeight,
-              ),
-              _appBarHome(screenWidth, statusBarHeight),
-              Expanded(
-                child: Obx(
-                  () {
-                    final List<Pokemon> pokeList = pokeHomeController.pokeList;
-
-                    return pokeList.isEmpty
-                        ? const Center(child: PokeLoading())
-                        : AnimationLimiter(
-                            child: GridView.builder(
-                              physics: const BouncingScrollPhysics(),
-                              padding: const EdgeInsets.all(12),
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                childAspectRatio: screenWidth /
-                                    (MediaQuery.of(context).size.height / 2),
-                              ),
-                              itemCount: pokeList.length,
-                              itemBuilder: (_, index) {
-                                final Pokemon pokemon =
-                                    pokeHomeController.pokeList[index];
-
-                                return AnimationConfiguration.staggeredGrid(
-                                  position: index,
-                                  duration: const Duration(milliseconds: 375),
-                                  columnCount: 2,
-                                  child: ScaleAnimation(
-                                    child: GestureDetector(
-                                      child: PokeItem(
-                                        name: pokemon.name,
-                                        index: index,
-                                        image: pokemon.img,
-                                        types: pokemon.type,
-                                      ),
-                                      onTap: () => viewPokemon(index, pokeList),
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
-                          );
-                  },
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Positioned(
+              top: -240 / 4.7,
+              left: screenWidth - 240 / 1.7,
+              child: Opacity(
+                opacity: 0.1,
+                child: Image.asset(
+                  AppConstants.imagePokeballDark,
+                  width: 240,
                 ),
               ),
-            ],
-          ),
-        ],
+            ),
+            Column(
+              children: [
+                Container(
+                  height: statusBarHeight,
+                ),
+                _appBarHome(screenWidth, statusBarHeight),
+                Expanded(
+                  child: Obx(
+                    () {
+                      final List<Pokemon> pokeList =
+                          pokeHomeController.pokeList;
+
+                      return pokeList.isEmpty
+                          ? const Center(child: PokeLoading())
+                          : AnimationLimiter(
+                              child: GridView.builder(
+                                physics: const BouncingScrollPhysics(),
+                                padding: const EdgeInsets.all(12),
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  childAspectRatio: screenWidth /
+                                      (MediaQuery.of(context).size.height / 2),
+                                ),
+                                itemCount: pokeList.length,
+                                itemBuilder: (_, index) {
+                                  final Pokemon pokemon =
+                                      pokeHomeController.pokeList[index];
+
+                                  return AnimationConfiguration.staggeredGrid(
+                                    position: index,
+                                    duration: const Duration(milliseconds: 375),
+                                    columnCount: 2,
+                                    child: ScaleAnimation(
+                                      child: GestureDetector(
+                                        child: PokeItem(
+                                          name: pokemon.name,
+                                          index: index,
+                                          image: pokemon.img,
+                                          types: pokemon.type,
+                                        ),
+                                        onTap: () =>
+                                            viewPokemon(index, pokeList),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

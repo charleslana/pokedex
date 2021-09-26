@@ -93,16 +93,6 @@ class PokeItem extends StatelessWidget {
                   ),
                 ),
               ),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: AspectRatio(
-                  aspectRatio: 5 / 7,
-                  child: Hero(
-                    tag: index,
-                    child: getImage(image),
-                  ),
-                ),
-              ),
               Padding(
                 padding: const EdgeInsets.all(8),
                 child: FittedBox(
@@ -123,6 +113,16 @@ class PokeItem extends StatelessWidget {
                   left: 8,
                 ),
                 child: listTypes(),
+              ),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: AspectRatio(
+                  aspectRatio: 5 / 7,
+                  child: Hero(
+                    tag: index,
+                    child: getImage(image),
+                  ),
+                ),
               ),
             ],
           ),
