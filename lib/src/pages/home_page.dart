@@ -19,9 +19,10 @@ class HomePage extends StatelessWidget {
     final double statusBarHeight = MediaQuery.of(context).padding.top;
     final PokeHomeController pokeHomeController = Get.put(PokeHomeController());
 
-    void viewPokemon(int index, List<Pokemon> pokeList) {
+    void viewPokemon(int index) {
       Get.put(PokeDetailsController())
         ..index = index
+        ..changeSlidingSheet(0)
         ..tabController.animateTo(0);
       Get.toNamed<dynamic>(AppRoutes.pokeDetails);
     }
@@ -84,8 +85,7 @@ class HomePage extends StatelessWidget {
                                           image: pokemon.img,
                                           types: pokemon.type.en,
                                         ),
-                                        onTap: () =>
-                                            viewPokemon(index, pokeList),
+                                        onTap: () => viewPokemon(index),
                                       ),
                                     ),
                                   );
