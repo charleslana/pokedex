@@ -169,8 +169,10 @@ class PokeDetailsPage extends StatelessWidget {
                     height: height / 3.2,
                     child: PageView.builder(
                       controller: pokeDetailsController.pageController.value,
-                      onPageChanged: (int index) =>
-                          pokeDetailsController.index = index,
+                      onPageChanged: (int index) {
+                        pokeDetailsController.index = index;
+                        pokeDetailsController.tabController.animateTo(0);
+                      },
                       physics: const BouncingScrollPhysics(),
                       itemCount: pokeHomeController.pokeList.length,
                       itemBuilder: (_, int index) {
@@ -288,9 +290,12 @@ class PokeDetailsPage extends StatelessWidget {
           enableFeedback: true,
           controller: pokeDetailsController.tabController,
           tabs: const [
-            Tab(text: 'Sobre'),
-            Tab(text: 'Evolução'),
+            Tab(text: 'About'),
+            Tab(text: 'Evolution'),
             Tab(text: 'Status'),
+            Tab(text: 'Moveset'),
+            Tab(text: 'Types'),
+            Tab(text: 'Simulate'),
           ],
         ),
       ),
@@ -298,8 +303,26 @@ class PokeDetailsPage extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         controller: pokeDetailsController.tabController,
         children: [
-          Text(pokemon.name),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Description',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(pokemon.description.en),
+              ],
+            ),
+          ),
           Text(pokemon.num),
+          Text(pokemon.id.toString()),
+          Text(pokemon.id.toString()),
+          Text(pokemon.id.toString()),
           Text(pokemon.id.toString()),
         ],
       ),

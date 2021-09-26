@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
     void viewPokemon(int index, List<Pokemon> pokeList) {
       Get.put(PokeDetailsController())
         ..index = index
-        ..changeSlidingSheet(0);
+        ..tabController.animateTo(0);
       Get.toNamed<dynamic>(AppRoutes.pokeDetails);
     }
 
