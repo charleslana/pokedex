@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/state_manager.dart';
 
@@ -9,6 +10,7 @@ class PokeDetailsController extends GetxController
   RxDouble progress = 0.0.obs;
   RxDouble opacity = 1.0.obs;
   RxDouble opacityAppBarTitle = 0.0.obs;
+  late TabController tabController;
 
   int get index => _index.value;
 
@@ -37,6 +39,7 @@ class PokeDetailsController extends GetxController
     progress.value = stateProgress;
     opacity.value = 1 - _interval(0, 0.6, progress.value);
     opacityAppBarTitle.value = _interval(0.55, 0.8, progress.value);
+    tabController.animateTo(0);
   }
 
   @override
@@ -45,6 +48,8 @@ class PokeDetailsController extends GetxController
       vsync: this,
       duration: const Duration(seconds: 5),
     )..repeat();
+    tabController = TabController(length: 3, vsync: this);
+    tabController.animateTo(0);
     super.onInit();
   }
 

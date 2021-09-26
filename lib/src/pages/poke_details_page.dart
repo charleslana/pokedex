@@ -149,14 +149,11 @@ class PokeDetailsPage extends StatelessWidget {
                 snapSpec: const SnapSpec(
                   snappings: [0.6, 1.0],
                 ),
-                body: const Center(
-                  child: Text('This widget is below the SlidingSheet'),
-                ),
                 builder: (_, __) {
                   return SizedBox(
                     height: height,
-                    child: const Center(
-                      child: Text('This is the content of the sheet'),
+                    child: Center(
+                      child: tabBar(pokeDetailsController, pokemon),
                     ),
                   );
                 },
@@ -269,6 +266,43 @@ class PokeDetailsPage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: listWidgets,
+    );
+  }
+
+  Widget tabBar(
+    PokeDetailsController pokeDetailsController,
+    Pokemon pokemon,
+  ) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        bottom: TabBar(
+          labelColor: AppConstants().getColorType(pokemon.type[0]),
+          indicatorColor: AppConstants().getColorType(pokemon.type[0]),
+          indicatorSize: TabBarIndicatorSize.tab,
+          indicatorPadding: const EdgeInsets.all(5),
+          isScrollable: true,
+          physics: const BouncingScrollPhysics(),
+          onTap: (int index) {},
+          enableFeedback: true,
+          controller: pokeDetailsController.tabController,
+          tabs: const [
+            Tab(text: 'Sobre'),
+            Tab(text: 'Evolução'),
+            Tab(text: 'Status'),
+          ],
+        ),
+      ),
+      body: TabBarView(
+        physics: const BouncingScrollPhysics(),
+        controller: pokeDetailsController.tabController,
+        children: [
+          Text(pokemon.name),
+          Text(pokemon.num),
+          Text(pokemon.id.toString()),
+        ],
+      ),
     );
   }
 }
