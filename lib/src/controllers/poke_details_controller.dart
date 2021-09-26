@@ -33,8 +33,8 @@ class PokeDetailsController extends GetxController
     return (progress - lower) / (upper - lower).clamp(0, 1);
   }
 
-  void changeSlidingSheet(dynamic state) {
-    progress.value = state.progress;
+  void changeSlidingSheet(double stateProgress) {
+    progress.value = stateProgress;
     opacity.value = 1 - _interval(0, 0.6, progress.value);
     opacityAppBarTitle.value = _interval(0.55, 0.8, progress.value);
   }

@@ -20,7 +20,9 @@ class HomePage extends StatelessWidget {
     final PokeHomeController pokeHomeController = Get.put(PokeHomeController());
 
     void viewPokemon(int index, List<Pokemon> pokeList) {
-      Get.put(PokeDetailsController()).index = index;
+      Get.put(PokeDetailsController())
+        ..index = index
+        ..changeSlidingSheet(0);
       Get.toNamed<dynamic>(AppRoutes.pokeDetails);
     }
 
