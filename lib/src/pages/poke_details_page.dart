@@ -339,7 +339,7 @@ class PokeDetailsPage extends StatelessWidget {
                     const SizedBox(
                       width: 10,
                     ),
-                    Text(pokemon.generation.toString()),
+                    Text('${pokemon.generation} º'),
                   ],
                 ),
                 const SizedBox(
