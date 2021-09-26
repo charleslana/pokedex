@@ -15,7 +15,7 @@ class PokeHomeController extends GetxController {
   }
 
   Future<void> fetchPokemonList() async {
-    final pokeApi = await PokeApiService(client).getPokeApi();
-    pokeList.value = pokeApi.pokemon;
+    final PokeModel pokeModel = await PokeApiService(client).getPokeApi();
+    pokeList.value = pokeModel.pokemon;
   }
 }
