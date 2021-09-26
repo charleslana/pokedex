@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:pokedex/src/constants/app_constants.dart';
 import 'package:pokedex/src/controllers/poke_details_controller.dart';
 import 'package:pokedex/src/controllers/poke_home_controller.dart';
-import 'package:pokedex/src/models/poke_api.dart';
+import 'package:pokedex/src/models/poke_model.dart';
 import 'package:pokedex/src/widgets/poke_loading.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
@@ -30,7 +30,7 @@ class PokeDetailsPage extends StatelessWidget {
             preferredSize: const Size.fromHeight(56),
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 400),
-              color: AppConstants().getColorType(pokemon.type[0]),
+              color: AppConstants().getColorType(pokemon.type.en[0]),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -99,11 +99,11 @@ class PokeDetailsPage extends StatelessWidget {
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      AppConstants().getColorType(pokemon.type[0])!,
-                      if (pokemon.type.length > 1)
-                        AppConstants().getColorType(pokemon.type[1])!
+                      AppConstants().getColorType(pokemon.type.en[0])!,
+                      if (pokemon.type.en.length > 1)
+                        AppConstants().getColorType(pokemon.type.en[1])!
                       else
-                        AppConstants().getColorType(pokemon.type[0])!,
+                        AppConstants().getColorType(pokemon.type.en[0])!,
                     ],
                     stops: const [0, 1],
                     begin: FractionalOffset.topCenter,
@@ -127,7 +127,7 @@ class PokeDetailsPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            listTypes(pokemon.type),
+                            listTypes(pokemon.type.en),
                             Text(
                               pokemon.num,
                               style: const TextStyle(
@@ -278,8 +278,8 @@ class PokeDetailsPage extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         bottom: TabBar(
-          labelColor: AppConstants().getColorType(pokemon.type[0]),
-          indicatorColor: AppConstants().getColorType(pokemon.type[0]),
+          labelColor: AppConstants().getColorType(pokemon.type.en[0]),
+          indicatorColor: AppConstants().getColorType(pokemon.type.en[0]),
           indicatorSize: TabBarIndicatorSize.tab,
           indicatorPadding: const EdgeInsets.all(5),
           isScrollable: true,

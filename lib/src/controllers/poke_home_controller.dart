@@ -1,6 +1,6 @@
 import 'package:get/state_manager.dart';
 import 'package:http/http.dart';
-import 'package:pokedex/src/models/poke_api.dart';
+import 'package:pokedex/src/models/poke_model.dart';
 import 'package:pokedex/src/services/poke_api_service.dart';
 
 class PokeHomeController extends GetxController {

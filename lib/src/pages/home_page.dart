@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:pokedex/src/constants/app_constants.dart';
 import 'package:pokedex/src/controllers/poke_details_controller.dart';
 import 'package:pokedex/src/controllers/poke_home_controller.dart';
-import 'package:pokedex/src/models/poke_api.dart';
+import 'package:pokedex/src/models/poke_model.dart';
 import 'package:pokedex/src/routes/app_routes.dart';
 import 'package:pokedex/src/widgets/poke_item.dart';
 import 'package:pokedex/src/widgets/poke_loading.dart';
@@ -82,7 +82,7 @@ class HomePage extends StatelessWidget {
                                           name: pokemon.name,
                                           index: index,
                                           image: pokemon.img,
-                                          types: pokemon.type,
+                                          types: pokemon.type.en,
                                         ),
                                         onTap: () =>
                                             viewPokemon(index, pokeList),

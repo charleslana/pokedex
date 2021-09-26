@@ -5,7 +5,7 @@ class AppConstants {
   static const String imagePokeballDark = 'assets/images/pokeball_dark.png';
   static const String loadingPokeball = 'assets/images/pokeball_loading.png';
   static const String baseURL =
-      'https://raw.githubusercontent.com/charleslana/pokemon-go-pokedex-api/main/pokedex.json';
+      'https://raw.githubusercontent.com/charleslana/pokemon-go-pokedex-api/main/api.json';
 
   Color? getColorType(String type) {
     switch (type) {
