@@ -26,54 +26,74 @@ class PokeDetailsPage extends StatelessWidget {
 
       return SafeArea(
         child: Scaffold(
-          appBar: AppBar(
-            title: Opacity(
-              opacity: pokeDetailsController.opacityAppBarTitle.value,
-              child: Text(pokemon.name),
-            ),
-            centerTitle: true,
-            elevation: 0,
-            backgroundColor: AppConstants().getColorType(pokemon.type[0]),
-            leading: IconButton(
-              onPressed: Get.back,
-              icon: const Icon(Icons.arrow_back),
-            ),
-            actions: [
-              Stack(
-                alignment: Alignment.center,
+          appBar: PreferredSize(
+            preferredSize: const Size.fromHeight(56),
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 400),
+              color: AppConstants().getColorType(pokemon.type[0]),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  AnimatedBuilder(
-                    animation: pokeDetailsController.animationController,
-                    builder: (_, child) {
-                      return Transform.rotate(
-                        angle: pokeDetailsController.animationController.value *
-                            2 *
-                            math.pi,
-                        child: child,
-                      );
-                    },
-                    child: Opacity(
-                      opacity: pokeDetailsController.opacityAppBarTitle >= 0.2
-                          ? 0.2
-                          : 0.0,
-                      child: Image.asset(
-                        AppConstants.imagePokeballWhite,
-                        width: 50,
-                        height: 50,
+                  IconButton(
+                    onPressed: Get.back,
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Opacity(
+                    opacity: pokeDetailsController.opacityAppBarTitle.value,
+                    child: Text(
+                      pokemon.name,
+                      style: const TextStyle(
+                        fontSize: 21,
+                        color: Colors.white,
                       ),
                     ),
                   ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.favorite_border),
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      AnimatedBuilder(
+                        animation: pokeDetailsController.animationController,
+                        builder: (_, child) {
+                          return Transform.rotate(
+                            angle: pokeDetailsController
+                                    .animationController.value *
+                                2 *
+                                math.pi,
+                            child: child,
+                          );
+                        },
+                        child: Opacity(
+                          opacity:
+                              pokeDetailsController.opacityAppBarTitle >= 0.2
+                                  ? 0.2
+                                  : 0.0,
+                          child: Image.asset(
+                            AppConstants.imagePokeballWhite,
+                            width: 50,
+                            height: 50,
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.favorite_border,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ],
+            ),
           ),
           body: Stack(
             children: [
-              Container(
+              AnimatedContainer(
+                duration: const Duration(milliseconds: 400),
                 width: double.infinity,
                 height: height / 3,
                 color: AppConstants().getColorType(pokemon.type[0]),
