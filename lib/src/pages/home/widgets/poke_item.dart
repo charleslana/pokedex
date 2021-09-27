@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:pokedex/src/components/poke_loading.dart';
 import 'package:pokedex/src/constants/app_constants.dart';
-import 'package:pokedex/src/widgets/poke_loading.dart';
 
 class PokeItem extends StatelessWidget {
   const PokeItem({
@@ -52,20 +52,10 @@ class PokeItem extends StatelessWidget {
         ),
       );
     }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: listWidgets,
-    );
-  }
-
-  Widget getImage(String image) {
-    return CachedNetworkImage(
-      width: 100,
-      height: 100,
-      placeholder: (_, __) => const Center(
-        child: PokeLoading(),
-      ),
-      imageUrl: image,
     );
   }
 
@@ -131,7 +121,14 @@ class PokeItem extends StatelessWidget {
                   aspectRatio: 5 / 7,
                   child: Hero(
                     tag: index,
-                    child: getImage(image),
+                    child: CachedNetworkImage(
+                      width: 100,
+                      height: 100,
+                      placeholder: (_, __) => const Center(
+                        child: PokeLoading(),
+                      ),
+                      imageUrl: image,
+                    ),
                   ),
                 ),
               ),

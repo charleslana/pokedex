@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pokedex/src/pages/home_page.dart';
-import 'package:pokedex/src/pages/poke_details_page.dart';
+import 'package:pokedex/src/pages/home/home_page.dart';
+import 'package:pokedex/src/pages/poke-details/poke_details_page.dart';
 import 'package:pokedex/src/routes/app_routes.dart';
 import 'package:pokedex/src/translation/app_translation.dart';
 

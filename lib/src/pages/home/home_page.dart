@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
+import 'package:pokedex/src/components/poke_loading.dart';
 import 'package:pokedex/src/constants/app_constants.dart';
 import 'package:pokedex/src/controllers/poke_details_controller.dart';
 import 'package:pokedex/src/controllers/poke_home_controller.dart';
 import 'package:pokedex/src/models/poke_model.dart';
+import 'package:pokedex/src/pages/home/widgets/app_bar_home.dart';
+import 'package:pokedex/src/pages/home/widgets/poke_item.dart';
 import 'package:pokedex/src/routes/app_routes.dart';
-import 'package:pokedex/src/widgets/poke_item.dart';
-import 'package:pokedex/src/widgets/poke_loading.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -49,7 +50,7 @@ class HomePage extends StatelessWidget {
                 Container(
                   height: statusBarHeight,
                 ),
-                _appBarHome(screenWidth, statusBarHeight),
+                const AppBarHome(),
                 Expanded(
                   child: Obx(
                     () {
@@ -99,46 +100,6 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _appBarHome(double screenWidth, double statusBarHeight) {
-    return Container(
-      height: 150,
-      color: const Color.fromARGB(200, 240, 245, 210).withOpacity(0),
-      child: Row(
-        children: [
-          const Padding(
-            padding: EdgeInsets.only(left: 20),
-            child: Text(
-              'Pokédex',
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          Expanded(
-            child: Stack(
-              children: [
-                Positioned(
-                  top: 150 / 3.1 - statusBarHeight,
-                  left: screenWidth - 175,
-                  child: SizedBox(
-                    width: 50,
-                    height: 50,
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.menu),
-                      iconSize: 20,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }
