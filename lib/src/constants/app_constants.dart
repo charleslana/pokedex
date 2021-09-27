@@ -10,41 +10,41 @@ class AppConstants {
   Color? getColorType(String type) {
     switch (type) {
       case 'Normal':
-        return Colors.brown[400];
+        return const Color(0xffa8a878);
       case 'Fire':
-        return Colors.red;
+        return const Color(0xfff08030);
       case 'Water':
-        return Colors.blue;
+        return const Color(0xff6890f0);
       case 'Grass':
-        return Colors.green;
+        return const Color(0xff78c850);
       case 'Electric':
-        return Colors.amber;
+        return const Color(0xfff8d030);
       case 'Ice':
-        return Colors.cyanAccent[400];
+        return const Color(0xff98d8d8);
       case 'Fighting':
-        return Colors.orange;
+        return const Color(0xffc02038);
       case 'Poison':
-        return Colors.purple;
+        return const Color(0xffa040a0);
       case 'Ground':
-        return Colors.orange[300];
+        return const Color(0xffe0c068);
       case 'Flying':
-        return Colors.indigo[200];
+        return const Color(0xffa890f0);
       case 'Psychic':
-        return Colors.pink;
+        return const Color(0xfff85888);
       case 'Bug':
-        return Colors.lightGreen[500];
+        return const Color(0xffa8b820);
       case 'Rock':
-        return Colors.grey;
+        return const Color(0xffb8a038);
       case 'Ghost':
-        return Colors.indigo[400];
+        return const Color(0xff705898);
       case 'Dark':
-        return Colors.brown;
+        return const Color(0xff705848);
       case 'Dragon':
-        return Colors.indigo[800];
+        return const Color(0xff7038f8);
       case 'Steel':
-        return Colors.blueGrey;
+        return const Color(0xffb8b8d0);
       case 'Fairy':
-        return Colors.pinkAccent[100];
+        return const Color(0xffee99ac);
       default:
         return Colors.grey;
     }

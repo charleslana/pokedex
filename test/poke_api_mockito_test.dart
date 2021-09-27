@@ -14,7 +14,7 @@ void main() {
     when(() => client.get(Uri.parse(AppConstants.baseURL)))
         .thenAnswer((_) async => http.Response(jsonReturn, 200));
 
-    final PokeModel pokeModel = await pokeApiSerive.getPokeApi();
+    final PokeModel pokeModel = await pokeApiSerive.getPokemon();
     expect(pokeModel.pokemon.isNotEmpty, equals(true));
   });
 
@@ -23,7 +23,7 @@ void main() {
     when(() => client.get(Uri.parse(AppConstants.baseURL)))
         .thenAnswer((_) async => http.Response('Not found', 404));
 
-    expect(pokeApiSerive.getPokeApi, throwsException);
+    expect(pokeApiSerive.getPokemon, throwsException);
   });
 }
 

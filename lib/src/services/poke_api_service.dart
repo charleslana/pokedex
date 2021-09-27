@@ -9,7 +9,7 @@ class PokeApiService {
 
   Client client;
 
-  Future<PokeModel> getPokeApi() async {
+  Future<PokeModel> getPokemon() async {
     try {
       final response = await client.get(Uri.parse(AppConstants.baseURL));
       if (response.statusCode == 200) {
