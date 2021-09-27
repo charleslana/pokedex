@@ -54,13 +54,11 @@ class Pokemon {
     weight = json['weight'];
     height = json['height'];
     if (json['pre_evolution'] != null) {
-      final List<PreEvolution> preEvolution = [];
       json['pre_evolution'].forEach((dynamic value) {
         preEvolution.add(PreEvolution.fromJson(value));
       });
     }
     if (json['next_evolution'] != null) {
-      final List<NextEvolution> nextEvolution = [];
       json['next_evolution'].forEach((dynamic value) {
         nextEvolution.add(NextEvolution.fromJson(value));
       });
@@ -83,8 +81,8 @@ class Pokemon {
   late Description description;
   late double weight;
   late double height;
-  late List<PreEvolution> preEvolution;
-  late List<NextEvolution> nextEvolution;
+  List<PreEvolution> preEvolution = [];
+  List<NextEvolution> nextEvolution = [];
   late int maxCp;
   late Type resistant;
   late Type weaknesses;
@@ -166,23 +164,27 @@ class PreEvolution {
     required this.id,
     required this.num,
     required this.name,
+    required this.img,
   });
 
   PreEvolution.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     num = json['num'];
     name = json['name'];
+    img = json['img'];
   }
 
   late int id;
   late String num;
   late String name;
+  late String img;
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = {};
     data['id'] = id;
     data['num'] = num;
     data['name'] = name;
+    data['img'] = img;
     return data;
   }
 }
@@ -192,23 +194,27 @@ class NextEvolution {
     required this.id,
     required this.num,
     required this.name,
+    required this.img,
   });
 
   NextEvolution.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     num = json['num'];
     name = json['name'];
+    img = json['img'];
   }
 
   late int id;
   late String num;
   late String name;
+  late String img;
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = {};
     data['id'] = id;
     data['num'] = num;
     data['name'] = name;
+    data['img'] = img;
     return data;
   }
 }

@@ -163,7 +163,7 @@ class PokeDetailsPage extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.only(
                       top: pokeDetailsController.opacityAppBarTitle.value == 1
-                          ? 1000
+                          ? MediaQuery.of(context).size.width * 2
                           : 60 - pokeDetailsController.progress.value * 50),
                   child: SizedBox(
                     height: height / 3.2,
@@ -209,7 +209,7 @@ class PokeDetailsPage extends StatelessWidget {
                               child: Hero(
                                 tag: index,
                                 child: CachedNetworkImage(
-                                  placeholder: (_, url) => const Center(
+                                  placeholder: (_, __) => const Center(
                                     child: PokeLoading(),
                                   ),
                                   color: pokeDetailsController.index == index
@@ -383,7 +383,12 @@ class PokeDetailsPage extends StatelessWidget {
               ],
             ),
           ),
-          Text(pokemon.num),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+            child: Column(
+              children: getEvolution(pokemon),
+            ),
+          ),
           Text(pokemon.id.toString()),
           Text(pokemon.id.toString()),
           Text(pokemon.id.toString()),
@@ -391,5 +396,83 @@ class PokeDetailsPage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  List<Widget> getEvolution(Pokemon pokemon) {
+    final List<Widget> list = [];
+
+    for (final evolution in pokemon.preEvolution) {
+      list
+        ..add(
+          SizedBox(
+            width: 80,
+            height: 80,
+            child: CachedNetworkImage(
+              placeholder: (_, __) => const Center(
+                child: PokeLoading(),
+              ),
+              imageUrl: evolution.img,
+            ),
+          ),
+        )
+        ..add(
+          SizedBox(
+            height: 20,
+            child: Text(
+              evolution.name,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        )
+        ..add(
+          const SizedBox(
+            height: 40,
+            child: Icon(Icons.keyboard_arrow_down),
+          ),
+        );
+    }
+    for (final evolution in pokemon.nextEvolution) {
+      list
+        ..add(
+          SizedBox(
+            width: 80,
+            height: 80,
+            child: CachedNetworkImage(
+              placeholder: (_, __) => const Center(
+                child: PokeLoading(),
+              ),
+              imageUrl: evolution.img,
+            ),
+          ),
+        )
+        ..add(
+          SizedBox(
+            height: 20,
+            child: Text(
+              evolution.name,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        );
+      if (pokemon.nextEvolution.last.name != evolution.name) {
+        list.add(
+          const SizedBox(
+            height: 40,
+            child: Icon(Icons.keyboard_arrow_down),
+          ),
+        );
+      }
+    }
+    if (pokemon.nextEvolution.isEmpty) {
+      list.removeLast();
+    }
+
+    return list;
   }
 }

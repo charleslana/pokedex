@@ -62,7 +62,7 @@ class PokeItem extends StatelessWidget {
     return CachedNetworkImage(
       width: 100,
       height: 100,
-      placeholder: (_, url) => const Center(
+      placeholder: (_, __) => const Center(
         child: PokeLoading(),
       ),
       imageUrl: image,
