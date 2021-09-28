@@ -31,83 +31,81 @@ class EvolutionPokeDetails extends StatelessWidget {
   List<Widget> getEvolution(Pokemon pokemon) {
     final List<Widget> list = [];
 
-    if (pokemon.preEvolution.isNotEmpty) {
-      for (final evolution in pokemon.preEvolution) {
-        list
-          ..add(
-            SizedBox(
-              width: 80,
-              height: 80,
-              child: CachedNetworkImage(
-                placeholder: (_, __) => const Center(
-                  child: PokeLoading(),
-                ),
-                imageUrl: evolution.img,
+    for (final evolution in pokemon.preEvolution) {
+      list
+        ..add(
+          SizedBox(
+            width: 80,
+            height: 80,
+            child: CachedNetworkImage(
+              placeholder: (_, __) => const Center(
+                child: PokeLoading(),
+              ),
+              imageUrl: evolution.img,
+            ),
+          ),
+        )
+        ..add(
+          SizedBox(
+            height: 20,
+            child: Text(
+              evolution.name,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
               ),
             ),
-          )
-          ..add(
-            SizedBox(
-              height: 20,
-              child: Text(
-                evolution.name,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
+          ),
+        )
+        ..add(
+          const SizedBox(
+            height: 40,
+            child: Icon(Icons.keyboard_arrow_down),
+          ),
+        );
+    }
+    for (final evolution in pokemon.nextEvolution) {
+      list
+        ..add(
+          SizedBox(
+            width: 80,
+            height: 80,
+            child: CachedNetworkImage(
+              placeholder: (_, __) => const Center(
+                child: PokeLoading(),
+              ),
+              imageUrl: evolution.img,
+            ),
+          ),
+        )
+        ..add(
+          SizedBox(
+            height: 20,
+            child: Text(
+              evolution.name,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
               ),
             ),
-          )
-          ..add(
-            const SizedBox(
-              height: 40,
-              child: Icon(Icons.keyboard_arrow_down),
-            ),
-          );
+          ),
+        );
+      if (pokemon.nextEvolution.last.name != evolution.name) {
+        list.add(
+          const SizedBox(
+            height: 40,
+            child: Icon(Icons.keyboard_arrow_down),
+          ),
+        );
       }
     }
-    if (pokemon.nextEvolution.isNotEmpty) {
-      for (final evolution in pokemon.nextEvolution) {
-        list
-          ..add(
-            SizedBox(
-              width: 80,
-              height: 80,
-              child: CachedNetworkImage(
-                placeholder: (_, __) => const Center(
-                  child: PokeLoading(),
-                ),
-                imageUrl: evolution.img,
-              ),
-            ),
-          )
-          ..add(
-            SizedBox(
-              height: 20,
-              child: Text(
-                evolution.name,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          );
-        if (pokemon.nextEvolution.last.name != evolution.name) {
-          list.add(
-            const SizedBox(
-              height: 40,
-              child: Icon(Icons.keyboard_arrow_down),
-            ),
-          );
-        }
-      }
 
-      if (pokemon.nextEvolution.isEmpty) {
-        list.removeLast();
-      }
-    } else {
-      list.add(const Center(child: Text('No evolution found')));
+    if (pokemon.nextEvolution.isEmpty && list.isNotEmpty) {
+      list.removeLast();
+    }
+
+    if (pokemon.preEvolution.isEmpty && pokemon.nextEvolution.isEmpty) {
+      list.add(const Center(child: Text('There are no evolutions')));
     }
 
     return list;
