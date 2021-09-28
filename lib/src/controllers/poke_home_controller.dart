@@ -1,10 +1,11 @@
-import 'package:get/state_manager.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart';
 import 'package:pokedex/src/models/poke_model.dart';
 import 'package:pokedex/src/services/poke_api_service.dart';
 
 class PokeHomeController extends GetxController {
   RxList<Pokemon> pokeList = <Pokemon>[].obs;
+  RxBool isLoading = true.obs;
 
   Client client = Client();
 
@@ -15,7 +16,18 @@ class PokeHomeController extends GetxController {
   }
 
   Future<void> fetchPokemonList() async {
-    final PokeModel pokeModel = await PokeApiService(client).getPokemon();
-    pokeList.value = pokeModel.pokemon;
+    await PokeApiService(client).getPokemon().then((pokeApi) {
+      if (pokeApi != null) {
+        pokeList.value = pokeApi.pokemon;
+      } else {
+        Get.defaultDialog<dynamic>(
+          barrierDismissible: false,
+          title: 'Error',
+          middleText:
+              'Failed connection to server.\nPlease check your internet connection.',
+        );
+      }
+      isLoading.value = false;
+    });
   }
 }

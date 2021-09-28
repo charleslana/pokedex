@@ -14,16 +14,16 @@ void main() {
     when(() => client.get(Uri.parse(AppConstants.baseURL)))
         .thenAnswer((_) async => http.Response(jsonReturn, 200));
 
-    final PokeModel pokeModel = await pokeApiSerive.getPokemon();
-    expect(pokeModel.pokemon.isNotEmpty, equals(true));
+    final PokeModel? pokeModel = await pokeApiSerive.getPokemon();
+    expect(pokeModel!.pokemon.isNotEmpty, equals(true));
   });
 
-  test('Throws an exception if the http call completes with an error',
-      () async {
+  test('Returns null', () async {
     when(() => client.get(Uri.parse(AppConstants.baseURL)))
         .thenAnswer((_) async => http.Response('Not found', 404));
 
-    expect(pokeApiSerive.getPokemon, throwsException);
+    final PokeModel? pokeModel = await pokeApiSerive.getPokemon();
+    expect(pokeModel, isNull);
   });
 }
 

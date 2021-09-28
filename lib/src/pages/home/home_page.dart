@@ -57,7 +57,7 @@ class HomePage extends StatelessWidget {
                       final List<Pokemon> pokeList =
                           pokeHomeController.pokeList;
 
-                      return pokeList.isEmpty
+                      return pokeHomeController.isLoading.value
                           ? const Center(child: PokeLoading())
                           : AnimationLimiter(
                               child: GridView.builder(
