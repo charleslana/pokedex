@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pokedex/src/pages/home/home_page.dart';
-import 'package:pokedex/src/pages/poke-details/poke_details_page.dart';
-import 'package:pokedex/src/routes/app_routes.dart';
+import 'package:pokedex/src/routes/app_route_generator.dart';
 import 'package:pokedex/src/translation/app_translation.dart';
 
 void main() {
@@ -26,16 +24,7 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: AppRoutes.home,
       defaultTransition: Transition.fade,
-      getPages: [
-        GetPage(
-          name: AppRoutes.home,
-          page: () => const HomePage(),
-        ),
-        GetPage(
-          name: AppRoutes.pokeDetails,
-          page: () => const PokeDetailsPage(),
-        ),
-      ],
+      onGenerateRoute: AppRouteGenerator().generateRoute,
     );
   }
 }

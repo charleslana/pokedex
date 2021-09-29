@@ -9,7 +9,7 @@ import 'package:pokedex/src/controllers/poke_home_controller.dart';
 import 'package:pokedex/src/models/poke_model.dart';
 import 'package:pokedex/src/pages/home/widgets/app_bar_home.dart';
 import 'package:pokedex/src/pages/home/widgets/poke_item.dart';
-import 'package:pokedex/src/routes/app_routes.dart';
+import 'package:pokedex/src/routes/app_route_generator.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
