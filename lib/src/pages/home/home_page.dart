@@ -100,6 +100,11 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          backgroundColor: Colors.redAccent,
+          child: const Icon(Icons.favorite),
+        ),
       ),
     );
   }

@@ -6,11 +6,13 @@ class AppTranslation {
 }
 
 final Map<String, String> enUS = {
-  'greeting': 'Hello, How are you?',
-  'day': 'Awesome day...'
+  'language': 'Language',
+  'darkTheme': 'Dark Theme',
+  'about': 'About',
 };
 
 final Map<String, String> ptBR = {
-  'greeting': 'Olá, como vai?',
-  'day': 'Dia sensacional...'
+  'language': 'Idioma',
+  'darkTheme': 'Tema Escuro',
+  'about': 'Sobre',
 };
