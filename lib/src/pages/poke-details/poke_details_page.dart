@@ -66,7 +66,9 @@ class PokeDetailsPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            listTypes(pokemon.type.en),
+                            listTypes('languageCode'.tr == 'en'
+                                ? pokemon.type.en
+                                : pokemon.type.ptBr),
                             Text(
                               pokemon.num,
                               style: const TextStyle(

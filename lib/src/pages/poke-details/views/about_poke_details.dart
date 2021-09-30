@@ -22,29 +22,31 @@ class AboutPokeDetails extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Description',
-              style: TextStyle(fontWeight: FontWeight.bold),
+            Text(
+              'pokeDetailsDescription'.tr,
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 10,
             ),
-            Text(pokemon.description.en),
+            Text('languageCode'.tr == 'en'
+                ? pokemon.description.en
+                : pokemon.description.ptBr),
             const SizedBox(
               height: 10,
             ),
-            const Text(
-              'Biology',
-              style: TextStyle(fontWeight: FontWeight.bold),
+            Text(
+              'pokeDetailsBiology'.tr,
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 10,
             ),
             Row(
               children: [
-                const Text(
-                  'Generation',
-                  style: TextStyle(
+                Text(
+                  'pokeDetailsGeneration'.tr,
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black54,
                     fontSize: 14,
@@ -61,9 +63,9 @@ class AboutPokeDetails extends StatelessWidget {
             ),
             Row(
               children: [
-                const Text(
-                  'Height',
-                  style: TextStyle(
+                Text(
+                  'pokeDetailsHeight'.tr,
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black54,
                     fontSize: 14,
@@ -80,9 +82,9 @@ class AboutPokeDetails extends StatelessWidget {
             ),
             Row(
               children: [
-                const Text(
-                  'Weight',
-                  style: TextStyle(
+                Text(
+                  'pokeDetailsWeight'.tr,
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.black54,
                     fontSize: 14,

@@ -28,7 +28,7 @@ class StatusPokeDetails extends StatelessWidget {
                 SizedBox(
                   height: 40,
                   child: Text(
-                    'Attack',
+                    'pokeDetailsAttack'.tr,
                     style: TextStyle(
                       color: Colors.grey[600],
                     ),
@@ -37,7 +37,7 @@ class StatusPokeDetails extends StatelessWidget {
                 SizedBox(
                   height: 40,
                   child: Text(
-                    'Defense',
+                    'pokeDetailsDefense'.tr,
                     style: TextStyle(
                       color: Colors.grey[600],
                     ),
@@ -46,7 +46,7 @@ class StatusPokeDetails extends StatelessWidget {
                 SizedBox(
                   height: 40,
                   child: Text(
-                    'Stamina',
+                    'pokeDetailsStamina'.tr,
                     style: TextStyle(
                       color: Colors.grey[600],
                     ),
@@ -55,7 +55,7 @@ class StatusPokeDetails extends StatelessWidget {
                 SizedBox(
                   height: 40,
                   child: Text(
-                    'CP',
+                    'pokeDetailsCP'.tr,
                     style: TextStyle(
                       color: Colors.grey[600],
                     ),

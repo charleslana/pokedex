@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:pokedex/src/controllers/menu_controller.dart';
 import 'package:pokedex/src/pages/menu/widgets/tab_language.dart';
 
