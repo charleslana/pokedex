@@ -11,13 +11,13 @@ class MenuWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final MenuController menuController = Get.put(MenuController());
 
-    final List<Tab> _tabs = [
+    final List<Tab> tabs = [
       Tab(icon: const Icon(Icons.language), text: 'language'.tr),
       Tab(icon: const Icon(Icons.dark_mode), text: 'darkTheme'.tr),
       Tab(icon: const Icon(Icons.info), text: 'about'.tr),
     ];
 
-    Widget _buildChips() {
+    Widget tabLanguage() {
       final List<Widget> chips = [];
 
       for (int i = 0; i < languages.length; i++) {
@@ -76,14 +76,14 @@ class MenuWidget extends StatelessWidget {
           onTap: (int index) {},
           enableFeedback: true,
           controller: menuController.tabController,
-          tabs: _tabs,
+          tabs: tabs,
         ),
       ),
       body: TabBarView(
         physics: const BouncingScrollPhysics(),
         controller: menuController.tabController,
         children: [
-          _buildChips(),
+          tabLanguage(),
           const Text('Dark Theme'),
           const Text('About'),
         ],
