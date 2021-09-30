@@ -7,9 +7,8 @@ class AppBarHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 150,
-      color: const Color.fromARGB(200, 240, 245, 210).withOpacity(0),
       child: Row(
         children: [
           const Padding(
@@ -26,7 +25,7 @@ class AppBarHome extends StatelessWidget {
             child: Stack(
               children: [
                 Positioned(
-                  top: 150 / 3.1 - MediaQuery.of(context).padding.top,
+                  top: MediaQuery.of(context).padding.top + 50,
                   left: MediaQuery.of(context).size.width - 175,
                   child: SizedBox(
                     width: 50,

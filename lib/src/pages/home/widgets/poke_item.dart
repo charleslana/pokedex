@@ -115,12 +115,14 @@ class PokeItem extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: 35,
-                  left: 8,
+              SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    top: 35,
+                    left: 8,
+                  ),
+                  child: listTypes(),
                 ),
-                child: listTypes(),
               ),
               Align(
                 alignment: Alignment.bottomRight,

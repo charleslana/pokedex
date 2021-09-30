@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
           clipBehavior: Clip.none,
           children: [
             Positioned(
-              top: -240 / 4.7,
+              top: statusBarHeight - 240 / 4.7,
               left: screenWidth - 240 / 1.7,
               child: Opacity(
                 opacity: 0.1,
