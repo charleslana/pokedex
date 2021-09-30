@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pokedex/src/widgets/menu_widget.dart';
+import 'package:pokedex/src/routes/app_route_generator.dart';
 
 class AppBarHome extends StatelessWidget {
   const AppBarHome({Key? key}) : super(key: key);
@@ -31,7 +31,7 @@ class AppBarHome extends StatelessWidget {
                     width: 50,
                     height: 50,
                     child: IconButton(
-                      onPressed: () => Get.dialog<dynamic>(const MenuWidget()),
+                      onPressed: () => Get.toNamed<dynamic>(AppRoutes.menu),
                       icon: const Icon(Icons.menu),
                       iconSize: 20,
                     ),

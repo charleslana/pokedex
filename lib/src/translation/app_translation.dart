@@ -7,14 +7,14 @@ class AppTranslation {
 
 final Map<String, String> enUS = {
   'languageCode': 'en',
-  'language': 'Language',
-  'darkTheme': 'Dark Theme',
-  'about': 'About',
+  'menuLanguage': 'Language',
+  'menuDarkTheme': 'Dark Theme',
+  'menuAbout': 'About',
 };
 
 final Map<String, String> ptBR = {
   'languageCode': 'pt',
-  'language': 'Idioma',
-  'darkTheme': 'Tema Escuro',
-  'about': 'Sobre',
+  'menuLanguage': 'Idioma',
+  'menuDarkTheme': 'Tema Escuro',
+  'menuAbout': 'Sobre',
 };

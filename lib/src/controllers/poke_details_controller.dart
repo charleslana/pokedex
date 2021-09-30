@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get/state_manager.dart';
+import 'package:get/get.dart';
 
 class PokeDetailsController extends GetxController
     with SingleGetTickerProviderMixin {
+  final int? arguments = Get.arguments;
   final RxInt _index = 0.obs;
   Rx<PageController> pageController = PageController().obs;
   late AnimationController animationController;
@@ -49,6 +50,7 @@ class PokeDetailsController extends GetxController
     )..repeat();
     tabController = TabController(length: 6, vsync: this);
     tabController.animateTo(0);
+    index = arguments ?? 0;
     super.onInit();
   }
 

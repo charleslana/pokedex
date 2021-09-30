@@ -1,6 +1,7 @@
 part of 'app_route_generator.dart';
 
 abstract class AppRoutes {
-  static const home = '/';
-  static const pokeDetails = '/poke-details';
+  static const String home = '/';
+  static const String pokeDetails = '/poke-details';
+  static const String menu = '/menu';
 }

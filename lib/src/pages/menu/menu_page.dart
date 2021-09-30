@@ -2,56 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:pokedex/src/controllers/menu_controller.dart';
-import 'package:pokedex/src/models/language_model.dart';
+import 'package:pokedex/src/pages/menu/widgets/tab_language.dart';
 
-class MenuWidget extends StatelessWidget {
-  const MenuWidget({Key? key}) : super(key: key);
+class MenuPage extends StatelessWidget {
+  const MenuPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final MenuController menuController = Get.put(MenuController());
 
     final List<Tab> tabs = [
-      Tab(icon: const Icon(Icons.language), text: 'language'.tr),
-      Tab(icon: const Icon(Icons.dark_mode), text: 'darkTheme'.tr),
-      Tab(icon: const Icon(Icons.info), text: 'about'.tr),
+      Tab(icon: const Icon(Icons.language), text: 'menuLanguage'.tr),
+      Tab(icon: const Icon(Icons.dark_mode), text: 'menuDarkTheme'.tr),
+      Tab(icon: const Icon(Icons.info), text: 'menuAbout'.tr),
     ];
-
-    Widget tabLanguage() {
-      final List<Widget> chips = [];
-
-      for (int i = 0; i < languages.length; i++) {
-        final FilterChip filterChip = FilterChip(
-          selected: menuController.selected[i],
-          label: Text(
-            languages[i].language,
-            style: const TextStyle(color: Colors.white),
-          ),
-          elevation: 10,
-          pressElevation: 5,
-          backgroundColor: Colors.black54,
-          selectedColor: Colors.blue,
-          onSelected: (bool selected) =>
-              menuController.changeLanguage(languages[i].symbol, i),
-        );
-
-        chips.add(Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: filterChip,
-        ));
-      }
-
-      return Center(
-        child: Wrap(
-          children: chips,
-        ),
-      );
-    }
 
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () => Navigator.pop(context),
+          onPressed: Get.back,
           icon: const Icon(
             Icons.arrow_back,
             color: Colors.black,
@@ -82,10 +51,10 @@ class MenuWidget extends StatelessWidget {
       body: TabBarView(
         physics: const BouncingScrollPhysics(),
         controller: menuController.tabController,
-        children: [
-          tabLanguage(),
-          const Text('Dark Theme'),
-          const Text('About'),
+        children: const [
+          TabLanguage(),
+          Text('Dark Theme'),
+          Text('About'),
         ],
       ),
     );

@@ -4,7 +4,6 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:pokedex/src/components/poke_loading.dart';
 import 'package:pokedex/src/constants/app_constants.dart';
-import 'package:pokedex/src/controllers/poke_details_controller.dart';
 import 'package:pokedex/src/controllers/poke_home_controller.dart';
 import 'package:pokedex/src/models/poke_model.dart';
 import 'package:pokedex/src/pages/home/widgets/app_bar_home.dart';
@@ -19,14 +18,6 @@ class HomePage extends StatelessWidget {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double statusBarHeight = MediaQuery.of(context).padding.top;
     final PokeHomeController pokeHomeController = Get.put(PokeHomeController());
-
-    void viewPokemon(int index) {
-      Get.put(PokeDetailsController())
-        ..index = index
-        ..changeSlidingSheet(0)
-        ..tabController.animateTo(0);
-      Get.toNamed<dynamic>(AppRoutes.pokeDetails);
-    }
 
     return SafeArea(
       child: Scaffold(
@@ -86,7 +77,10 @@ class HomePage extends StatelessWidget {
                                           image: pokemon.img,
                                           pokeType: pokemon.type,
                                         ),
-                                        onTap: () => viewPokemon(index),
+                                        onTap: () => Get.toNamed<dynamic>(
+                                          AppRoutes.pokeDetails,
+                                          arguments: index,
+                                        ),
                                       ),
                                     ),
                                   );
