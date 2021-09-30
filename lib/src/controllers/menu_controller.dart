@@ -20,7 +20,7 @@ class MenuController extends GetxController with SingleGetTickerProviderMixin {
   void onInit() {
     tabController = TabController(length: 3, vsync: this);
     tabController.animateTo(0);
-    if (selectedLanguage.value == 'en') {
+    if (selectedLanguage.value == 'en' || selectedLanguage.value == 'en_US') {
       selected[0] = true;
     } else {
       selected[1] = true;
