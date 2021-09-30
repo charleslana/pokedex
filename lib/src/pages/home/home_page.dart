@@ -84,7 +84,7 @@ class HomePage extends StatelessWidget {
                                           name: pokemon.name,
                                           index: index,
                                           image: pokemon.img,
-                                          types: pokemon.type.en,
+                                          pokeType: pokemon.type,
                                         ),
                                         onTap: () => viewPokemon(index),
                                       ),

@@ -4,25 +4,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:pokedex/src/components/poke_loading.dart';
 import 'package:pokedex/src/constants/app_constants.dart';
+import 'package:pokedex/src/models/poke_model.dart';
 
 class PokeItem extends StatelessWidget {
   const PokeItem({
     required this.name,
     required this.index,
     required this.image,
-    required this.types,
+    required this.pokeType,
     Key? key,
   }) : super(key: key);
 
   final String name;
   final int index;
   final String image;
-  final List<String> types;
+  final PokeType pokeType;
 
   Widget listTypes() {
     final List<Widget> listWidgets = [];
+    List<String> types = pokeType.ptBr;
+
+    if ('languageCode'.tr == 'en') {
+      types = pokeType.en;
+    }
 
     for (final name in types) {
       listWidgets.add(
@@ -67,11 +74,11 @@ class PokeItem extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              AppConstants().getColorType(types[0])!,
-              if (types.length > 1)
-                AppConstants().getColorType(types[1])!
+              AppConstants().getColorType(pokeType.en[0])!,
+              if (pokeType.en.length > 1)
+                AppConstants().getColorType(pokeType.en[1])!
               else
-                AppConstants().getColorType(types[0])!,
+                AppConstants().getColorType(pokeType.en[0])!,
             ],
             stops: const [0, 1],
             begin: FractionalOffset.topCenter,

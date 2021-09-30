@@ -45,48 +45,48 @@ class Pokemon {
     num = json['num'];
     name = json['name'];
     img = json['img'];
-    type = json['type'] = Type.fromJson(json['type']);
+    type = json['type'] = PokeType.fromJson(json['type']);
     atk = json['atk'];
     sta = json['sta'];
     def = json['def'];
     generation = json['generation'];
-    description = Description.fromJson(json['description']);
+    description = PokeDescription.fromJson(json['description']);
     weight = json['weight'];
     height = json['height'];
     if (json['pre_evolution'] != null) {
       json['pre_evolution'].forEach((dynamic value) {
-        preEvolution.add(PreEvolution.fromJson(value));
+        preEvolution.add(PokeEvolution.fromJson(value));
       });
     }
     if (json['next_evolution'] != null) {
       json['next_evolution'].forEach((dynamic value) {
-        nextEvolution.add(NextEvolution.fromJson(value));
+        nextEvolution.add(PokeEvolution.fromJson(value));
       });
     }
     maxCp = json['max_cp'];
-    resistant = Type.fromJson(json['resistant']);
-    weaknesses = Type.fromJson(json['weaknesses']);
-    moves = Type.fromJson(json['moves']);
+    resistant = PokeType.fromJson(json['resistant']);
+    weaknesses = PokeType.fromJson(json['weaknesses']);
+    moves = PokeType.fromJson(json['moves']);
   }
 
   late int id;
   late String num;
   late String name;
   late String img;
-  late Type type;
+  late PokeType type;
   late int atk;
   late int sta;
   late int def;
   late int generation;
-  late Description description;
+  late PokeDescription description;
   late double weight;
   late double height;
-  List<PreEvolution> preEvolution = [];
-  List<NextEvolution> nextEvolution = [];
+  List<PokeEvolution> preEvolution = [];
+  List<PokeEvolution> nextEvolution = [];
   late int maxCp;
-  late Type resistant;
-  late Type weaknesses;
-  late Type moves;
+  late PokeType resistant;
+  late PokeType weaknesses;
+  late PokeType moves;
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = {};
@@ -115,13 +115,13 @@ class Pokemon {
   }
 }
 
-class Type {
-  Type({
+class PokeType {
+  PokeType({
     required this.en,
     required this.ptBr,
   });
 
-  Type.fromJson(Map<String, dynamic> json) {
+  PokeType.fromJson(Map<String, dynamic> json) {
     en = json['en'].cast<String>();
     ptBr = json['pt_br'].cast<String>();
   }
@@ -137,13 +137,13 @@ class Type {
   }
 }
 
-class Description {
-  Description({
+class PokeDescription {
+  PokeDescription({
     required this.en,
     required this.ptBr,
   });
 
-  Description.fromJson(Map<String, dynamic> json) {
+  PokeDescription.fromJson(Map<String, dynamic> json) {
     en = json['en'];
     ptBr = json['pt_br'];
   }
@@ -159,45 +159,15 @@ class Description {
   }
 }
 
-class PreEvolution {
-  PreEvolution({
+class PokeEvolution {
+  PokeEvolution({
     required this.id,
     required this.num,
     required this.name,
     required this.img,
   });
 
-  PreEvolution.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    num = json['num'];
-    name = json['name'];
-    img = json['img'];
-  }
-
-  late int id;
-  late String num;
-  late String name;
-  late String img;
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {};
-    data['id'] = id;
-    data['num'] = num;
-    data['name'] = name;
-    data['img'] = img;
-    return data;
-  }
-}
-
-class NextEvolution {
-  NextEvolution({
-    required this.id,
-    required this.num,
-    required this.name,
-    required this.img,
-  });
-
-  NextEvolution.fromJson(Map<String, dynamic> json) {
+  PokeEvolution.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     num = json['num'];
     name = json['name'];
