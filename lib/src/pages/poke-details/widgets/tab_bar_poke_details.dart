@@ -6,6 +6,7 @@ import 'package:pokedex/src/controllers/poke_home_controller.dart';
 import 'package:pokedex/src/models/poke_model.dart';
 import 'package:pokedex/src/pages/poke-details/views/about_poke_details.dart';
 import 'package:pokedex/src/pages/poke-details/views/evolution_poke_details.dart';
+import 'package:pokedex/src/pages/poke-details/views/moveset_poke_details.dart';
 import 'package:pokedex/src/pages/poke-details/views/status_poke_details.dart';
 
 class TabBarPokeDetails extends StatelessWidget {
@@ -52,7 +53,7 @@ class TabBarPokeDetails extends StatelessWidget {
             AboutPokeDetails(),
             EvolutionPokeDetails(),
             StatusPokeDetails(),
-            Text('Moveset'),
+            MovesetPokeDetails(),
             Text('Types'),
             Text('Simulate'),
           ],

@@ -105,7 +105,7 @@ class EvolutionPokeDetails extends StatelessWidget {
     }
 
     if (pokemon.preEvolution.isEmpty && pokemon.nextEvolution.isEmpty) {
-      list.add(const Center(child: Text('There are no evolutions')));
+      list.add(Center(child: Text('pokeDetailsNoEvolutions'.tr)));
     }
 
     return list;

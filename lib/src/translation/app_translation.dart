@@ -25,6 +25,7 @@ final Map<String, String> enUS = {
   'pokeDetailsDefense': 'Defense',
   'pokeDetailsStamina': 'Stamina',
   'pokeDetailsCP': 'CP',
+  'pokeDetailsNoEvolutions': 'There are no evolutions',
 };
 
 final Map<String, String> ptBR = {
@@ -47,4 +48,5 @@ final Map<String, String> ptBR = {
   'pokeDetailsDefense': 'Defesa',
   'pokeDetailsStamina': 'Energia',
   'pokeDetailsCP': 'PC',
+  'pokeDetailsNoEvolutions': 'Não há evoluções',
 };
