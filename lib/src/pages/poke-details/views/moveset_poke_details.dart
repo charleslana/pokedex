@@ -30,9 +30,12 @@ class MovesetPokeDetails extends StatelessWidget {
                 Icons.star_border_outlined,
                 color: AppConstants().getColorType(pokemon.type.en[0]),
               ),
-              title: Text('languageCode'.tr == 'en'
-                  ? pokemon.moves.en[index]
-                  : pokemon.moves.ptBr[index]),
+              title: Text(
+                'languageCode'.tr == 'en'
+                    ? pokemon.moves.en[index]
+                    : pokemon.moves.ptBr[index],
+                style: const TextStyle(fontSize: 14),
+              ),
             );
           },
         ),
