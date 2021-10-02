@@ -4,11 +4,11 @@ import 'package:pokedex/src/constants/app_constants.dart';
 import 'package:pokedex/src/controllers/poke_details_controller.dart';
 import 'package:pokedex/src/controllers/poke_home_controller.dart';
 import 'package:pokedex/src/models/poke_model.dart';
-import 'package:pokedex/src/pages/poke-details/views/about_poke_details.dart';
-import 'package:pokedex/src/pages/poke-details/views/evolution_poke_details.dart';
-import 'package:pokedex/src/pages/poke-details/views/moveset_poke_details.dart';
-import 'package:pokedex/src/pages/poke-details/views/status_poke_details.dart';
-import 'package:pokedex/src/pages/poke-details/views/types_poke_details.dart';
+import 'package:pokedex/src/pages/poke-details/tabs/about_poke_details.dart';
+import 'package:pokedex/src/pages/poke-details/tabs/evolution_poke_details.dart';
+import 'package:pokedex/src/pages/poke-details/tabs/moveset_poke_details.dart';
+import 'package:pokedex/src/pages/poke-details/tabs/status_poke_details.dart';
+import 'package:pokedex/src/pages/poke-details/tabs/types_poke_details.dart';
 
 class TabBarPokeDetails extends StatelessWidget {
   const TabBarPokeDetails({Key? key}) : super(key: key);

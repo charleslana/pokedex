@@ -23,49 +23,6 @@ class PokeItem extends StatelessWidget {
   final String image;
   final PokeType pokeType;
 
-  Widget listTypes() {
-    final List<Widget> listWidgets = [];
-    List<String> types = pokeType.ptBr;
-
-    if ('languageCode'.tr == 'en') {
-      types = pokeType.en;
-    }
-
-    for (final name in types) {
-      listWidgets.add(
-        Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(0),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: const Color.fromARGB(80, 255, 255, 255)),
-              child: Padding(
-                padding: const EdgeInsets.all(6),
-                child: Text(
-                  name.trim(),
-                  style: const TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 5,
-            )
-          ],
-        ),
-      );
-    }
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: listWidgets,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -145,6 +102,49 @@ class PokeItem extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Widget listTypes() {
+    final List<Widget> listWidgets = [];
+    List<String> types = pokeType.ptBr;
+
+    if ('languageCode'.tr == 'en') {
+      types = pokeType.en;
+    }
+
+    for (final name in types) {
+      listWidgets.add(
+        Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(0),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: const Color.fromARGB(80, 255, 255, 255)),
+              child: Padding(
+                padding: const EdgeInsets.all(6),
+                child: Text(
+                  name.trim(),
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 5,
+            )
+          ],
+        ),
+      );
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: listWidgets,
     );
   }
 }

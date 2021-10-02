@@ -23,17 +23,23 @@ class TypesPokeDetails extends StatelessWidget {
           ignoring: pokeDetailsController.opacityAppBarTitle.value == 0,
           child: SingleChildScrollView(
             child: DataTable(
-              columns: const [
+              columns: [
                 DataColumn(
                   label: Text(
-                    'Resistance',
-                    style: TextStyle(fontStyle: FontStyle.italic),
+                    'pokeDetailsResistance'.tr,
+                    style: const TextStyle(
+                      fontStyle: FontStyle.italic,
+                      color: Colors.green,
+                    ),
                   ),
                 ),
                 DataColumn(
                   label: Text(
-                    'Weaknesses',
-                    style: TextStyle(fontStyle: FontStyle.italic),
+                    'pokeDetailsWeaknesses'.tr,
+                    style: const TextStyle(
+                      fontStyle: FontStyle.italic,
+                      color: Colors.red,
+                    ),
                   ),
                 ),
               ],
@@ -47,8 +53,18 @@ class TypesPokeDetails extends StatelessWidget {
 
   List<DataRow> listTypes(Pokemon pokemon) {
     final List<DataRow> listDataRow = [];
+    List<String> typesResistant = [];
+    List<String> typesWeaknesses = [];
 
-    for (final name in pokemon.resistant.en) {
+    if ('languageCode'.tr == 'en') {
+      typesResistant = pokemon.resistant.en;
+      typesWeaknesses = pokemon.weaknesses.en;
+    } else {
+      typesResistant = pokemon.resistant.ptBr;
+      typesWeaknesses = pokemon.weaknesses.ptBr;
+    }
+
+    for (final name in typesResistant) {
       listDataRow.add(
         DataRow(
           cells: [
@@ -58,7 +74,7 @@ class TypesPokeDetails extends StatelessWidget {
         ),
       );
     }
-    for (final name in pokemon.weaknesses.en) {
+    for (final name in typesWeaknesses) {
       listDataRow.add(
         DataRow(
           cells: [
