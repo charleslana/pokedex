@@ -6,7 +6,7 @@ import 'package:pokedex/src/services/poke_api_service.dart';
 class PokeHomeController extends GetxController {
   RxList<Pokemon> pokeList = <Pokemon>[].obs;
   RxBool isLoading = true.obs;
-
+  RxList<Pokemon> filterPokeList = <Pokemon>[].obs;
   Client client = Client();
 
   @override
@@ -19,6 +19,7 @@ class PokeHomeController extends GetxController {
     await PokeApiService(client).getPokemon().then((pokeApi) {
       if (pokeApi != null) {
         pokeList.value = pokeApi.pokemon;
+        filterPokeList.value = pokeApi.pokemon;
       } else {
         Get.defaultDialog<dynamic>(
           barrierDismissible: false,
@@ -29,5 +30,11 @@ class PokeHomeController extends GetxController {
       }
       isLoading.value = false;
     });
+  }
+
+  void filterPokemon(Pokemon pokemon) {
+    filterPokeList
+      ..clear()
+      ..add(pokemon);
   }
 }
