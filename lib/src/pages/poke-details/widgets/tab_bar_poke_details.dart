@@ -8,6 +8,7 @@ import 'package:pokedex/src/pages/poke-details/views/about_poke_details.dart';
 import 'package:pokedex/src/pages/poke-details/views/evolution_poke_details.dart';
 import 'package:pokedex/src/pages/poke-details/views/moveset_poke_details.dart';
 import 'package:pokedex/src/pages/poke-details/views/status_poke_details.dart';
+import 'package:pokedex/src/pages/poke-details/views/types_poke_details.dart';
 
 class TabBarPokeDetails extends StatelessWidget {
   const TabBarPokeDetails({Key? key}) : super(key: key);
@@ -42,7 +43,7 @@ class TabBarPokeDetails extends StatelessWidget {
               Tab(text: 'pokeDetailsStatus'.tr),
               Tab(text: 'pokeDetailsMoveset'.tr),
               Tab(text: 'pokeDetailsTypes'.tr),
-              Tab(text: 'pokeDetailsSimulate'.tr),
+              Tab(text: 'pokeDetailsToCompare'.tr),
             ],
           ),
         ),
@@ -54,8 +55,8 @@ class TabBarPokeDetails extends StatelessWidget {
             EvolutionPokeDetails(),
             StatusPokeDetails(),
             MovesetPokeDetails(),
-            Text('Types'),
-            Text('Simulate'),
+            TypesPokeDetails(),
+            Text('To compare'),
           ],
         ),
       );
