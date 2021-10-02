@@ -19,33 +19,28 @@ class TypesPokeDetails extends StatelessWidget {
 
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-        child: IgnorePointer(
-          ignoring: pokeDetailsController.opacityAppBarTitle.value == 0,
-          child: SingleChildScrollView(
-            child: DataTable(
-              columns: [
-                DataColumn(
-                  label: Text(
-                    'pokeDetailsResistance'.tr,
-                    style: const TextStyle(
-                      fontStyle: FontStyle.italic,
-                      color: Colors.green,
-                    ),
-                  ),
+        child: DataTable(
+          columns: [
+            DataColumn(
+              label: Text(
+                'pokeDetailsResistance'.tr,
+                style: const TextStyle(
+                  fontStyle: FontStyle.italic,
+                  color: Colors.green,
                 ),
-                DataColumn(
-                  label: Text(
-                    'pokeDetailsWeaknesses'.tr,
-                    style: const TextStyle(
-                      fontStyle: FontStyle.italic,
-                      color: Colors.red,
-                    ),
-                  ),
-                ),
-              ],
-              rows: listTypes(pokemon),
+              ),
             ),
-          ),
+            DataColumn(
+              label: Text(
+                'pokeDetailsWeaknesses'.tr,
+                style: const TextStyle(
+                  fontStyle: FontStyle.italic,
+                  color: Colors.red,
+                ),
+              ),
+            ),
+          ],
+          rows: listTypes(pokemon),
         ),
       );
     });
