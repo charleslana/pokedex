@@ -80,6 +80,9 @@ class AppBarHome extends StatelessWidget {
                       FocusNode fieldFocusNode,
                       VoidCallback onFieldSubmitted) {
                     return Obx(() {
+                      pokeHomeController.textEditingController =
+                          fieldTextEditingController;
+
                       return TextFormField(
                         controller: fieldTextEditingController,
                         focusNode: fieldFocusNode,
@@ -196,18 +199,21 @@ class AppBarHome extends StatelessWidget {
 
     for (int index = 0; index < _options.length; index++) {
       final ChoiceChip choiceChip = ChoiceChip(
-        selected: pokeHomeController.selectedIndex.value == index,
-        label: Text(
-          _options[index],
-          style: const TextStyle(color: Colors.white),
-        ),
-        elevation: 10,
-        pressElevation: 5,
-        backgroundColor: Colors.black54,
-        selectedColor: Colors.blue,
-        onSelected: (bool selected) =>
-            pokeHomeController.changeFilter(index, _options[index]),
-      );
+          selected: pokeHomeController.selectedIndex.value == index,
+          label: Text(
+            _options[index],
+            style: const TextStyle(color: Colors.white),
+          ),
+          elevation: 10,
+          pressElevation: 5,
+          backgroundColor: Colors.black54,
+          selectedColor: Colors.blue,
+          onSelected: (bool selected) {
+            if (pokeHomeController.selectedIndex.value != index) {
+              pokeHomeController.changeFilter(index, _options[index]);
+              pokeHomeController.textEditingController.clear();
+            }
+          });
 
       chips.add(
         Padding(

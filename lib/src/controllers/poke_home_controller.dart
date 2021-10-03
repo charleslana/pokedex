@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart';
 import 'package:pokedex/src/models/poke_model.dart';
@@ -8,6 +9,7 @@ class PokeHomeController extends GetxController {
   RxBool isLoading = true.obs;
   RxList<Pokemon> filterPokeList = <Pokemon>[].obs;
   Client client = Client();
+  TextEditingController textEditingController = TextEditingController();
   RxBool notFoundPokemon = false.obs;
   RxInt selectedIndex = 0.obs;
 
@@ -15,6 +17,12 @@ class PokeHomeController extends GetxController {
   void onInit() {
     fetchPokemonList();
     super.onInit();
+  }
+
+  @override
+  void onClose() {
+    textEditingController.dispose();
+    super.onClose();
   }
 
   Future<void> fetchPokemonList() async {
@@ -45,11 +53,9 @@ class PokeHomeController extends GetxController {
     selectedIndex.value = index;
 
     if (index == 0) {
-      if (filterPokeList.length != pokeList.length) {
-        filterPokeList
-          ..clear()
-          ..addAll(pokeList);
-      }
+      filterPokeList
+        ..clear()
+        ..addAll(pokeList);
     } else {
       List<Pokemon> listPokemon;
 
