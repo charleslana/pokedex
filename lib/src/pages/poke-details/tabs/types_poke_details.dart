@@ -25,7 +25,7 @@ class TypesPokeDetails extends StatelessWidget {
               label: Text(
                 'pokeDetailsResistance'.tr,
                 style: const TextStyle(
-                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.bold,
                   color: Colors.green,
                 ),
               ),
@@ -34,7 +34,7 @@ class TypesPokeDetails extends StatelessWidget {
               label: Text(
                 'pokeDetailsWeaknesses'.tr,
                 style: const TextStyle(
-                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.bold,
                   color: Colors.red,
                 ),
               ),
