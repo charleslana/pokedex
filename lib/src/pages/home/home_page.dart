@@ -65,8 +65,7 @@ class HomePage extends StatelessWidget {
                                   ),
                                   itemCount: pokeList.length,
                                   itemBuilder: (_, index) {
-                                    final Pokemon pokemon =
-                                        pokeHomeController.pokeList[index];
+                                    final Pokemon pokemon = pokeList[index];
 
                                     return AnimationConfiguration.staggeredGrid(
                                       position: index,
@@ -83,7 +82,7 @@ class HomePage extends StatelessWidget {
                                           ),
                                           onTap: () => Get.toNamed<dynamic>(
                                             AppRoutes.pokeDetails,
-                                            arguments: index,
+                                            arguments: pokemon.id - 1,
                                           ),
                                         ),
                                       ),

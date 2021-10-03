@@ -8,6 +8,7 @@ class PokeHomeController extends GetxController {
   RxBool isLoading = true.obs;
   RxList<Pokemon> filterPokeList = <Pokemon>[].obs;
   Client client = Client();
+  RxBool notFoundPokemon = false.obs;
 
   @override
   void onInit() {
@@ -19,7 +20,7 @@ class PokeHomeController extends GetxController {
     await PokeApiService(client).getPokemon().then((pokeApi) {
       if (pokeApi != null) {
         pokeList.value = pokeApi.pokemon;
-        filterPokeList.value = pokeApi.pokemon;
+        filterPokeList.addAll(pokeList);
       } else {
         Get.defaultDialog<dynamic>(
           barrierDismissible: false,
