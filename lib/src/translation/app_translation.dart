@@ -7,6 +7,8 @@ class AppTranslation {
 
 final Map<String, String> enUS = {
   'languageCode': 'en',
+  'languageEnglish': 'English',
+  'languagePortuguese': 'Portuguese',
   'pokeHomeSearchPokemon': 'Search pokémon',
   'pokeHomeNoPokemonFound': 'No pokémon found.',
   'menuLanguage': 'Language',
@@ -34,6 +36,8 @@ final Map<String, String> enUS = {
 
 final Map<String, String> ptBR = {
   'languageCode': 'pt',
+  'languageEnglish': 'Inglês',
+  'languagePortuguese': 'Português',
   'pokeHomeSearchPokemon': 'Pesquisar pokémon',
   'pokeHomeNoPokemonFound': 'Nenhum pokémon encontrado.',
   'menuLanguage': 'Idioma',

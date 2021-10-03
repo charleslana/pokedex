@@ -6,11 +6,10 @@ import 'package:get/get.dart';
 class MenuController extends GetxController with SingleGetTickerProviderMixin {
   late TabController tabController;
   RxString selectedLanguage = Get.locale!.languageCode.obs;
-  RxList<bool> selected = [false, false].obs;
+  RxInt selectedIndex = 0.obs;
 
   void changeLanguage(String language, int index) {
-    selected.value = [false, false];
-    selected[index] = true;
+    selectedIndex.value = index;
     final Locale locale = Locale(language);
     Get.updateLocale(locale);
     selectedLanguage.value = language;
@@ -21,9 +20,9 @@ class MenuController extends GetxController with SingleGetTickerProviderMixin {
     tabController = TabController(length: 3, vsync: this);
     tabController.animateTo(0);
     if (selectedLanguage.value == 'en' || selectedLanguage.value == 'en_US') {
-      selected[0] = true;
+      selectedIndex.value = 0;
     } else {
-      selected[1] = true;
+      selectedIndex.value = 1;
     }
     super.onInit();
   }
