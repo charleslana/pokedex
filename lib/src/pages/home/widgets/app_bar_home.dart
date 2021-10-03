@@ -108,7 +108,10 @@ class AppBarHome extends StatelessWidget {
                       );
                     });
                   },
-                  onSelected: pokeHomeController.filterPokemon,
+                  onSelected: (Pokemon selected) {
+                    FocusManager.instance.primaryFocus?.unfocus();
+                    pokeHomeController.filterPokemon(selected);
+                  },
                   optionsViewBuilder: (_,
                       AutocompleteOnSelected<Pokemon> onSelected,
                       Iterable<Pokemon> options) {

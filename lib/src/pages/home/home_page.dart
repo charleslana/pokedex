@@ -80,10 +80,14 @@ class HomePage extends StatelessWidget {
                                             image: pokemon.img,
                                             pokeType: pokemon.type,
                                           ),
-                                          onTap: () => Get.toNamed<dynamic>(
-                                            AppRoutes.pokeDetails,
-                                            arguments: pokemon.id - 1,
-                                          ),
+                                          onTap: () {
+                                            FocusManager.instance.primaryFocus
+                                                ?.unfocus();
+                                            Get.toNamed<dynamic>(
+                                              AppRoutes.pokeDetails,
+                                              arguments: pokemon.id - 1,
+                                            );
+                                          },
                                         ),
                                       ),
                                     );
