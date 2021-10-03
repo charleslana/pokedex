@@ -120,7 +120,7 @@ class AppBarHome extends StatelessWidget {
                       child: Material(
                         child: Container(
                           width: width * 0.50,
-                          height: width * 0.2 * options.length * 1,
+                          height: 60 * options.length * 1,
                           color: Colors.grey.withOpacity(0.2),
                           child: ListView.builder(
                             padding: const EdgeInsets.all(10),
