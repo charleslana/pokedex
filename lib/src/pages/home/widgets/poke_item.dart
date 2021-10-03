@@ -90,7 +90,7 @@ class PokeItem extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    listTypes(),
+                    _listTypes(),
                     Expanded(
                       child: Stack(
                         children: [
@@ -126,7 +126,7 @@ class PokeItem extends StatelessWidget {
     );
   }
 
-  Widget listTypes() {
+  Widget _listTypes() {
     final List<Widget> listWidgets = [];
     List<String> types = pokeType.ptBr;
 

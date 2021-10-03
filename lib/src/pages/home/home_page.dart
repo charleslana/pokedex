@@ -52,49 +52,57 @@ class HomePage extends StatelessWidget {
 
                         return pokeHomeController.isLoading.value
                             ? const Center(child: PokeLoading())
-                            : AnimationLimiter(
-                                child: GridView.builder(
-                                  physics: const BouncingScrollPhysics(),
-                                  padding: const EdgeInsets.all(12),
-                                  gridDelegate:
-                                      SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2,
-                                    childAspectRatio: screenWidth /
-                                        (MediaQuery.of(context).size.height /
-                                            2),
-                                  ),
-                                  itemCount: pokeList.length,
-                                  itemBuilder: (_, index) {
-                                    final Pokemon pokemon = pokeList[index];
-
-                                    return AnimationConfiguration.staggeredGrid(
-                                      position: index,
-                                      duration:
-                                          const Duration(milliseconds: 375),
-                                      columnCount: 2,
-                                      child: ScaleAnimation(
-                                        child: GestureDetector(
-                                          child: PokeItem(
-                                            name: pokemon.name,
-                                            index: index,
-                                            image: pokemon.img,
-                                            num: pokemon.num,
-                                            pokeType: pokemon.type,
-                                          ),
-                                          onTap: () {
-                                            FocusManager.instance.primaryFocus
-                                                ?.unfocus();
-                                            Get.toNamed<dynamic>(
-                                              AppRoutes.pokeDetails,
-                                              arguments: pokemon.id - 1,
-                                            );
-                                          },
-                                        ),
+                            : pokeList.isEmpty
+                                ? Center(
+                                    child:
+                                        Text('pokeHomeSearchNoPokemonFound'.tr))
+                                : AnimationLimiter(
+                                    child: GridView.builder(
+                                      physics: const BouncingScrollPhysics(),
+                                      padding: const EdgeInsets.all(12),
+                                      gridDelegate:
+                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 2,
+                                        childAspectRatio: screenWidth /
+                                            (MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                2),
                                       ),
-                                    );
-                                  },
-                                ),
-                              );
+                                      itemCount: pokeList.length,
+                                      itemBuilder: (_, index) {
+                                        final Pokemon pokemon = pokeList[index];
+
+                                        return AnimationConfiguration
+                                            .staggeredGrid(
+                                          position: index,
+                                          duration:
+                                              const Duration(milliseconds: 375),
+                                          columnCount: 2,
+                                          child: ScaleAnimation(
+                                            child: GestureDetector(
+                                              child: PokeItem(
+                                                name: pokemon.name,
+                                                index: index,
+                                                image: pokemon.img,
+                                                num: pokemon.num,
+                                                pokeType: pokemon.type,
+                                              ),
+                                              onTap: () {
+                                                FocusManager
+                                                    .instance.primaryFocus
+                                                    ?.unfocus();
+                                                Get.toNamed<dynamic>(
+                                                  AppRoutes.pokeDetails,
+                                                  arguments: pokemon.id - 1,
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  );
                       },
                     ),
                   ),
