@@ -40,13 +40,13 @@ class TypesPokeDetails extends StatelessWidget {
               ),
             ),
           ],
-          rows: listTypes(pokemon),
+          rows: _listTypes(pokemon),
         ),
       );
     });
   }
 
-  List<DataRow> listTypes(Pokemon pokemon) {
+  List<DataRow> _listTypes(Pokemon pokemon) {
     final List<DataRow> listDataRow = [];
     List<String> typesResistant = [];
     List<String> typesWeaknesses = [];

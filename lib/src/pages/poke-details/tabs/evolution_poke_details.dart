@@ -22,13 +22,13 @@ class EvolutionPokeDetails extends StatelessWidget {
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
         child: Column(
-          children: getEvolution(pokemon),
+          children: _getEvolution(pokemon),
         ),
       );
     });
   }
 
-  List<Widget> getEvolution(Pokemon pokemon) {
+  List<Widget> _getEvolution(Pokemon pokemon) {
     final List<Widget> list = [];
 
     for (final evolution in pokemon.preEvolution) {

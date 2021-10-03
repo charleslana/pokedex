@@ -66,7 +66,7 @@ class PokeDetailsPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            listTypes('languageCode'.tr == 'en'
+                            _listTypes('languageCode'.tr == 'en'
                                 ? pokemon.type.en
                                 : pokemon.type.ptBr),
                             Text(
@@ -174,7 +174,7 @@ class PokeDetailsPage extends StatelessWidget {
     });
   }
 
-  Widget listTypes(List<String> types) {
+  Widget _listTypes(List<String> types) {
     final List<Widget> listWidgets = [];
 
     for (final name in types) {
