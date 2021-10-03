@@ -15,7 +15,7 @@ class AppBarHome extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: 100,
+          height: 80,
           child: Row(
             children: [
               const Padding(
@@ -57,7 +57,7 @@ class AppBarHome extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: SizedBox(
-                width: width * 0.50,
+                width: width * 0.75,
                 child: Autocomplete<Pokemon>(
                   optionsBuilder: (TextEditingValue textEditingValue) {
                     pokeHomeController.notFoundPokemon.value = false;
@@ -120,7 +120,7 @@ class AppBarHome extends StatelessWidget {
                       child: Material(
                         child: Container(
                           width: width * 0.50,
-                          height: 50 * options.length * 1,
+                          height: width * 0.2 * options.length * 1,
                           color: Colors.grey.withOpacity(0.2),
                           child: ListView.builder(
                             padding: const EdgeInsets.all(10),
