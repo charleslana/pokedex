@@ -14,6 +14,7 @@ class PokeItem extends StatelessWidget {
     required this.name,
     required this.index,
     required this.image,
+    required this.num,
     required this.pokeType,
     Key? key,
   }) : super(key: key);
@@ -21,6 +22,7 @@ class PokeItem extends StatelessWidget {
   final String name;
   final int index;
   final String image;
+  final String num;
   final PokeType pokeType;
 
   @override
@@ -44,58 +46,74 @@ class PokeItem extends StatelessWidget {
           borderRadius: const BorderRadius.all(Radius.circular(20)),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(4),
-          child: Stack(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 10,
+            vertical: 4,
+          ),
+          child: Column(
             children: [
-              Align(
-                alignment: Alignment.bottomRight,
-                child: Opacity(
-                  opacity: 0.2,
-                  child: Image.asset(
-                    AppConstants.imagePokeballWhite,
-                    width: 100,
-                    height: 100,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8),
-                child: FittedBox(
-                  fit: BoxFit.fitWidth,
-                  child: Text(
-                    name,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-              SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    top: 35,
-                    left: 8,
-                  ),
-                  child: listTypes(),
-                ),
-              ),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: AspectRatio(
-                  aspectRatio: 5 / 7,
-                  child: Hero(
-                    tag: index,
-                    child: CachedNetworkImage(
-                      width: 100,
-                      height: 100,
-                      placeholder: (_, __) => const Center(
-                        child: PokeLoading(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: FittedBox(
+                      fit: BoxFit.fitWidth,
+                      child: Text(
+                        name,
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
                       ),
-                      imageUrl: image,
                     ),
                   ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      num,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      textAlign: TextAlign.end,
+                    ),
+                  ),
+                ],
+              ),
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    listTypes(),
+                    Expanded(
+                      child: Stack(
+                        children: [
+                          Opacity(
+                            opacity: 0.2,
+                            child: Image.asset(
+                              AppConstants.imagePokeballWhite,
+                              width: 100,
+                              height: 100,
+                            ),
+                          ),
+                          Hero(
+                            tag: name,
+                            child: CachedNetworkImage(
+                              width: 100,
+                              height: 100,
+                              placeholder: (_, __) => const Center(
+                                child: PokeLoading(),
+                              ),
+                              imageUrl: image,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
@@ -124,12 +142,15 @@ class PokeItem extends StatelessWidget {
                   color: const Color.fromARGB(80, 255, 255, 255)),
               child: Padding(
                 padding: const EdgeInsets.all(6),
-                child: Text(
-                  name.trim(),
-                  style: const TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                child: FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: Text(
+                    name.trim(),
+                    style: const TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
@@ -142,9 +163,11 @@ class PokeItem extends StatelessWidget {
       );
     }
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: listWidgets,
+    return Expanded(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: listWidgets,
+      ),
     );
   }
 }

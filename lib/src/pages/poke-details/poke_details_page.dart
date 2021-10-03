@@ -146,7 +146,7 @@ class PokeDetailsPage extends StatelessWidget {
                                         : 20),
                                 curve: Curves.bounceInOut,
                                 child: Hero(
-                                  tag: index,
+                                  tag: pokeHomeController.pokeList[index].name,
                                   child: CachedNetworkImage(
                                     placeholder: (_, __) => const Center(
                                       child: PokeLoading(),
