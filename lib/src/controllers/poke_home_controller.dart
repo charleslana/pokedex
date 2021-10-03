@@ -9,6 +9,7 @@ class PokeHomeController extends GetxController {
   RxList<Pokemon> filterPokeList = <Pokemon>[].obs;
   Client client = Client();
   RxBool notFoundPokemon = false.obs;
+  RxInt selectedIndex = 0.obs;
 
   @override
   void onInit() {
@@ -37,5 +38,48 @@ class PokeHomeController extends GetxController {
     filterPokeList
       ..clear()
       ..add(pokemon);
+    selectedIndex.value = 0;
+  }
+
+  void changeFilter(int index, String filter) {
+    selectedIndex.value = index;
+
+    if (index == 0) {
+      if (filterPokeList.length != pokeList.length) {
+        filterPokeList
+          ..clear()
+          ..addAll(pokeList);
+      }
+    } else {
+      List<Pokemon> listPokemon;
+
+      if ('languageCode'.tr == 'en') {
+        listPokemon = pokeList
+            .where((Pokemon content) =>
+                content.type.en[0]
+                    .toLowerCase()
+                    .startsWith(filter.toLowerCase()) ||
+                content.type.en.length > 1 &&
+                    content.type.en[1]
+                        .toLowerCase()
+                        .startsWith(filter.toLowerCase()))
+            .toList();
+      } else {
+        listPokemon = pokeList
+            .where((Pokemon content) =>
+                content.type.ptBr[0]
+                    .toLowerCase()
+                    .startsWith(filter.toLowerCase()) ||
+                content.type.ptBr.length > 1 &&
+                    content.type.ptBr[1]
+                        .toLowerCase()
+                        .startsWith(filter.toLowerCase()))
+            .toList();
+      }
+
+      filterPokeList
+        ..clear()
+        ..addAll(listPokemon);
+    }
   }
 }
