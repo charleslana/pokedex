@@ -61,6 +61,8 @@ class AppBarHome extends StatelessWidget {
                 child: Autocomplete<Pokemon>(
                   optionsBuilder: (TextEditingValue textEditingValue) {
                     pokeHomeController.notFoundPokemon.value = false;
+                    pokeHomeController.isSearch.value = true;
+
                     final List<Pokemon> listPokemon = pokeHomeController
                         .pokeList
                         .where((Pokemon content) => content.name
@@ -72,6 +74,11 @@ class AppBarHome extends StatelessWidget {
                     if (listPokemon.isEmpty) {
                       pokeHomeController.notFoundPokemon.value = true;
                     }
+
+                    if (textEditingValue.text.trim().isNotEmpty) {
+                      pokeHomeController.isSearch.value = false;
+                    }
+
                     return listPokemon;
                   },
                   displayStringForOption: (Pokemon option) => option.name,
@@ -90,7 +97,6 @@ class AppBarHome extends StatelessWidget {
                         decoration: InputDecoration(
                           border: const UnderlineInputBorder(),
                           labelText: 'pokeHomeSearchPokemon'.tr,
-                          prefixIcon: const Icon(Icons.search),
                           suffixIcon: IconButton(
                             onPressed: () {
                               FocusManager.instance.primaryFocus?.unfocus();
@@ -103,8 +109,11 @@ class AppBarHome extends StatelessWidget {
                                 pokeHomeController.selectedIndex.value = 0;
                               }
                               fieldTextEditingController.clear();
+                              pokeHomeController.isSearch.value = true;
                             },
-                            icon: const Icon(Icons.clear),
+                            icon: Icon(pokeHomeController.isSearch.value
+                                ? Icons.search
+                                : Icons.clear),
                           ),
                           errorText: pokeHomeController.notFoundPokemon.value
                               ? 'pokeHomeSearchNoPokemonFound'.tr
@@ -116,6 +125,7 @@ class AppBarHome extends StatelessWidget {
                   onSelected: (Pokemon selected) {
                     FocusManager.instance.primaryFocus?.unfocus();
                     pokeHomeController.filterPokemon(selected);
+                    pokeHomeController.isSearch.value = false;
                   },
                   optionsViewBuilder: (_,
                       AutocompleteOnSelected<Pokemon> onSelected,

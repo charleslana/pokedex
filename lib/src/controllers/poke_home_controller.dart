@@ -12,6 +12,7 @@ class PokeHomeController extends GetxController {
   TextEditingController textEditingController = TextEditingController();
   RxBool notFoundPokemon = false.obs;
   RxInt selectedIndex = 0.obs;
+  RxBool isSearch = true.obs;
 
   @override
   void onInit() {
@@ -51,6 +52,7 @@ class PokeHomeController extends GetxController {
 
   void changeFilter(int index, String filter) {
     selectedIndex.value = index;
+    isSearch.value = true;
 
     if (index == 0) {
       filterPokeList
