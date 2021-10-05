@@ -1,7 +1,6 @@
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pokedex/src/components/poke_animated.dart';
 import 'package:pokedex/src/constants/app_constants.dart';
 import 'package:pokedex/src/controllers/poke_details_controller.dart';
 import 'package:pokedex/src/controllers/poke_home_controller.dart';
@@ -50,25 +49,13 @@ class AppBarPokeDetails extends StatelessWidget implements PreferredSizeWidget {
               Stack(
                 alignment: Alignment.center,
                 children: [
-                  AnimatedBuilder(
-                    animation: pokeDetailsController.animationController,
-                    builder: (_, child) {
-                      return Transform.rotate(
-                        angle: pokeDetailsController.animationController.value *
-                            2 *
-                            math.pi,
-                        child: child,
-                      );
-                    },
-                    child: Opacity(
-                      opacity: pokeDetailsController.opacityAppBarTitle >= 0.2
-                          ? 0.2
-                          : 0.0,
-                      child: Image.asset(
-                        AppConstants.imagePokeballWhite,
-                        width: 50,
-                        height: 50,
-                      ),
+                  Opacity(
+                    opacity: pokeDetailsController.opacityAppBarTitle >= 0.3
+                        ? 0.3
+                        : 0.0,
+                    child: const PokeAnimated(
+                      image: AppConstants.imagePokeballWhite,
+                      height: 50,
                     ),
                   ),
                   IconButton(

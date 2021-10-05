@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pokedex/src/components/poke_animated.dart';
 import 'package:pokedex/src/components/poke_loading.dart';
+import 'package:pokedex/src/constants/app_constants.dart';
 import 'package:pokedex/src/controllers/poke_details_controller.dart';
 import 'package:pokedex/src/controllers/poke_home_controller.dart';
 import 'package:pokedex/src/models/poke_model.dart';
@@ -34,15 +36,23 @@ class EvolutionPokeDetails extends StatelessWidget {
     for (final evolution in pokemon.preEvolution) {
       list
         ..add(
-          SizedBox(
-            width: 80,
-            height: 80,
-            child: CachedNetworkImage(
-              placeholder: (_, __) => const Center(
-                child: PokeLoading(),
+          Stack(
+            children: [
+              const PokeAnimated(
+                image: AppConstants.imagePokeballDark,
+                height: 80,
               ),
-              imageUrl: evolution.img,
-            ),
+              SizedBox(
+                width: 80,
+                height: 80,
+                child: CachedNetworkImage(
+                  placeholder: (_, __) => const Center(
+                    child: PokeLoading(),
+                  ),
+                  imageUrl: evolution.img,
+                ),
+              ),
+            ],
           ),
         )
         ..add(
@@ -67,15 +77,23 @@ class EvolutionPokeDetails extends StatelessWidget {
     for (final evolution in pokemon.nextEvolution) {
       list
         ..add(
-          SizedBox(
-            width: 80,
-            height: 80,
-            child: CachedNetworkImage(
-              placeholder: (_, __) => const Center(
-                child: PokeLoading(),
+          Stack(
+            children: [
+              const PokeAnimated(
+                image: AppConstants.imagePokeballDark,
+                height: 80,
               ),
-              imageUrl: evolution.img,
-            ),
+              SizedBox(
+                width: 80,
+                height: 80,
+                child: CachedNetworkImage(
+                  placeholder: (_, __) => const Center(
+                    child: PokeLoading(),
+                  ),
+                  imageUrl: evolution.img,
+                ),
+              ),
+            ],
           ),
         )
         ..add(

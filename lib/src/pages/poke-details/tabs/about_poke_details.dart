@@ -42,59 +42,55 @@ class AboutPokeDetails extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Row(
-              children: [
-                Text(
-                  'pokeDetailsGeneration'.tr,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black54,
-                    fontSize: 14,
-                  ),
+            Card(
+              elevation: 2,
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(
+                      children: [
+                        Text(
+                          'pokeDetailsGeneration'.tr,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black54,
+                            fontSize: 14,
+                          ),
+                        ),
+                        Text('${pokemon.generation} º'),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          'pokeDetailsHeight'.tr,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black54,
+                            fontSize: 14,
+                          ),
+                        ),
+                        Text('${pokemon.height} m'),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          'pokeDetailsWeight'.tr,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black54,
+                            fontSize: 14,
+                          ),
+                        ),
+                        Text('${pokemon.weight} kg'),
+                      ],
+                    ),
+                  ],
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text('${pokemon.generation} º'),
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              children: [
-                Text(
-                  'pokeDetailsHeight'.tr,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black54,
-                    fontSize: 14,
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text('${pokemon.height} m'),
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              children: [
-                Text(
-                  'pokeDetailsWeight'.tr,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black54,
-                    fontSize: 14,
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text('${pokemon.weight} kg'),
-              ],
+              ),
             ),
           ],
         ),

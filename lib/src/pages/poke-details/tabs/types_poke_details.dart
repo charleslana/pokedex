@@ -19,66 +19,75 @@ class TypesPokeDetails extends StatelessWidget {
 
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-        child: DataTable(
-          columns: [
-            DataColumn(
-              label: Text(
-                'pokeDetailsResistance'.tr,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.green,
-                ),
-              ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'pokeDetailsResistance'.tr,
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
-            DataColumn(
-              label: Text(
-                'pokeDetailsWeaknesses'.tr,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.red,
-                ),
-              ),
+            const SizedBox(height: 10),
+            Wrap(
+              runSpacing: 10,
+              spacing: 10,
+              children: pokemon.resistant.en.map((element) {
+                final int index = pokemon.resistant.en.indexOf(element);
+
+                return Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: Colors.grey,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(5),
+                    child: Text(
+                      'languageCode'.tr == 'en'
+                          ? pokemon.resistant.en[index]
+                          : pokemon.resistant.ptBr[index],
+                      style: const TextStyle(
+                        fontSize: 14,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                );
+              }).toList(),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              'pokeDetailsWeaknesses'.tr,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            Wrap(
+              runSpacing: 10,
+              spacing: 10,
+              children: pokemon.weaknesses.en.map((element) {
+                final int index = pokemon.weaknesses.en.indexOf(element);
+
+                return Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: Colors.grey,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(5),
+                    child: Text(
+                      'languageCode'.tr == 'en'
+                          ? pokemon.weaknesses.en[index]
+                          : pokemon.weaknesses.ptBr[index],
+                      style: const TextStyle(
+                        fontSize: 14,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                );
+              }).toList(),
             ),
           ],
-          rows: _listTypes(pokemon),
         ),
       );
     });
-  }
-
-  List<DataRow> _listTypes(Pokemon pokemon) {
-    final List<DataRow> listDataRow = [];
-    List<String> typesResistant = [];
-    List<String> typesWeaknesses = [];
-
-    if ('languageCode'.tr == 'en') {
-      typesResistant = pokemon.resistant.en;
-      typesWeaknesses = pokemon.weaknesses.en;
-    } else {
-      typesResistant = pokemon.resistant.ptBr;
-      typesWeaknesses = pokemon.weaknesses.ptBr;
-    }
-
-    for (final name in typesResistant) {
-      listDataRow.add(
-        DataRow(
-          cells: [
-            DataCell(Text(name)),
-            const DataCell(Text('-')),
-          ],
-        ),
-      );
-    }
-    for (final name in typesWeaknesses) {
-      listDataRow.add(
-        DataRow(
-          cells: [
-            const DataCell(Text('-')),
-            DataCell(Text(name)),
-          ],
-        ),
-      );
-    }
-    return listDataRow;
   }
 }

@@ -28,13 +28,13 @@ class TabBarPokeDetails extends StatelessWidget {
           backgroundColor: Colors.white,
           elevation: 0,
           bottom: TabBar(
-            labelColor: AppConstants().getColorType(pokemon.type.en[0]),
+            labelColor: Colors.black,
             indicatorColor: AppConstants().getColorType(pokemon.type.en[0]),
             indicatorSize: TabBarIndicatorSize.tab,
             indicatorPadding: const EdgeInsets.all(5),
             isScrollable: true,
             physics: const BouncingScrollPhysics(),
-            onTap: (int index) {},
+            onTap: (_) {},
             enableFeedback: true,
             controller: pokeDetailsController.tabController,
             tabs: [

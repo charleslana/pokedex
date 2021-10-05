@@ -1,8 +1,7 @@
-import 'dart:math' as math;
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pokedex/src/components/poke_animated.dart';
 import 'package:pokedex/src/components/poke_loading.dart';
 import 'package:pokedex/src/constants/app_constants.dart';
 import 'package:pokedex/src/controllers/poke_details_controller.dart';
@@ -118,25 +117,9 @@ class PokeDetailsPage extends StatelessWidget {
                           return Stack(
                             alignment: Alignment.center,
                             children: [
-                              AnimatedBuilder(
-                                animation:
-                                    pokeDetailsController.animationController,
-                                builder: (_, child) {
-                                  return Transform.rotate(
-                                    angle: pokeDetailsController
-                                            .animationController.value *
-                                        2 *
-                                        math.pi,
-                                    child: child,
-                                  );
-                                },
-                                child: Opacity(
-                                  opacity: 0.2,
-                                  child: Image.asset(
-                                    AppConstants.imagePokeballWhite,
-                                    height: height / 3.2,
-                                  ),
-                                ),
+                              PokeAnimated(
+                                image: AppConstants.imagePokeballWhite,
+                                height: height / 3.2,
                               ),
                               AnimatedPadding(
                                 duration: const Duration(milliseconds: 400),

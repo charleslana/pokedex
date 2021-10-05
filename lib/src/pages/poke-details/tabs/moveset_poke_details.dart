@@ -20,24 +20,31 @@ class MovesetPokeDetails extends StatelessWidget {
 
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-        child: ListView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: pokemon.moves.en.length,
-          itemBuilder: (_, index) {
-            return ListTile(
-              leading: Icon(
-                Icons.star_border_outlined,
+        child: Wrap(
+          runSpacing: 10,
+          spacing: 10,
+          children: pokemon.moves.en.map((element) {
+            final int index = pokemon.moves.en.indexOf(element);
+
+            return Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
                 color: AppConstants().getColorType(pokemon.type.en[0]),
               ),
-              title: Text(
-                'languageCode'.tr == 'en'
-                    ? pokemon.moves.en[index]
-                    : pokemon.moves.ptBr[index],
-                style: const TextStyle(fontSize: 14),
+              child: Padding(
+                padding: const EdgeInsets.all(5),
+                child: Text(
+                  'languageCode'.tr == 'en'
+                      ? pokemon.moves.en[index]
+                      : pokemon.moves.ptBr[index],
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: Colors.white,
+                  ),
+                ),
               ),
             );
-          },
+          }).toList(),
         ),
       );
     });

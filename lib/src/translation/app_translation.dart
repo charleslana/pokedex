@@ -97,7 +97,7 @@ final Map<String, String> ptBR = {
   'pokeDetailsAttack': 'Ataque',
   'pokeDetailsDefense': 'Defesa',
   'pokeDetailsStamina': 'Energia',
-  'pokeDetailsCP': 'PC',
+  'pokeDetailsCP': 'CP',
   'pokeDetailsNoEvolutions': 'Não há evoluções',
   'pokeDetailsResistance': 'Resistência',
   'pokeDetailsWeaknesses': 'Fraquezas',
