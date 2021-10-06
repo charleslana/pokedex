@@ -130,6 +130,33 @@ class StatusPokeDetails extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(
+              height: 10,
+            ),
+            Card(
+              elevation: 2,
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Column(
+                      children: [
+                        Text(
+                          'pokeDetailsMaxCP'.tr,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black54,
+                            fontSize: 14,
+                          ),
+                        ),
+                        Text(pokemon.maxCp.toString()),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       );

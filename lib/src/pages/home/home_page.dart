@@ -7,7 +7,7 @@ import 'package:pokedex/src/constants/app_constants.dart';
 import 'package:pokedex/src/controllers/poke_home_controller.dart';
 import 'package:pokedex/src/models/poke_model.dart';
 import 'package:pokedex/src/pages/home/widgets/app_bar_home.dart';
-import 'package:pokedex/src/pages/home/widgets/poke_item.dart';
+import 'package:pokedex/src/pages/home/widgets/poke_card.dart';
 import 'package:pokedex/src/routes/app_route_generator.dart';
 
 class HomePage extends StatelessWidget {
@@ -81,7 +81,7 @@ class HomePage extends StatelessWidget {
                                           columnCount: 2,
                                           child: ScaleAnimation(
                                             child: GestureDetector(
-                                              child: PokeItem(
+                                              child: PokeCard(
                                                 name: pokemon.name,
                                                 index: index,
                                                 image: pokemon.img,

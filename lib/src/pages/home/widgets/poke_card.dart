@@ -5,12 +5,13 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:pokedex/src/components/poke_list_types.dart';
 import 'package:pokedex/src/components/poke_loading.dart';
 import 'package:pokedex/src/constants/app_constants.dart';
 import 'package:pokedex/src/models/poke_model.dart';
 
-class PokeItem extends StatelessWidget {
-  const PokeItem({
+class PokeCard extends StatelessWidget {
+  const PokeCard({
     required this.name,
     required this.index,
     required this.image,
@@ -90,7 +91,10 @@ class PokeItem extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    _listTypes(),
+                    PokeListTypes(
+                        types: 'languageCode'.tr == 'en'
+                            ? pokeType.en
+                            : pokeType.ptBr),
                     Expanded(
                       child: Stack(
                         children: [
@@ -122,54 +126,6 @@ class PokeItem extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _listTypes() {
-    final List<Widget> listWidgets = [];
-    List<String> types = pokeType.ptBr;
-
-    if ('languageCode'.tr == 'en') {
-      types = pokeType.en;
-    }
-
-    for (final name in types) {
-      listWidgets.add(
-        Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(0),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: const Color.fromARGB(80, 255, 255, 255)),
-              child: Padding(
-                padding: const EdgeInsets.all(6),
-                child: FittedBox(
-                  fit: BoxFit.fitWidth,
-                  child: Text(
-                    name.trim(),
-                    style: const TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(
-              height: 5,
-            )
-          ],
-        ),
-      );
-    }
-
-    return Expanded(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: listWidgets,
       ),
     );
   }
