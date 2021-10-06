@@ -7,7 +7,6 @@ class PokeDetailsController extends GetxController
   final int? arguments = Get.arguments;
   final RxInt _index = 0.obs;
   Rx<PageController> pageController = PageController().obs;
-  late AnimationController animationController;
   RxDouble progress = 0.0.obs;
   RxDouble opacity = 1.0.obs;
   RxDouble opacityAppBarTitle = 0.0.obs;
@@ -44,19 +43,9 @@ class PokeDetailsController extends GetxController
 
   @override
   void onInit() {
-    animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 5),
-    )..repeat();
     tabController = TabController(length: 6, vsync: this);
     tabController.animateTo(0);
     index = arguments ?? 0;
     super.onInit();
-  }
-
-  @override
-  void onClose() {
-    animationController.dispose();
-    super.onClose();
   }
 }
