@@ -49,7 +49,7 @@ final Map<String, String> enUS = {
   'pokeDetailsDefense': 'Defense',
   'pokeDetailsStamina': 'Stamina',
   'pokeDetailsCP': 'CP',
-  'pokeDetailsNoEvolutions': 'There are no evolutions',
+  'pokeDetailsNoResultsFound': 'No results found.',
   'pokeDetailsResistance': 'Resistance',
   'pokeDetailsWeaknesses': 'Weaknesses',
 };
@@ -98,7 +98,7 @@ final Map<String, String> ptBR = {
   'pokeDetailsDefense': 'Defesa',
   'pokeDetailsStamina': 'Energia',
   'pokeDetailsCP': 'CP',
-  'pokeDetailsNoEvolutions': 'Não há evoluções',
+  'pokeDetailsNoResultsFound': 'Nenhum resultado encontrado.',
   'pokeDetailsResistance': 'Resistência',
   'pokeDetailsWeaknesses': 'Fraquezas',
 };

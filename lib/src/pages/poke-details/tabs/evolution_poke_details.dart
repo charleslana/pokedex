@@ -123,7 +123,7 @@ class EvolutionPokeDetails extends StatelessWidget {
     }
 
     if (pokemon.preEvolution.isEmpty && pokemon.nextEvolution.isEmpty) {
-      list.add(Center(child: Text('pokeDetailsNoEvolutions'.tr)));
+      list.add(Center(child: Text('pokeDetailsNoResultsFound'.tr)));
     }
 
     return list;
