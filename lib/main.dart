@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         fontFamily: 'ProductSans',
       ),
-      initialRoute: AppRoutes.home,
+      initialRoute: AppRoutes.splashscreen,
       defaultTransition: Transition.fade,
       onGenerateRoute: AppRouteGenerator().generateRoute,
     );

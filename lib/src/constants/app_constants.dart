@@ -4,6 +4,7 @@ class AppConstants {
   static const String imagePokeballWhite = 'assets/images/pokeball_white.png';
   static const String imagePokeballDark = 'assets/images/pokeball_dark.png';
   static const String loadingPokeball = 'assets/images/pokeball_loading.png';
+  static const String imageSplashscreen = 'assets/images/pokemax.png';
   static const String baseURL =
       'https://raw.githubusercontent.com/charleslana/pokemon-go-pokedex-api/main/api.json';
 

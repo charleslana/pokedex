@@ -29,6 +29,7 @@ flutter:
     - assets/images/pokeball_white.png
     - assets/images/pokeball_dark.png
     - assets/images/pokeball_loading.png
+    - assets/images/pokemax.png
 
   fonts:
     - family: ProductSans
