@@ -25,10 +25,9 @@ class TabBarPokeDetails extends StatelessWidget {
 
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
           elevation: 0,
+          automaticallyImplyLeading: false,
           bottom: TabBar(
-            labelColor: Colors.black,
             indicatorColor: AppConstants().getColorType(pokemon.type.en[0]),
             indicatorSize: TabBarIndicatorSize.tab,
             indicatorPadding: const EdgeInsets.all(5),

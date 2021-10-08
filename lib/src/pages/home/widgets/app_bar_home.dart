@@ -56,111 +56,130 @@ class AppBarHome extends StatelessWidget {
             alignment: Alignment.topLeft,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: SizedBox(
-                width: width * 0.75,
-                child: Autocomplete<Pokemon>(
-                  optionsBuilder: (TextEditingValue textEditingValue) {
-                    pokeHomeController.notFoundPokemon.value = false;
-                    pokeHomeController.isSearch.value = true;
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Autocomplete<Pokemon>(
+                      optionsBuilder: (TextEditingValue textEditingValue) {
+                        pokeHomeController.notFoundPokemon.value = false;
+                        pokeHomeController.isSearch.value = true;
 
-                    final List<Pokemon> listPokemon = pokeHomeController
-                        .pokeList
-                        .where((Pokemon content) => content.name
-                            .trim()
-                            .toLowerCase()
-                            .startsWith(
-                                textEditingValue.text.trim().toLowerCase()))
-                        .toList();
-                    if (listPokemon.isEmpty) {
-                      pokeHomeController.notFoundPokemon.value = true;
-                    }
+                        final List<Pokemon> listPokemon = pokeHomeController
+                            .pokeList
+                            .where((Pokemon content) => content.name
+                                .trim()
+                                .toLowerCase()
+                                .startsWith(
+                                    textEditingValue.text.trim().toLowerCase()))
+                            .toList();
+                        if (listPokemon.isEmpty) {
+                          pokeHomeController.notFoundPokemon.value = true;
+                        }
 
-                    if (textEditingValue.text.trim().isNotEmpty) {
-                      pokeHomeController.isSearch.value = false;
-                    }
+                        if (textEditingValue.text.trim().isNotEmpty) {
+                          pokeHomeController.isSearch.value = false;
+                        }
 
-                    return listPokemon;
-                  },
-                  displayStringForOption: (Pokemon option) => option.name,
-                  fieldViewBuilder: (_,
-                      TextEditingController fieldTextEditingController,
-                      FocusNode fieldFocusNode,
-                      VoidCallback onFieldSubmitted) {
-                    return Obx(() {
-                      pokeHomeController.textEditingController =
-                          fieldTextEditingController;
+                        return listPokemon;
+                      },
+                      displayStringForOption: (Pokemon option) => option.name,
+                      fieldViewBuilder: (_,
+                          TextEditingController fieldTextEditingController,
+                          FocusNode fieldFocusNode,
+                          VoidCallback onFieldSubmitted) {
+                        return Obx(() {
+                          pokeHomeController.textEditingController =
+                              fieldTextEditingController;
 
-                      return TextFormField(
-                        controller: fieldTextEditingController,
-                        focusNode: fieldFocusNode,
-                        onFieldSubmitted: (String value) => onFieldSubmitted(),
-                        decoration: InputDecoration(
-                          border: const UnderlineInputBorder(),
-                          labelText: 'pokeHomeSearchPokemon'.tr,
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              FocusManager.instance.primaryFocus?.unfocus();
-                              if (pokeHomeController.filterPokeList.length !=
-                                      pokeHomeController.pokeList.length &&
-                                  pokeHomeController.selectedIndex.value == 0) {
-                                pokeHomeController.filterPokeList
-                                  ..clear()
-                                  ..addAll(pokeHomeController.pokeList);
-                                pokeHomeController.selectedIndex.value = 0;
-                              }
-                              fieldTextEditingController.clear();
-                              pokeHomeController.isSearch.value = true;
-                            },
-                            icon: Icon(pokeHomeController.isSearch.value
-                                ? Icons.search
-                                : Icons.clear),
-                          ),
-                          errorText: pokeHomeController.notFoundPokemon.value
-                              ? 'pokeHomeSearchNoPokemonFound'.tr
-                              : null,
-                        ),
-                      );
-                    });
-                  },
-                  onSelected: (Pokemon selected) {
-                    FocusManager.instance.primaryFocus?.unfocus();
-                    pokeHomeController.filterPokemon(selected);
-                    pokeHomeController.isSearch.value = false;
-                  },
-                  optionsViewBuilder: (_,
-                      AutocompleteOnSelected<Pokemon> onSelected,
-                      Iterable<Pokemon> options) {
-                    return Align(
-                      alignment: Alignment.topLeft,
-                      child: Material(
-                        child: Container(
-                          width: width * 0.50,
-                          height: 60 * options.length * 1,
-                          color: Colors.grey.withOpacity(0.2),
-                          child: ListView.builder(
-                            padding: const EdgeInsets.all(10),
-                            itemCount: options.length,
-                            itemBuilder: (_, int index) {
-                              final Pokemon option = options.elementAt(index);
-
-                              return GestureDetector(
-                                onTap: () {
-                                  onSelected(option);
+                          return TextFormField(
+                            controller: fieldTextEditingController,
+                            focusNode: fieldFocusNode,
+                            onFieldSubmitted: (String value) =>
+                                onFieldSubmitted(),
+                            decoration: InputDecoration(
+                              border: const UnderlineInputBorder(),
+                              labelText: 'pokeHomeSearchPokemon'.tr,
+                              suffixIcon: IconButton(
+                                onPressed: () {
+                                  FocusManager.instance.primaryFocus?.unfocus();
+                                  if (pokeHomeController
+                                              .filterPokeList.length !=
+                                          pokeHomeController.pokeList.length &&
+                                      pokeHomeController.selectedIndex.value ==
+                                          0) {
+                                    pokeHomeController.filterPokeList
+                                      ..clear()
+                                      ..addAll(pokeHomeController.pokeList);
+                                    pokeHomeController.selectedIndex.value = 0;
+                                  }
+                                  fieldTextEditingController.clear();
+                                  pokeHomeController.isSearch.value = true;
                                 },
-                                child: ListTile(
-                                  title: Text(
-                                    option.name,
-                                    style: const TextStyle(color: Colors.black),
-                                  ),
-                                ),
-                              );
-                            },
+                                icon: Icon(pokeHomeController.isSearch.value
+                                    ? Icons.search
+                                    : Icons.clear),
+                              ),
+                              errorText:
+                                  pokeHomeController.notFoundPokemon.value
+                                      ? 'pokeHomeSearchNoPokemonFound'.tr
+                                      : null,
+                            ),
+                          );
+                        });
+                      },
+                      onSelected: (Pokemon selected) {
+                        FocusManager.instance.primaryFocus?.unfocus();
+                        pokeHomeController.filterPokemon(selected);
+                        pokeHomeController.isSearch.value = false;
+                      },
+                      optionsViewBuilder: (_,
+                          AutocompleteOnSelected<Pokemon> onSelected,
+                          Iterable<Pokemon> options) {
+                        return Align(
+                          alignment: Alignment.topLeft,
+                          child: Material(
+                            child: Container(
+                              width: width * 0.50,
+                              height: 60 * options.length * 1,
+                              color: Colors.grey[400],
+                              child: ListView.builder(
+                                padding: const EdgeInsets.all(10),
+                                itemCount: options.length,
+                                itemBuilder: (_, int index) {
+                                  final Pokemon option =
+                                      options.elementAt(index);
+
+                                  return GestureDetector(
+                                    onTap: () {
+                                      onSelected(option);
+                                    },
+                                    child: ListTile(
+                                      title: Text(
+                                        option.name,
+                                        style: const TextStyle(
+                                            color: Colors.black),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
                           ),
-                        ),
+                        );
+                      },
+                    ),
+                  ),
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.favorite_border),
                       ),
-                    );
-                  },
-                ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -214,7 +233,7 @@ class AppBarHome extends StatelessWidget {
             _options[index],
             style: const TextStyle(color: Colors.white),
           ),
-          elevation: 10,
+          elevation: 0,
           pressElevation: 5,
           backgroundColor: Colors.black54,
           selectedColor: Colors.blue,
@@ -234,6 +253,7 @@ class AppBarHome extends StatelessWidget {
     }
 
     return ListView(
+      physics: const BouncingScrollPhysics(),
       scrollDirection: Axis.horizontal,
       children: chips,
     );

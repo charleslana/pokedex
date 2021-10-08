@@ -15,6 +15,7 @@ dependencies:
   flutter_staggered_animations: ^1.0.0
   cached_network_image: ^3.1.0
   sliding_sheet: ^0.5.0
+  get_storage: ^2.0.3
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pokedex/src/controllers/menu_controller.dart';
+import 'package:pokedex/src/pages/menu/widgets/tab_dark_theme.dart';
 import 'package:pokedex/src/pages/menu/widgets/tab_language.dart';
 
 class MenuPage extends StatelessWidget {
@@ -22,26 +23,18 @@ class MenuPage extends StatelessWidget {
           onPressed: Get.back,
           icon: const Icon(
             Icons.arrow_back,
-            color: Colors.black,
           ),
         ),
-        title: const Text(
-          'Menu',
-          style: TextStyle(color: Colors.black),
-        ),
-        backgroundColor: Colors.grey[200],
+        title: const Text('Menu'),
         bottom: TabBar(
-          labelColor: Colors.black,
-          unselectedLabelColor: Colors.grey,
           labelStyle: const TextStyle(fontWeight: FontWeight.bold),
           unselectedLabelStyle: const TextStyle(fontStyle: FontStyle.italic),
           indicatorWeight: 1,
-          indicatorColor: Colors.black,
           indicatorSize: TabBarIndicatorSize.tab,
           indicatorPadding: const EdgeInsets.all(5),
           isScrollable: true,
           physics: const BouncingScrollPhysics(),
-          onTap: (int index) {},
+          onTap: (_) {},
           enableFeedback: true,
           controller: menuController.tabController,
           tabs: tabs,
@@ -52,7 +45,7 @@ class MenuPage extends StatelessWidget {
         controller: menuController.tabController,
         children: const [
           TabLanguage(),
-          Text('Dark Theme'),
+          TabDarkTheme(),
           Text('About'),
         ],
       ),

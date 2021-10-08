@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:pokedex/src/components/poke_loading.dart';
 import 'package:pokedex/src/constants/app_constants.dart';
 import 'package:pokedex/src/controllers/poke_home_controller.dart';
+import 'package:pokedex/src/controllers/theme_controller.dart';
 import 'package:pokedex/src/models/poke_model.dart';
 import 'package:pokedex/src/pages/home/widgets/app_bar_home.dart';
 import 'package:pokedex/src/pages/home/widgets/poke_card.dart';
@@ -18,12 +19,12 @@ class HomePage extends StatelessWidget {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double statusBarHeight = MediaQuery.of(context).padding.top;
     final PokeHomeController pokeHomeController = Get.put(PokeHomeController());
+    final ThemeController themeController = Get.put(ThemeController());
 
     return SafeArea(
       child: GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: Scaffold(
-          backgroundColor: Colors.white,
           body: Stack(
             clipBehavior: Clip.none,
             children: [
@@ -32,10 +33,14 @@ class HomePage extends StatelessWidget {
                 left: screenWidth - 240 / 1.7,
                 child: Opacity(
                   opacity: 0.1,
-                  child: Image.asset(
-                    AppConstants.imagePokeballDark,
-                    width: 240,
-                  ),
+                  child: Obx(() {
+                    return Image.asset(
+                      themeController.isDarkMode.value
+                          ? AppConstants.imagePokeballWhite
+                          : AppConstants.imagePokeballDark,
+                      width: 240,
+                    );
+                  }),
                 ),
               ),
               Column(
@@ -109,11 +114,6 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ],
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {},
-            backgroundColor: Colors.redAccent,
-            child: const Icon(Icons.favorite),
           ),
         ),
       ),

@@ -26,12 +26,7 @@ class StatusPokeDetails extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'pokeDetailsAttack'.tr,
-                  style: TextStyle(
-                    color: Colors.grey[600],
-                  ),
-                ),
+                Text('pokeDetailsAttack'.tr),
                 Text(
                   pokemon.atk.toString(),
                   style: const TextStyle(
@@ -62,12 +57,7 @@ class StatusPokeDetails extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'pokeDetailsDefense'.tr,
-                  style: TextStyle(
-                    color: Colors.grey[600],
-                  ),
-                ),
+                Text('pokeDetailsDefense'.tr),
                 Text(
                   pokemon.def.toString(),
                   style: const TextStyle(
@@ -98,12 +88,7 @@ class StatusPokeDetails extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'pokeDetailsStamina'.tr,
-                  style: TextStyle(
-                    color: Colors.grey[600],
-                  ),
-                ),
+                Text('pokeDetailsStamina'.tr),
                 Text(
                   pokemon.sta.toString(),
                   style: const TextStyle(
@@ -146,7 +131,6 @@ class StatusPokeDetails extends StatelessWidget {
                           'pokeDetailsMaxCP'.tr,
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Colors.black54,
                             fontSize: 14,
                           ),
                         ),

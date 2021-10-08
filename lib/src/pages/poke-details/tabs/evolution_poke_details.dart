@@ -7,6 +7,7 @@ import 'package:pokedex/src/constants/app_constants.dart';
 import 'package:pokedex/src/controllers/poke_details_controller.dart';
 import 'package:pokedex/src/controllers/poke_home_controller.dart';
 import 'package:pokedex/src/models/poke_model.dart';
+import 'package:pokedex/src/services/theme_service.dart';
 
 class EvolutionPokeDetails extends StatelessWidget {
   const EvolutionPokeDetails({Key? key}) : super(key: key);
@@ -38,10 +39,16 @@ class EvolutionPokeDetails extends StatelessWidget {
         ..add(
           Stack(
             children: [
-              const PokeAnimated(
-                image: AppConstants.imagePokeballDark,
-                height: 80,
-              ),
+              if (ThemeService().theme == ThemeMode.light)
+                const PokeAnimated(
+                  image: AppConstants.imagePokeballDark,
+                  height: 80,
+                )
+              else
+                const PokeAnimated(
+                  image: AppConstants.imagePokeballWhite,
+                  height: 80,
+                ),
               SizedBox(
                 width: 80,
                 height: 80,
@@ -79,10 +86,16 @@ class EvolutionPokeDetails extends StatelessWidget {
         ..add(
           Stack(
             children: [
-              const PokeAnimated(
-                image: AppConstants.imagePokeballDark,
-                height: 80,
-              ),
+              if (ThemeService().theme == ThemeMode.light)
+                const PokeAnimated(
+                  image: AppConstants.imagePokeballDark,
+                  height: 80,
+                )
+              else
+                const PokeAnimated(
+                  image: AppConstants.imagePokeballWhite,
+                  height: 80,
+                ),
               SizedBox(
                 width: 80,
                 height: 80,

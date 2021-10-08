@@ -55,7 +55,6 @@ class AboutPokeDetails extends StatelessWidget {
                           'pokeDetailsGeneration'.tr,
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Colors.black54,
                             fontSize: 14,
                           ),
                         ),
@@ -68,7 +67,6 @@ class AboutPokeDetails extends StatelessWidget {
                           'pokeDetailsHeight'.tr,
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Colors.black54,
                             fontSize: 14,
                           ),
                         ),
@@ -81,7 +79,6 @@ class AboutPokeDetails extends StatelessWidget {
                           'pokeDetailsWeight'.tr,
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Colors.black54,
                             fontSize: 14,
                           ),
                         ),
