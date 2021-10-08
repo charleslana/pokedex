@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       translationsKeys: AppTranslation().translationsKeys,
       locale: Get.deviceLocale,
       fallbackLocale: const Locale('en', 'US'),
-      title: 'Pokédex',
+      title: 'Pokémax',
       theme: light,
       darkTheme: dark,
       themeMode: ThemeService().theme,

@@ -17,11 +17,28 @@ class SplashscreenPage extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        body: Center(
-          child: Image.asset(
-            AppConstants.imageSplashscreen,
-            fit: BoxFit.fill,
-          ),
+        body: Stack(
+          children: [
+            Center(
+              child: Image.asset(
+                AppConstants.imageSplashscreen,
+                fit: BoxFit.contain,
+              ),
+            ),
+            const Align(
+              alignment: Alignment.bottomLeft,
+              child: Padding(
+                padding: EdgeInsets.all(5),
+                child: Text(
+                  'Version 1.0.0',
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );
