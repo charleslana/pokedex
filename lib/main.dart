@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:pokedex/src/routes/app_route_generator.dart';
+import 'package:pokedex/src/services/language_service.dart';
 import 'package:pokedex/src/services/theme_service.dart';
 import 'package:pokedex/src/translation/app_translation.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       translationsKeys: AppTranslation().translationsKeys,
-      locale: Get.deviceLocale,
+      locale: LanguageService().locale ?? Get.deviceLocale,
       fallbackLocale: const Locale('en', 'US'),
       title: 'Pokémax',
       theme: light,
