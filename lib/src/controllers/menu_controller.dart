@@ -8,7 +8,6 @@ class MenuController extends GetxController with SingleGetTickerProviderMixin {
   late TabController tabController;
   RxString selectedLanguage = Get.locale!.languageCode.obs;
   RxInt selectedIndex = 0.obs;
-
   LanguageService languageService = LanguageService();
 
   void changeLanguage(String language, int index) {
