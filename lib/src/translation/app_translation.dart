@@ -55,6 +55,9 @@ final Map<String, String> enUS = {
   'pokeDetailsWeaknesses': 'Weaknesses',
   'favoritesTitle': 'Favorites',
   'favoritesNoPokemon': 'No Pokémon added to favorites list.',
+  'favoritesSnackBarTitle': 'Notification',
+  'favoritesSnackBarAdd': 'Pokémon added as a favorite.',
+  'favoritesSnackBarRemove': 'Pokémon removed from favorite.',
 };
 
 final Map<String, String> ptBR = {
@@ -107,4 +110,7 @@ final Map<String, String> ptBR = {
   'pokeDetailsWeaknesses': 'Fraquezas',
   'favoritesTitle': 'Favoritos',
   'favoritesNoPokemon': 'Nenhum Pokémon adicionado à lista de favoritos.',
+  'favoritesSnackBarTitle': 'Notificação',
+  'favoritesSnackBarAdd': 'Pokémon adicionado como favorito.',
+  'favoritesSnackBarRemove': 'Pokémon removido do favorito.',
 };

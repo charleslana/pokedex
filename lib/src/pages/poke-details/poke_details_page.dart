@@ -110,7 +110,9 @@ class PokeDetailsPage extends StatelessWidget {
                       child: PageView.builder(
                         controller: pokeDetailsController.pageController.value,
                         onPageChanged: (int index) {
-                          pokeDetailsController.index = index;
+                          pokeDetailsController
+                            ..index = index
+                            ..initFavorite();
                           pokeDetailsController.tabController.animateTo(0);
                         },
                         physics: const BouncingScrollPhysics(),

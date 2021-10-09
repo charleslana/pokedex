@@ -11,10 +11,6 @@ class DBController extends GetxController {
 
   @override
   void onInit() {
-    removeFavorite(1);
-    removeFavorite(151);
-    addFavorite(1);
-    addFavorite(151);
     init();
     super.onInit();
   }
@@ -36,12 +32,29 @@ class DBController extends GetxController {
     isLoading.value = false;
   }
 
-  Future<void> addFavorite(int pokemonId) async {
-    await dbService.insert({'pokemon_id': pokemonId});
+  Future<List<Map<String, dynamic>>> findFavoriteById(int pokemonId) async {
+    return dbService.getDataById(pokemonId);
+  }
 
-    favoriteList.addAll(pokeHomeController.pokeList
-        .where((Pokemon content) => content.id == pokemonId)
-        .toList());
+  Future<void> addFavorite(int pokemonId) async {
+    final List<Map<String, dynamic>>? getDataById =
+        await findFavoriteById(pokemonId);
+
+    if (getDataById!.isEmpty) {
+      await dbService.insert({'pokemon_id': pokemonId});
+
+      favoriteList.addAll(pokeHomeController.pokeList
+          .where((Pokemon content) => content.id == pokemonId)
+          .toList());
+
+      Get.snackbar<dynamic>(
+          'favoritesSnackBarTitle'.tr, 'favoritesSnackBarAdd'.tr);
+    } else {
+      await removeFavorite(pokemonId);
+
+      Get.snackbar<dynamic>(
+          'favoritesSnackBarTitle'.tr, 'favoritesSnackBarRemove'.tr);
+    }
   }
 
   Future<void> removeFavorite(int pokemonId) async {

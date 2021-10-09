@@ -21,6 +21,11 @@ class DBService {
     return db.query(table);
   }
 
+  Future<List<Map<String, dynamic>>> getDataById(int pokemonId) async {
+    final db = await database();
+    return db.query(table, where: 'pokemon_id = ?', whereArgs: [pokemonId]);
+  }
+
   Future<void> insert(Map<String, Object> data) async {
     final db = await database();
     await db.insert(

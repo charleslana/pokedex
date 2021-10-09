@@ -59,9 +59,12 @@ class AppBarPokeDetails extends StatelessWidget implements PreferredSizeWidget {
                     ),
                   ),
                   IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.favorite_border,
+                    onPressed: () =>
+                        pokeDetailsController.switchFavorite(pokemon.id),
+                    icon: Icon(
+                      pokeDetailsController.isFavorite.value
+                          ? Icons.favorite
+                          : Icons.favorite_border,
                       color: Colors.white,
                     ),
                   ),
