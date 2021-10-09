@@ -25,10 +25,10 @@ class MenuController extends GetxController with SingleGetTickerProviderMixin {
         ? selectedLanguage.value
         : languageService.locale!.languageCode;
 
-    if (selectedLanguage.value == 'en' || selectedLanguage.value == 'en_US') {
-      selectedIndex.value = 0;
-    } else {
+    if (selectedLanguage.value == 'pt' || selectedLanguage.value == 'pt_BR') {
       selectedIndex.value = 1;
+    } else {
+      selectedIndex.value = 0;
     }
     super.onInit();
   }
