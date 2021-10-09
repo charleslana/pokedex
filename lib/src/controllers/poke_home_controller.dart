@@ -59,7 +59,7 @@ class PokeHomeController extends GetxController {
         ..clear()
         ..addAll(pokeList);
     } else {
-      List<Pokemon> listPokemon;
+      List<Pokemon> listPokemon = [];
 
       if ('languageCode'.tr == 'en') {
         listPokemon = pokeList

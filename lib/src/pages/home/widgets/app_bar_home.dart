@@ -174,7 +174,8 @@ class AppBarHome extends StatelessWidget {
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () =>
+                            Get.toNamed<dynamic>(AppRoutes.favorites),
                         icon: const Icon(Icons.favorite_border),
                       ),
                     ),

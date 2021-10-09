@@ -53,6 +53,8 @@ final Map<String, String> enUS = {
   'pokeDetailsNoResultsFound': 'No results found.',
   'pokeDetailsResistance': 'Resistance',
   'pokeDetailsWeaknesses': 'Weaknesses',
+  'favoritesTitle': 'Favorites',
+  'favoritesNoPokemon': 'No Pokémon added to favorites list.',
 };
 
 final Map<String, String> ptBR = {
@@ -103,4 +105,6 @@ final Map<String, String> ptBR = {
   'pokeDetailsNoResultsFound': 'Nenhum resultado encontrado.',
   'pokeDetailsResistance': 'Resistência',
   'pokeDetailsWeaknesses': 'Fraquezas',
+  'favoritesTitle': 'Favoritos',
+  'favoritesNoPokemon': 'Nenhum Pokémon adicionado à lista de favoritos.',
 };

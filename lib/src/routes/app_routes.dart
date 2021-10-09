@@ -5,4 +5,5 @@ abstract class AppRoutes {
   static const String home = '/home';
   static const String pokeDetails = '/poke-details';
   static const String menu = '/menu';
+  static const String favorites = '/favorites';
 }
