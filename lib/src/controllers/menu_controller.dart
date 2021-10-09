@@ -11,8 +11,10 @@ class MenuController extends GetxController with SingleGetTickerProviderMixin {
   LanguageService languageService = LanguageService();
 
   void changeLanguage(String language, int index) {
-    selectedIndex.value = index;
-    languageService.changeLanguage(Locale(language));
+    if (index != selectedIndex.value) {
+      selectedIndex.value = index;
+      languageService.changeLanguage(Locale(language));
+    }
   }
 
   @override

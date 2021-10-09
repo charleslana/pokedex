@@ -25,13 +25,13 @@ class SplashscreenPage extends StatelessWidget {
                 fit: BoxFit.contain,
               ),
             ),
-            const Align(
+            Align(
               alignment: Alignment.bottomLeft,
               child: Padding(
-                padding: EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
                 child: Text(
-                  'Version 1.0.0',
-                  style: TextStyle(
+                  'splashscreenVersion'.trParams({'version': '1.0.0'}),
+                  style: const TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
                   ),
