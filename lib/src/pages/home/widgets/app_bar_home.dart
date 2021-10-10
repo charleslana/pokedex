@@ -191,6 +191,7 @@ class AppBarHome extends StatelessWidget {
             children: [
               const SizedBox(width: 10),
               Text('pokeHomeFilter'.tr),
+              const SizedBox(width: 10),
               Expanded(
                 child: Obx(() {
                   return _buildFilters(pokeHomeController);
