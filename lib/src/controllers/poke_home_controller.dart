@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart';
 import 'package:pokedex/src/models/poke_model.dart';
@@ -32,9 +33,12 @@ class PokeHomeController extends GetxController {
         pokeList.value = pokeApi.pokemon;
         filterPokeList.addAll(pokeList);
       } else {
-        Get.defaultDialog<dynamic>(
+        Get.defaultDialog<Future<dynamic>>(
           barrierDismissible: false,
-          onWillPop: () async => false,
+          onWillPop: () async {
+            await SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+            return false;
+          },
           title: 'pokeHomeNoConnectionTitle'.tr,
           middleText: 'pokeHomeNoConnectionDescription'.tr,
         );
