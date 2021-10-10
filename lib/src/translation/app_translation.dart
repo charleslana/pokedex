@@ -10,6 +10,9 @@ final Map<String, String> enUS = {
   'languageEnglish': 'English',
   'languagePortuguese': 'Portuguese',
   'splashscreenVersion': 'Version @version',
+  'pokeHomeNoConnectionTitle': 'Error',
+  'pokeHomeNoConnectionDescription':
+      'Failed connection to server. Please check your internet connection.',
   'pokeHomeSearchPokemon': 'Search pokémon',
   'pokeHomeSearchNoPokemonFound': 'No pokémon found.',
   'pokeHomeFilter': 'Filter:',
@@ -65,6 +68,9 @@ final Map<String, String> ptBR = {
   'languageEnglish': 'Inglês',
   'languagePortuguese': 'Português',
   'splashscreenVersion': 'Versão @version',
+  'pokeHomeNoConnectionTitle': 'Erro',
+  'pokeHomeNoConnectionDescription':
+      'Falha na conexão com o servidor. Verifique sua conexão com a Internet.',
   'pokeHomeSearchPokemon': 'Pesquisar pokémon',
   'pokeHomeSearchNoPokemonFound': 'Nenhum pokémon encontrado.',
   'pokeHomeFilter': 'Filtrar:',

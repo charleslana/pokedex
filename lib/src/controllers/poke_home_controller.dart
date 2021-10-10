@@ -34,9 +34,9 @@ class PokeHomeController extends GetxController {
       } else {
         Get.defaultDialog<dynamic>(
           barrierDismissible: false,
-          title: 'Error',
-          middleText:
-              'Failed connection to server.\nPlease check your internet connection.',
+          onWillPop: () async => false,
+          title: 'pokeHomeNoConnectionTitle'.tr,
+          middleText: 'pokeHomeNoConnectionDescription'.tr,
         );
       }
       isLoading.value = false;

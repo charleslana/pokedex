@@ -23,6 +23,7 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^1.0.0
   mocktail: ^0.1.4
+  flutter_launcher_icons: ^0.9.2
 
 flutter:
   uses-material-design: true
@@ -39,3 +40,8 @@ flutter:
         - asset: assets/fonts/ProductSans-Regular.ttf
         - asset: assets/fonts/ProductSans-Bold.ttf
           weight: 700
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: assets/images/pokemax_icon.png
