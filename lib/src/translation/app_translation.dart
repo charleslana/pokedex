@@ -100,7 +100,7 @@ final Map<String, String> ptBR = {
   'menuDarkTheme': 'Tema Escuro',
   'menuAbout': 'Sobre',
   'menuAboutDescription':
-      'Pokémax é um aplicativo desenvolvido pelos alunos do curso de TI na Faculdade Una Betim com o intuito de entretenimento para os fãs de toda a franquia Pokémon. Nele é possível ver todas as informações dos pokémon com suas evoluções, gerações, poderes. Níveis de ataque, defesa e energia também estão inclusos nas informações. Os fãs também podem favoritar seus pokémons preferidos e compará-los.',
+      'Pokémax é um aplicativo desenvolvido pelos alunos do curso de TI na Faculdade Una Betim com o intuito de entretenimento para os fãs de toda a franquia Pokémon. Nele é possível ver todas as informações dos pokémon com suas evoluções, gerações, poderes. Níveis de ataque, defesa e energia também estão inclusos nas informações. Os fãs também podem favoritar seus pokémon preferidos e compará-los.',
   'menuAboutSpecialThanks': 'Agradecimentos especiais',
   'pokeDetailsAbout': 'Sobre',
   'pokeDetailsEvolution': 'Evolução',
