@@ -38,6 +38,9 @@ final Map<String, String> enUS = {
   'menuLanguage': 'Language',
   'menuDarkTheme': 'Dark Theme',
   'menuAbout': 'About',
+  'menuAboutDescription':
+      'Pokémax is an application developed by IT course students at Una Betim Faculty with the intention of entertainment for fans of the entire Pokémon franchise. In it you can see all the information about the Pokémon with their evolutions, generations, powers. Attack, defense and energy levels are also included in the information. Fans can also bookmark their favorite Pokémon and compare them.',
+  'menuAboutSpecialThanks': 'Special thanks',
   'pokeDetailsAbout': 'About',
   'pokeDetailsEvolution': 'Evolution',
   'pokeDetailsStatus': 'Status',
@@ -96,6 +99,9 @@ final Map<String, String> ptBR = {
   'menuLanguage': 'Idioma',
   'menuDarkTheme': 'Tema Escuro',
   'menuAbout': 'Sobre',
+  'menuAboutDescription':
+      'Pokémax é um aplicativo desenvolvido pelos alunos do curso de TI na Faculdade Una Betim com o intuito de entretenimento para os fãs de toda a franquia Pokémon. Nele é possível ver todas as informações dos pokémon com suas evoluções, gerações, poderes. Níveis de ataque, defesa e energia também estão inclusos nas informações. Os fãs também podem favoritar seus pokémons preferidos e compará-los.',
+  'menuAboutSpecialThanks': 'Agradecimentos especiais',
   'pokeDetailsAbout': 'Sobre',
   'pokeDetailsEvolution': 'Evolução',
   'pokeDetailsStatus': 'Status',

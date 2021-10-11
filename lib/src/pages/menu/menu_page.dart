@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pokedex/src/controllers/menu_controller.dart';
+import 'package:pokedex/src/pages/menu/widgets/tab_about.dart';
 import 'package:pokedex/src/pages/menu/widgets/tab_dark_theme.dart';
 import 'package:pokedex/src/pages/menu/widgets/tab_language.dart';
 
@@ -46,7 +47,7 @@ class MenuPage extends StatelessWidget {
         children: const [
           TabLanguage(),
           TabDarkTheme(),
-          Text('About'),
+          TabAbout(),
         ],
       ),
     );
