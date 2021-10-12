@@ -1,8 +1,15 @@
+import 'dart:ui';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pokedex/src/components/poke_animated.dart';
+import 'package:pokedex/src/components/poke_loading.dart';
+import 'package:pokedex/src/constants/app_constants.dart';
 import 'package:pokedex/src/controllers/poke_details_controller.dart';
 import 'package:pokedex/src/controllers/poke_home_controller.dart';
 import 'package:pokedex/src/models/poke_model.dart';
+import 'package:pokedex/src/services/theme_service.dart';
 
 class ToComparePokeDetails extends StatelessWidget {
   const ToComparePokeDetails({Key? key}) : super(key: key);
@@ -67,7 +74,9 @@ class ToComparePokeDetails extends StatelessWidget {
                         onPressed: () {
                           FocusManager.instance.primaryFocus?.unfocus();
                           fieldTextEditingController.clear();
-                          pokeDetailsController.isSelected.value = true;
+                          pokeDetailsController
+                            ..isSelected.value = true
+                            ..isVisible.value = false;
                         },
                         icon: Icon(pokeDetailsController.isSelected.value
                             ? Icons.search
@@ -82,7 +91,9 @@ class ToComparePokeDetails extends StatelessWidget {
               },
               onSelected: (Pokemon selected) {
                 FocusManager.instance.primaryFocus?.unfocus();
-                pokeDetailsController.toComparePokemon(pokemon, selected);
+                pokeDetailsController
+                  ..targetPokemon.value = selected
+                  ..toComparePokemon(pokemon);
                 pokeDetailsController.isSelected.value = false;
               },
               optionsViewBuilder: (_,
@@ -118,6 +129,138 @@ class ToComparePokeDetails extends StatelessWidget {
                   ),
                 );
               },
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Visibility(
+              visible: pokeDetailsController.isVisible.value,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Column(
+                        children: [
+                          Stack(
+                            children: [
+                              if (ThemeService().theme == ThemeMode.light)
+                                const PokeAnimated(
+                                  image: AppConstants.imagePokeballDark,
+                                  height: 80,
+                                )
+                              else
+                                const PokeAnimated(
+                                  image: AppConstants.imagePokeballWhite,
+                                  height: 80,
+                                ),
+                              SizedBox(
+                                width: 80,
+                                height: 80,
+                                child: CachedNetworkImage(
+                                  placeholder: (_, __) => const Center(
+                                    child: PokeLoading(),
+                                  ),
+                                  imageUrl: pokemon.img,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 20,
+                            child: Text(
+                              pokemon.name,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Text(
+                            '${pokeDetailsController.chancePokemon.toStringAsFixed(0)}%',
+                            style: const TextStyle(fontSize: 30),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'pokeDetailsToCompareChanceOfVictory'.tr,
+                            style: const TextStyle(fontSize: 12),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Column(
+                        children: [
+                          Stack(
+                            children: [
+                              if (ThemeService().theme == ThemeMode.light)
+                                const PokeAnimated(
+                                  image: AppConstants.imagePokeballDark,
+                                  height: 80,
+                                )
+                              else
+                                const PokeAnimated(
+                                  image: AppConstants.imagePokeballWhite,
+                                  height: 80,
+                                ),
+                              SizedBox(
+                                width: 80,
+                                height: 80,
+                                child: CachedNetworkImage(
+                                  placeholder: (_, __) => const Center(
+                                    child: PokeLoading(),
+                                  ),
+                                  imageUrl: pokeDetailsController
+                                      .targetPokemon.value.img,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 20,
+                            child: Text(
+                              pokeDetailsController.targetPokemon.value.name,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Text(
+                            '${pokeDetailsController.chanceTargetPokemon.toStringAsFixed(0)}%',
+                            style: const TextStyle(fontSize: 30),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'pokeDetailsToCompareChanceOfVictory'.tr,
+                            style: const TextStyle(fontSize: 12),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ],
         ),

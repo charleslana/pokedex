@@ -62,6 +62,7 @@ final Map<String, String> enUS = {
   'pokeDetailsToCompareDescription':
       'Make a power comparison between @pokemonName and a selected target.',
   'pokeDetailsToCompareLabelText': 'Select a target pokemon',
+  'pokeDetailsToCompareChanceOfVictory': 'Chance of victory',
   'favoritesTitle': 'Favorites',
   'favoritesNoPokemon': 'No Pokémon added to favorites list.',
   'favoritesSnackBarTitle': 'Notification',
@@ -126,6 +127,7 @@ final Map<String, String> ptBR = {
   'pokeDetailsToCompareDescription':
       'Faça uma comparação de poderes entre o pokémon @pokemonName e um alvo selecionado.',
   'pokeDetailsToCompareLabelText': 'Selecione um pokémon alvo',
+  'pokeDetailsToCompareChanceOfVictory': 'Chance de vitória',
   'favoritesTitle': 'Favoritos',
   'favoritesNoPokemon': 'Nenhum Pokémon adicionado à lista de favoritos.',
   'favoritesSnackBarTitle': 'Notificação',
