@@ -9,7 +9,6 @@ class AppBarHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double width = MediaQuery.of(context).size.width;
     final PokeHomeController pokeHomeController = Get.put(PokeHomeController());
 
     return Obx(() {
@@ -36,7 +35,7 @@ class AppBarHome extends StatelessWidget {
                       children: [
                         Positioned(
                           top: MediaQuery.of(context).padding.top + 50,
-                          left: width - 175,
+                          left: Get.width - 175,
                           child: SizedBox(
                             width: 50,
                             height: 50,
@@ -150,7 +149,7 @@ class AppBarHome extends StatelessWidget {
                               alignment: Alignment.topLeft,
                               child: Material(
                                 child: Container(
-                                  width: width * 0.50,
+                                  width: Get.width * 0.50,
                                   height: 60 * options.length * 1,
                                   color: Colors.grey[400],
                                   child: ListView.builder(

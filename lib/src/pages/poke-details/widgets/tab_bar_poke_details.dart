@@ -8,6 +8,7 @@ import 'package:pokedex/src/pages/poke-details/tabs/about_poke_details.dart';
 import 'package:pokedex/src/pages/poke-details/tabs/evolution_poke_details.dart';
 import 'package:pokedex/src/pages/poke-details/tabs/moveset_poke_details.dart';
 import 'package:pokedex/src/pages/poke-details/tabs/status_poke_details.dart';
+import 'package:pokedex/src/pages/poke-details/tabs/to_compare_poke_details.dart';
 import 'package:pokedex/src/pages/poke-details/tabs/types_poke_details.dart';
 
 class TabBarPokeDetails extends StatelessWidget {
@@ -58,7 +59,7 @@ class TabBarPokeDetails extends StatelessWidget {
             StatusPokeDetails(),
             MovesetPokeDetails(),
             TypesPokeDetails(),
-            Text('To compare'),
+            ToComparePokeDetails(),
           ],
         ),
       );

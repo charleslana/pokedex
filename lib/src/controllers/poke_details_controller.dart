@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:pokedex/src/controllers/db_controller.dart';
+import 'package:pokedex/src/models/poke_model.dart';
 
 class PokeDetailsController extends GetxController
     with SingleGetTickerProviderMixin {
@@ -14,6 +15,18 @@ class PokeDetailsController extends GetxController
   late TabController tabController;
   final DBController dbController = Get.put(DBController());
   RxBool isFavorite = false.obs;
+  TextEditingController textEditingController = TextEditingController();
+  RxBool notFoundPokemon = false.obs;
+  RxBool isSelected = true.obs;
+
+  @override
+  void onInit() {
+    tabController = TabController(length: 6, vsync: this);
+    tabController.animateTo(0);
+    index = arguments ?? 0;
+    initFavorite();
+    super.onInit();
+  }
 
   int get index => _index.value;
 
@@ -63,12 +76,5 @@ class PokeDetailsController extends GetxController
     isFavorite.value = !isFavorite.value;
   }
 
-  @override
-  void onInit() {
-    tabController = TabController(length: 6, vsync: this);
-    tabController.animateTo(0);
-    index = arguments ?? 0;
-    initFavorite();
-    super.onInit();
-  }
+  void toComparePokemon(Pokemon pokemon, Pokemon targetPokemon) {}
 }

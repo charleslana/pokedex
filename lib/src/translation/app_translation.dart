@@ -59,6 +59,9 @@ final Map<String, String> enUS = {
   'pokeDetailsNoResultsFound': 'No results found.',
   'pokeDetailsResistance': 'Resistance',
   'pokeDetailsWeaknesses': 'Weaknesses',
+  'pokeDetailsToCompareDescription':
+      'Make a power comparison between @pokemonName and a selected target.',
+  'pokeDetailsToCompareLabelText': 'Select a target pokemon',
   'favoritesTitle': 'Favorites',
   'favoritesNoPokemon': 'No Pokémon added to favorites list.',
   'favoritesSnackBarTitle': 'Notification',
@@ -120,6 +123,9 @@ final Map<String, String> ptBR = {
   'pokeDetailsNoResultsFound': 'Nenhum resultado encontrado.',
   'pokeDetailsResistance': 'Resistência',
   'pokeDetailsWeaknesses': 'Fraquezas',
+  'pokeDetailsToCompareDescription':
+      'Faça uma comparação de poderes entre o pokémon @pokemonName e um alvo selecionado.',
+  'pokeDetailsToCompareLabelText': 'Selecione um pokémon alvo',
   'favoritesTitle': 'Favoritos',
   'favoritesNoPokemon': 'Nenhum Pokémon adicionado à lista de favoritos.',
   'favoritesSnackBarTitle': 'Notificação',

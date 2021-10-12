@@ -10,13 +10,6 @@ class MenuController extends GetxController with SingleGetTickerProviderMixin {
   RxInt selectedIndex = 0.obs;
   LanguageService languageService = LanguageService();
 
-  void changeLanguage(String language, int index) {
-    if (index != selectedIndex.value) {
-      selectedIndex.value = index;
-      languageService.changeLanguage(Locale(language));
-    }
-  }
-
   @override
   void onInit() {
     tabController = TabController(length: 3, vsync: this);
@@ -31,5 +24,12 @@ class MenuController extends GetxController with SingleGetTickerProviderMixin {
       selectedIndex.value = 0;
     }
     super.onInit();
+  }
+
+  void changeLanguage(String language, int index) {
+    if (index != selectedIndex.value) {
+      selectedIndex.value = index;
+      languageService.changeLanguage(Locale(language));
+    }
   }
 }
