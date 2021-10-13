@@ -92,7 +92,7 @@ class PokeDetailsPage extends StatelessWidget {
                       pokeDetailsController.changeSlidingSheet(state.progress),
                   cornerRadius: 30,
                   snapSpec: const SnapSpec(
-                    snappings: [0.6, 1.0, double.infinity],
+                    snappings: [0.6, 1.0],
                   ),
                   builder: (_, __) {
                     return SizedBox(
