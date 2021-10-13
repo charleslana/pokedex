@@ -206,12 +206,18 @@ class AppBarHome extends StatelessWidget {
               ),
             ),
             SizedBox(
+              width: Get.width * 0.90,
               height: 50,
               child: Row(
                 children: [
-                  const SizedBox(width: 10),
-                  Text('pokeHomeFilter'.tr),
-                  const SizedBox(width: 10),
+                  IconButton(
+                    onPressed: pokeHomeController.sortByAlpha,
+                    icon: const Icon(Icons.sort_by_alpha_outlined),
+                  ),
+                  IconButton(
+                    onPressed: pokeHomeController.sortByNumber,
+                    icon: const Icon(Icons.pin_outlined),
+                  ),
                   Expanded(
                     child: _buildFilters(pokeHomeController),
                   ),

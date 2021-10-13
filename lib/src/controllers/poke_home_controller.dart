@@ -14,6 +14,8 @@ class PokeHomeController extends GetxController {
   RxBool notFoundPokemon = false.obs;
   RxInt selectedIndex = 0.obs;
   RxBool isSearch = true.obs;
+  RxBool isAlphaASC = false.obs;
+  RxBool isNumberASC = true.obs;
 
   @override
   void onInit() {
@@ -45,6 +47,36 @@ class PokeHomeController extends GetxController {
       }
       isLoading.value = false;
     });
+  }
+
+  void sortByAlpha() {
+    filterPokeList.sort((Pokemon a, Pokemon b) =>
+        a.name.toLowerCase().compareTo(b.name.toLowerCase()));
+
+    if (!isAlphaASC.value) {
+      isAlphaASC.value = true;
+    } else {
+      final List<Pokemon> reversedList = filterPokeList.reversed.toList();
+      filterPokeList
+        ..clear()
+        ..addAll(reversedList);
+      isAlphaASC.value = false;
+    }
+  }
+
+  void sortByNumber() {
+    filterPokeList.sort((Pokemon a, Pokemon b) =>
+        a.num.toLowerCase().compareTo(b.num.toLowerCase()));
+
+    if (!isNumberASC.value) {
+      isNumberASC.value = true;
+    } else {
+      final List<Pokemon> reversedList = filterPokeList.reversed.toList();
+      filterPokeList
+        ..clear()
+        ..addAll(reversedList);
+      isNumberASC.value = false;
+    }
   }
 
   void filterPokemon(Pokemon pokemon) {
