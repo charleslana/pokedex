@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pokedex/src/components/poke_loading.dart';
 import 'package:pokedex/src/controllers/poke_home_controller.dart';
 import 'package:pokedex/src/models/poke_model.dart';
 import 'package:pokedex/src/routes/app_route_generator.dart';
@@ -148,10 +150,9 @@ class AppBarHome extends StatelessWidget {
                             return Align(
                               alignment: Alignment.topLeft,
                               child: Material(
-                                child: Container(
+                                child: SizedBox(
                                   width: Get.width * 0.50,
                                   height: 60 * options.length * 1,
-                                  color: Colors.grey[400],
                                   child: ListView.builder(
                                     padding: const EdgeInsets.all(10),
                                     itemCount: options.length,
@@ -164,11 +165,18 @@ class AppBarHome extends StatelessWidget {
                                           onSelected(option);
                                         },
                                         child: ListTile(
-                                          title: Text(
-                                            option.name,
-                                            style: const TextStyle(
-                                                color: Colors.black),
+                                          leading: CircleAvatar(
+                                            child: CachedNetworkImage(
+                                              width: 40,
+                                              height: 40,
+                                              placeholder: (_, __) =>
+                                                  const Center(
+                                                child: PokeLoading(),
+                                              ),
+                                              imageUrl: option.img,
+                                            ),
                                           ),
+                                          title: Text(option.name),
                                         ),
                                       );
                                     },

@@ -102,10 +102,9 @@ class ToComparePokeDetails extends StatelessWidget {
                 return Align(
                   alignment: Alignment.topLeft,
                   child: Material(
-                    child: Container(
-                      width: Get.width * 0.50,
+                    child: SizedBox(
+                      width: Get.width * 0.75,
                       height: 60 * options.length * 1,
-                      color: Colors.grey[400],
                       child: ListView.builder(
                         padding: const EdgeInsets.all(10),
                         itemCount: options.length,
@@ -117,10 +116,17 @@ class ToComparePokeDetails extends StatelessWidget {
                               onSelected(option);
                             },
                             child: ListTile(
-                              title: Text(
-                                option.name,
-                                style: const TextStyle(color: Colors.black),
+                              leading: CircleAvatar(
+                                child: CachedNetworkImage(
+                                  width: 40,
+                                  height: 40,
+                                  placeholder: (_, __) => const Center(
+                                    child: PokeLoading(),
+                                  ),
+                                  imageUrl: option.img,
+                                ),
                               ),
+                              title: Text(option.name),
                             ),
                           );
                         },
