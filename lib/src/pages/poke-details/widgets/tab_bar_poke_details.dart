@@ -25,29 +25,26 @@ class TabBarPokeDetails extends StatelessWidget {
           pokeHomeController.pokeList[pokeDetailsController.index];
 
       return Scaffold(
-        appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(125),
-          child: AppBar(
-            elevation: 0,
-            automaticallyImplyLeading: false,
-            bottom: TabBar(
-              indicatorColor: AppConstants().getColorType(pokemon.type.en[0]),
-              indicatorSize: TabBarIndicatorSize.tab,
-              indicatorPadding: const EdgeInsets.all(5),
-              isScrollable: true,
-              physics: const BouncingScrollPhysics(),
-              onTap: (_) {},
-              enableFeedback: true,
-              controller: pokeDetailsController.tabController,
-              tabs: [
-                Tab(text: 'pokeDetailsAbout'.tr),
-                Tab(text: 'pokeDetailsEvolution'.tr),
-                Tab(text: 'pokeDetailsStatus'.tr),
-                Tab(text: 'pokeDetailsMoveset'.tr),
-                Tab(text: 'pokeDetailsTypes'.tr),
-                Tab(text: 'pokeDetailsToCompare'.tr),
-              ],
-            ),
+        appBar: AppBar(
+          elevation: 0,
+          automaticallyImplyLeading: false,
+          bottom: TabBar(
+            indicatorColor: AppConstants().getColorType(pokemon.type.en[0]),
+            indicatorSize: TabBarIndicatorSize.tab,
+            indicatorPadding: const EdgeInsets.all(5),
+            isScrollable: true,
+            physics: const BouncingScrollPhysics(),
+            onTap: (_) {},
+            enableFeedback: true,
+            controller: pokeDetailsController.tabController,
+            tabs: [
+              Tab(text: 'pokeDetailsAbout'.tr),
+              Tab(text: 'pokeDetailsEvolution'.tr),
+              Tab(text: 'pokeDetailsStatus'.tr),
+              Tab(text: 'pokeDetailsMoveset'.tr),
+              Tab(text: 'pokeDetailsTypes'.tr),
+              Tab(text: 'pokeDetailsToCompare'.tr),
+            ],
           ),
         ),
         body: TabBarView(

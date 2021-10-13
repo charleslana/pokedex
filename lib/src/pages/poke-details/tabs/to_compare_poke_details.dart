@@ -35,6 +35,7 @@ class ToComparePokeDetails extends StatelessWidget {
             ),
             Autocomplete<Pokemon>(
               optionsBuilder: (TextEditingValue textEditingValue) {
+                pokeDetailsController.sheetController.expand();
                 pokeDetailsController.notFoundPokemon.value = false;
                 pokeDetailsController.isSelected.value = true;
 

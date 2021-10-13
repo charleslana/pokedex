@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:pokedex/src/controllers/db_controller.dart';
 import 'package:pokedex/src/controllers/poke_home_controller.dart';
 import 'package:pokedex/src/models/poke_model.dart';
+import 'package:sliding_sheet/sliding_sheet.dart';
 
 class PokeDetailsController extends GetxController
     with SingleGetTickerProviderMixin {
@@ -13,6 +14,7 @@ class PokeDetailsController extends GetxController
   RxDouble progress = 0.0.obs;
   RxDouble opacity = 1.0.obs;
   RxDouble opacityAppBarTitle = 0.0.obs;
+  SheetController sheetController = SheetController();
   late TabController tabController;
   final DBController dbController = Get.put(DBController());
   RxBool isFavorite = false.obs;

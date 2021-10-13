@@ -176,7 +176,10 @@ class AppBarHome extends StatelessWidget {
                                               imageUrl: option.img,
                                             ),
                                           ),
-                                          title: Text(option.name),
+                                          title: FittedBox(
+                                            fit: BoxFit.fitWidth,
+                                            child: Text(option.name),
+                                          ),
                                         ),
                                       );
                                     },
