@@ -16,6 +16,7 @@ class PokeHomeController extends GetxController {
   RxBool isSearch = true.obs;
   RxBool isAlphaASC = false.obs;
   RxBool isNumberASC = true.obs;
+  RxInt counter = 0.obs;
 
   @override
   void onInit() {
@@ -50,6 +51,7 @@ class PokeHomeController extends GetxController {
   }
 
   void sortByAlpha() {
+    counter++;
     filterPokeList.sort((Pokemon a, Pokemon b) =>
         a.name.toLowerCase().compareTo(b.name.toLowerCase()));
 
@@ -65,6 +67,7 @@ class PokeHomeController extends GetxController {
   }
 
   void sortByNumber() {
+    counter++;
     filterPokeList.sort((Pokemon a, Pokemon b) =>
         a.num.toLowerCase().compareTo(b.num.toLowerCase()));
 
@@ -80,6 +83,7 @@ class PokeHomeController extends GetxController {
   }
 
   void filterPokemon(Pokemon pokemon) {
+    counter++;
     filterPokeList
       ..clear()
       ..add(pokemon);
@@ -87,6 +91,7 @@ class PokeHomeController extends GetxController {
   }
 
   void changeFilter(int index, String filter) {
+    counter++;
     selectedIndex.value = index;
     isSearch.value = true;
 

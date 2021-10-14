@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
+import 'package:pokedex/src/components/poke_card.dart';
 import 'package:pokedex/src/models/poke_model.dart';
-import 'package:pokedex/src/pages/home/widgets/poke_card.dart';
 import 'package:pokedex/src/routes/app_route_generator.dart';
 
 class PokeGridView extends StatelessWidget {
@@ -16,6 +16,7 @@ class PokeGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimationLimiter(
+      key: key,
       child: GridView.builder(
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.all(12),

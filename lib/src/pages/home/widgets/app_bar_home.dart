@@ -122,6 +122,7 @@ class AppBarHome extends StatelessWidget {
                                           ..addAll(pokeHomeController.pokeList);
                                         pokeHomeController.selectedIndex.value =
                                             0;
+                                        pokeHomeController.counter.value++;
                                       }
                                       fieldTextEditingController.clear();
                                       pokeHomeController.isSearch.value = true;

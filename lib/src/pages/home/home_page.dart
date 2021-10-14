@@ -58,7 +58,11 @@ class HomePage extends StatelessWidget {
                                 ? Center(
                                     child:
                                         Text('pokeHomeSearchNoPokemonFound'.tr))
-                                : PokeGridView(pokeList: pokeList);
+                                : PokeGridView(
+                                    pokeList: pokeList,
+                                    key: ValueKey(
+                                        pokeHomeController.counter.value),
+                                  );
                       },
                     ),
                   ),
