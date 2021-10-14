@@ -86,72 +86,71 @@ class PokeDetailsController extends GetxController
   }
 
   void toComparePokemon(Pokemon pokemon) {
-    if (pokemon.id == targetPokemon.value.id) {
-      chancePokemon.value = 50;
-      chanceTargetPokemon.value = 50;
-    } else {
-      const double maxScore = 3;
-      double scorePokemon = 3;
-      double scoreTargetPokemon = 3;
+    final int pokemonType = pokemon.type.en.length;
+    final int targetPokemonType = targetPokemon.value.type.en.length;
 
-      if (pokemon.maxCp > targetPokemon.value.maxCp) {
-        scoreTargetPokemon--;
-      } else if (pokemon.maxCp < targetPokemon.value.maxCp) {
-        scorePokemon--;
-      }
+    final List<dynamic> pokemonResistant = pokemon.resistant.en
+        .where((String element) =>
+            element == targetPokemon.value.type.en[0] ||
+            targetPokemon.value.type.en.length > 1 &&
+                element == targetPokemon.value.type.en[1])
+        .toList();
 
-      final List<dynamic> pokemonResistant = pokemon.resistant.en
-          .where((String element) =>
-              element == targetPokemon.value.type.en[0] ||
-              targetPokemon.value.type.en.length > 1 &&
-                  element == targetPokemon.value.type.en[1])
-          .toList();
+    final List<dynamic> targetPokemonResistant = targetPokemon
+        .value.resistant.en
+        .where((String element) =>
+            element == pokemon.type.en[0] ||
+            pokemon.type.en.length > 1 && element == pokemon.type.en[1])
+        .toList();
 
-      if (pokemonResistant.isNotEmpty) {
-        scoreTargetPokemon--;
-      }
+    final List<dynamic> pokemonWeaknesses = pokemon.weaknesses.en
+        .where((String element) =>
+            element == targetPokemon.value.type.en[0] ||
+            targetPokemon.value.type.en.length > 1 &&
+                element == targetPokemon.value.type.en[1])
+        .toList();
 
-      final List<dynamic> targetPokemonResistant = targetPokemon
-          .value.resistant.en
-          .where((String element) =>
-              element == pokemon.type.en[0] ||
-              pokemon.type.en.length > 1 && element == pokemon.type.en[1])
-          .toList();
+    final List<dynamic> targetPokemonWeaknesses = targetPokemon
+        .value.weaknesses.en
+        .where((String element) =>
+            element == pokemon.type.en[0] ||
+            pokemon.type.en.length > 1 && element == pokemon.type.en[1])
+        .toList();
 
-      if (targetPokemonResistant.isNotEmpty) {
-        scorePokemon--;
-      }
+    final int pokemonComum =
+        pokemonType - pokemonResistant.length - pokemonWeaknesses.length;
 
-      final List<dynamic> pokemonWeaknesses = pokemon.weaknesses.en
-          .where((String element) =>
-              element == targetPokemon.value.type.en[0] ||
-              targetPokemon.value.type.en.length > 1 &&
-                  element == targetPokemon.value.type.en[1])
-          .toList();
+    final int targetPokemonComum = targetPokemonType -
+        targetPokemonResistant.length -
+        targetPokemonWeaknesses.length;
 
-      if (pokemonWeaknesses.isNotEmpty) {
-        scorePokemon--;
-      }
+    final double pokemonVulnerability =
+        pokemonWeaknesses.length.toDouble() * 2 +
+            pokemonComum +
+            pokemonResistant.length * 0.5;
 
-      final List<dynamic> targetPokemonWeaknesses = targetPokemon
-          .value.weaknesses.en
-          .where((String element) =>
-              element == pokemon.type.en[0] ||
-              pokemon.type.en.length > 1 && element == pokemon.type.en[1])
-          .toList();
+    final double targetPokemonVulnerability =
+        targetPokemonWeaknesses.length.toDouble() * 2 +
+            targetPokemonComum +
+            targetPokemonResistant.length * 0.5;
 
-      if (targetPokemonWeaknesses.isNotEmpty) {
-        scoreTargetPokemon--;
-      }
+    final double pokemonEffectiveValue = pokemon.maxCp.toDouble() *
+        pokemon.maxCp.toDouble() /
+        pokemonVulnerability;
 
-      if (scorePokemon == scoreTargetPokemon) {
-        chancePokemon.value = 50;
-        chanceTargetPokemon.value = 50;
-      } else {
-        chancePokemon.value = scorePokemon * 100 / maxScore;
-        chanceTargetPokemon.value = scoreTargetPokemon * 100 / maxScore;
-      }
-    }
+    final double targetPokemonEffectiveValue =
+        targetPokemon.value.maxCp.toDouble() *
+            targetPokemon.value.maxCp.toDouble() /
+            targetPokemonVulnerability;
+
+    chancePokemon.value = pokemonEffectiveValue /
+        (pokemonEffectiveValue + targetPokemonEffectiveValue) *
+        100;
+
+    chanceTargetPokemon.value = targetPokemonEffectiveValue /
+        (targetPokemonEffectiveValue + pokemonEffectiveValue) *
+        100;
+
     isVisible.value = true;
   }
 }
