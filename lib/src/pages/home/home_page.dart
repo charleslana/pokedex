@@ -14,7 +14,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
     final double statusBarHeight = MediaQuery.of(context).padding.top;
     final PokeHomeController pokeHomeController = Get.put(PokeHomeController());
     final ThemeController themeController = Get.put(ThemeController());
@@ -28,7 +27,7 @@ class HomePage extends StatelessWidget {
             children: [
               Positioned(
                 top: statusBarHeight - 240 / 4.7,
-                left: screenWidth - 240 / 1.7,
+                right: -80,
                 child: Opacity(
                   opacity: 0.1,
                   child: Obx(() {

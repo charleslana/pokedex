@@ -37,7 +37,7 @@ class AppBarHome extends StatelessWidget {
                       children: [
                         Positioned(
                           top: MediaQuery.of(context).padding.top + 50,
-                          left: Get.width - 175,
+                          right: 16,
                           child: SizedBox(
                             width: 50,
                             height: 50,
@@ -45,7 +45,6 @@ class AppBarHome extends StatelessWidget {
                               onPressed: () =>
                                   Get.toNamed<dynamic>(AppRoutes.menu),
                               icon: const Icon(Icons.menu),
-                              iconSize: 20,
                             ),
                           ),
                         ),
