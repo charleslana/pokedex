@@ -53,11 +53,11 @@ class DBController extends GetxController {
         'favoritesSnackBarTitle'.tr,
         'favoritesSnackBarAdd'.tr,
         backgroundColor: ThemeService().theme == ThemeMode.dark
-            ? Colors.black54
-            : Colors.white,
-        colorText: ThemeService().theme == ThemeMode.dark
             ? Colors.white
             : Colors.black,
+        colorText: ThemeService().theme == ThemeMode.dark
+            ? Colors.black
+            : Colors.white,
         snackPosition: SnackPosition.BOTTOM,
       );
     } else {
@@ -67,11 +67,11 @@ class DBController extends GetxController {
         'favoritesSnackBarTitle'.tr,
         'favoritesSnackBarRemove'.tr,
         backgroundColor: ThemeService().theme == ThemeMode.dark
-            ? Colors.black54
-            : Colors.white,
-        colorText: ThemeService().theme == ThemeMode.dark
             ? Colors.white
             : Colors.black,
+        colorText: ThemeService().theme == ThemeMode.dark
+            ? Colors.black
+            : Colors.white,
         snackPosition: SnackPosition.BOTTOM,
       );
     }

@@ -64,7 +64,7 @@ final Map<String, String> enUS = {
   'pokeDetailsToCompareChanceOfVictory': 'Chance of victory',
   'favoritesTitle': 'Favorites',
   'favoritesNoPokemon': 'No Pokémon added to favorites list.',
-  'favoritesSnackBarTitle': 'Notification',
+  'favoritesSnackBarTitle': 'Favorite',
   'favoritesSnackBarAdd': 'Pokémon added as a favorite.',
   'favoritesSnackBarRemove': 'Pokémon removed from favorite.',
 };
@@ -128,7 +128,7 @@ final Map<String, String> ptBR = {
   'pokeDetailsToCompareChanceOfVictory': 'Chance de vitória',
   'favoritesTitle': 'Favoritos',
   'favoritesNoPokemon': 'Nenhum Pokémon adicionado à lista de favoritos.',
-  'favoritesSnackBarTitle': 'Notificação',
+  'favoritesSnackBarTitle': 'Favorito',
   'favoritesSnackBarAdd': 'Pokémon adicionado como favorito.',
   'favoritesSnackBarRemove': 'Pokémon removido do favorito.',
 };
