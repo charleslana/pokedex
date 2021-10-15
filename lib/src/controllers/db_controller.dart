@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pokedex/src/controllers/poke_home_controller.dart';
 import 'package:pokedex/src/models/poke_model.dart';
 import 'package:pokedex/src/services/db_service.dart';
+import 'package:pokedex/src/services/theme_service.dart';
 
 class DBController extends GetxController {
   final PokeHomeController pokeHomeController = Get.put(PokeHomeController());
@@ -48,12 +50,30 @@ class DBController extends GetxController {
           .toList());
 
       Get.snackbar<dynamic>(
-          'favoritesSnackBarTitle'.tr, 'favoritesSnackBarAdd'.tr);
+        'favoritesSnackBarTitle'.tr,
+        'favoritesSnackBarAdd'.tr,
+        backgroundColor: ThemeService().theme == ThemeMode.dark
+            ? Colors.black
+            : Colors.white,
+        colorText: ThemeService().theme == ThemeMode.dark
+            ? Colors.white
+            : Colors.black,
+        snackPosition: SnackPosition.BOTTOM,
+      );
     } else {
       await removeFavorite(pokemonId);
 
       Get.snackbar<dynamic>(
-          'favoritesSnackBarTitle'.tr, 'favoritesSnackBarRemove'.tr);
+        'favoritesSnackBarTitle'.tr,
+        'favoritesSnackBarRemove'.tr,
+        backgroundColor: ThemeService().theme == ThemeMode.dark
+            ? Colors.black
+            : Colors.white,
+        colorText: ThemeService().theme == ThemeMode.dark
+            ? Colors.white
+            : Colors.black,
+        snackPosition: SnackPosition.BOTTOM,
+      );
     }
   }
 

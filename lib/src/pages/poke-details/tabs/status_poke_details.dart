@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 import 'package:pokedex/src/controllers/poke_details_controller.dart';
 import 'package:pokedex/src/controllers/poke_home_controller.dart';
 import 'package:pokedex/src/models/poke_model.dart';
@@ -35,23 +36,14 @@ class StatusPokeDetails extends StatelessWidget {
                 ),
               ],
             ),
-            Container(
-              height: 4,
-              alignment: Alignment.centerLeft,
-              decoration: const ShapeDecoration(
-                shape: StadiumBorder(),
-                color: Colors.grey,
-              ),
-              child: FractionallySizedBox(
-                widthFactor: pokemon.atk / maxStatusBar,
-                heightFactor: 1,
-                child: Container(
-                  decoration: ShapeDecoration(
-                    shape: const StadiumBorder(),
-                    color: Colors.red[400],
-                  ),
-                ),
-              ),
+            LinearPercentIndicator(
+              animation: true,
+              animationDuration: 700,
+              lineHeight: 6,
+              percent: pokemon.atk / maxStatusBar,
+              linearStrokeCap: LinearStrokeCap.butt,
+              progressColor: Colors.blueAccent,
+              backgroundColor: Colors.grey,
             ),
             const SizedBox(height: 20),
             Row(
@@ -66,23 +58,14 @@ class StatusPokeDetails extends StatelessWidget {
                 ),
               ],
             ),
-            Container(
-              height: 4,
-              alignment: Alignment.centerLeft,
-              decoration: const ShapeDecoration(
-                shape: StadiumBorder(),
-                color: Colors.grey,
-              ),
-              child: FractionallySizedBox(
-                widthFactor: pokemon.def / maxStatusBar,
-                heightFactor: 1,
-                child: Container(
-                  decoration: ShapeDecoration(
-                    shape: const StadiumBorder(),
-                    color: Colors.green[400],
-                  ),
-                ),
-              ),
+            LinearPercentIndicator(
+              animation: true,
+              animationDuration: 700,
+              lineHeight: 6,
+              percent: pokemon.def / maxStatusBar,
+              linearStrokeCap: LinearStrokeCap.butt,
+              progressColor: Colors.blueAccent,
+              backgroundColor: Colors.grey,
             ),
             const SizedBox(height: 20),
             Row(
@@ -97,23 +80,14 @@ class StatusPokeDetails extends StatelessWidget {
                 ),
               ],
             ),
-            Container(
-              height: 4,
-              alignment: Alignment.centerLeft,
-              decoration: const ShapeDecoration(
-                shape: StadiumBorder(),
-                color: Colors.grey,
-              ),
-              child: FractionallySizedBox(
-                widthFactor: pokemon.sta / maxStatusBar,
-                heightFactor: 1,
-                child: Container(
-                  decoration: ShapeDecoration(
-                    shape: const StadiumBorder(),
-                    color: Colors.blue[400],
-                  ),
-                ),
-              ),
+            LinearPercentIndicator(
+              animation: true,
+              animationDuration: 700,
+              lineHeight: 6,
+              percent: pokemon.sta / maxStatusBar,
+              linearStrokeCap: LinearStrokeCap.butt,
+              progressColor: Colors.blueAccent,
+              backgroundColor: Colors.grey,
             ),
             const SizedBox(
               height: 10,

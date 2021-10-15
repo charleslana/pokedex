@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 import 'package:pokedex/src/components/poke_animated.dart';
 import 'package:pokedex/src/components/poke_loading.dart';
 import 'package:pokedex/src/constants/app_constants.dart';
@@ -188,30 +189,6 @@ class ToComparePokeDetails extends StatelessWidget {
                       ),
                       Column(
                         children: [
-                          Text(
-                            '${pokeDetailsController.chancePokemon.toStringAsFixed(0)}%',
-                            style: const TextStyle(fontSize: 30),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            'pokeDetailsToCompareChanceOfVictory'.tr,
-                            style: const TextStyle(fontSize: 12),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Column(
-                        children: [
                           Stack(
                             children: [
                               if (ThemeService().theme == ThemeMode.light)
@@ -246,6 +223,51 @@ class ToComparePokeDetails extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(15),
+                        child: LinearPercentIndicator(
+                          width: Get.width * 0.50,
+                          animation: true,
+                          animationDuration: 700,
+                          lineHeight: 10,
+                          percent: pokeDetailsController.chancePokemon / 100,
+                          linearStrokeCap: LinearStrokeCap.roundAll,
+                          progressColor: Colors.blueAccent,
+                          backgroundColor: Colors.redAccent,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            '${pokeDetailsController.chancePokemon.toStringAsFixed(0)}%',
+                            style: const TextStyle(fontSize: 30),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'pokeDetailsToCompareChanceOfVictory'.tr,
+                            style: const TextStyle(fontSize: 12),
                           ),
                         ],
                       ),
