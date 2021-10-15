@@ -53,7 +53,7 @@ class DBController extends GetxController {
         'favoritesSnackBarTitle'.tr,
         'favoritesSnackBarAdd'.tr,
         backgroundColor: ThemeService().theme == ThemeMode.dark
-            ? Colors.black
+            ? Colors.black54
             : Colors.white,
         colorText: ThemeService().theme == ThemeMode.dark
             ? Colors.white
@@ -67,7 +67,7 @@ class DBController extends GetxController {
         'favoritesSnackBarTitle'.tr,
         'favoritesSnackBarRemove'.tr,
         backgroundColor: ThemeService().theme == ThemeMode.dark
-            ? Colors.black
+            ? Colors.black54
             : Colors.white,
         colorText: ThemeService().theme == ThemeMode.dark
             ? Colors.white
