@@ -59,6 +59,7 @@ class DBController extends GetxController {
             ? Colors.black
             : Colors.white,
         snackPosition: SnackPosition.BOTTOM,
+        borderRadius: 0,
       );
     } else {
       await removeFavorite(pokemonId);
@@ -73,6 +74,7 @@ class DBController extends GetxController {
             ? Colors.black
             : Colors.white,
         snackPosition: SnackPosition.BOTTOM,
+        borderRadius: 0,
       );
     }
   }
