@@ -60,7 +60,7 @@ final ThemeData light = ThemeData(
     ),
     trackColor: MaterialStateProperty.all(Colors.black54),
   ),
-  primaryColor: Colors.grey,
+  primaryColor: Colors.white,
   primaryColorLight: Colors.grey[600],
 );
 

@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:pokedex/src/controllers/db_controller.dart';
 import 'package:pokedex/src/controllers/poke_home_controller.dart';
+import 'package:pokedex/src/models/best_poke_model.dart';
 import 'package:pokedex/src/models/poke_model.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
@@ -26,6 +27,7 @@ class PokeDetailsController extends GetxController
   RxBool isVisible = false.obs;
   RxDouble chancePokemon = 0.0.obs;
   RxDouble chanceTargetPokemon = 0.0.obs;
+  RxList<BestPokeModel> bestPokeList = <BestPokeModel>[].obs;
 
   @override
   void onInit() {
@@ -85,72 +87,79 @@ class PokeDetailsController extends GetxController
     isFavorite.value = !isFavorite.value;
   }
 
-  void toComparePokemon(Pokemon pokemon) {
-    final int pokemonType = pokemon.type.en.length;
-    final int targetPokemonType = targetPokemon.value.type.en.length;
+  double comparePokemon(Pokemon pokemon, Pokemon target) {
+    final int targePokemonType = target.type.en.length;
 
     final List<dynamic> pokemonResistant = pokemon.resistant.en
         .where((String element) =>
-            element == targetPokemon.value.type.en[0] ||
-            targetPokemon.value.type.en.length > 1 &&
-                element == targetPokemon.value.type.en[1])
-        .toList();
-
-    final List<dynamic> targetPokemonResistant = targetPokemon
-        .value.resistant.en
-        .where((String element) =>
-            element == pokemon.type.en[0] ||
-            pokemon.type.en.length > 1 && element == pokemon.type.en[1])
+            element == target.type.en[0] ||
+            target.type.en.length > 1 && element == target.type.en[1])
         .toList();
 
     final List<dynamic> pokemonWeaknesses = pokemon.weaknesses.en
         .where((String element) =>
-            element == targetPokemon.value.type.en[0] ||
-            targetPokemon.value.type.en.length > 1 &&
-                element == targetPokemon.value.type.en[1])
-        .toList();
-
-    final List<dynamic> targetPokemonWeaknesses = targetPokemon
-        .value.weaknesses.en
-        .where((String element) =>
-            element == pokemon.type.en[0] ||
-            pokemon.type.en.length > 1 && element == pokemon.type.en[1])
+            element == target.type.en[0] ||
+            target.type.en.length > 1 && element == target.type.en[1])
         .toList();
 
     final int pokemonComum =
-        pokemonType - pokemonResistant.length - pokemonWeaknesses.length;
-
-    final int targetPokemonComum = targetPokemonType -
-        targetPokemonResistant.length -
-        targetPokemonWeaknesses.length;
+        targePokemonType - pokemonResistant.length - pokemonWeaknesses.length;
 
     final double pokemonVulnerability =
         pokemonWeaknesses.length.toDouble() * 2 +
             pokemonComum +
             pokemonResistant.length * 0.5;
 
-    final double targetPokemonVulnerability =
-        targetPokemonWeaknesses.length.toDouble() * 2 +
-            targetPokemonComum +
-            targetPokemonResistant.length * 0.5;
-
     final double pokemonEffectiveValue = pokemon.maxCp.toDouble() *
         pokemon.maxCp.toDouble() /
         pokemonVulnerability;
 
-    final double targetPokemonEffectiveValue =
-        targetPokemon.value.maxCp.toDouble() *
-            targetPokemon.value.maxCp.toDouble() /
-            targetPokemonVulnerability;
+    return pokemonEffectiveValue;
+  }
 
-    chancePokemon.value = pokemonEffectiveValue /
+  void toComparePokemon(Pokemon pokemon, Pokemon target) {
+    final double pokemonEffectiveValue = comparePokemon(pokemon, target);
+    final double targetPokemonEffectiveValue = comparePokemon(target, pokemon);
+
+    chancePokemon.value = chanceComparePokemon(
+        pokemonEffectiveValue, targetPokemonEffectiveValue);
+
+    chanceTargetPokemon.value = chanceComparePokemon(
+        targetPokemonEffectiveValue, pokemonEffectiveValue);
+
+    targetPokemon.value = target;
+    isVisible.value = true;
+  }
+
+  double chanceComparePokemon(
+      double pokemonEffectiveValue, double targetPokemonEffectiveValue) {
+    return pokemonEffectiveValue /
         (pokemonEffectiveValue + targetPokemonEffectiveValue) *
         100;
+  }
 
-    chanceTargetPokemon.value = targetPokemonEffectiveValue /
-        (targetPokemonEffectiveValue + pokemonEffectiveValue) *
-        100;
+  void toComparePokemonAll(Pokemon pokemon, List<Pokemon> pokeList) {
+    final List<BestPokeModel> reversedList = [];
+    bestPokeList.clear();
 
-    isVisible.value = true;
+    for (final poke in pokeList) {
+      if (poke != targetPokemon.value) {
+        final double pokemonEffectiveValue = comparePokemon(pokemon, poke);
+        final double targetPokemonEffectiveValue =
+            comparePokemon(poke, pokemon);
+
+        reversedList.add(BestPokeModel(
+          poke.name,
+          poke.img,
+          chanceComparePokemon(
+              pokemonEffectiveValue, targetPokemonEffectiveValue),
+        ));
+      }
+    }
+
+    reversedList.sort((BestPokeModel a, BestPokeModel b) =>
+        a.percentage.compareTo(b.percentage));
+
+    bestPokeList.value = reversedList.reversed.toList();
   }
 }

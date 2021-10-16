@@ -93,9 +93,7 @@ class ToComparePokeDetails extends StatelessWidget {
               },
               onSelected: (Pokemon selected) {
                 FocusManager.instance.primaryFocus?.unfocus();
-                pokeDetailsController
-                  ..targetPokemon.value = selected
-                  ..toComparePokemon(pokemon);
+                pokeDetailsController.toComparePokemon(pokemon, selected);
                 pokeDetailsController.isSelected.value = false;
               },
               optionsViewBuilder: (_,
@@ -287,6 +285,116 @@ class ToComparePokeDetails extends StatelessWidget {
                         ],
                       ),
                     ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  OutlinedButton(
+                    onPressed: () {
+                      pokeDetailsController.toComparePokemonAll(
+                          pokemon, pokeHomeController.pokeList);
+                      Get.bottomSheet<dynamic>(
+                        Container(
+                          color: Theme.of(context).primaryColor,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 30, vertical: 15),
+                            child: SingleChildScrollView(
+                              physics: const BouncingScrollPhysics(),
+                              child: Column(
+                                children: pokeDetailsController.bestPokeList
+                                    .map((poke) {
+                                  return IntrinsicHeight(
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                          flex: 2,
+                                          child: Column(
+                                            children: [
+                                              CircleAvatar(
+                                                child: CachedNetworkImage(
+                                                  placeholder: (_, __) =>
+                                                      const Center(
+                                                    child: PokeLoading(),
+                                                  ),
+                                                  imageUrl: pokemon.img,
+                                                  width: 40,
+                                                  height: 40,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 40,
+                                                child: Text(
+                                                  pokemon.name,
+                                                  style: const TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Text(
+                                            '${poke.percentage.toStringAsFixed(0)}%',
+                                            style:
+                                                const TextStyle(fontSize: 20),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                        const Expanded(
+                                          child: VerticalDivider(),
+                                        ),
+                                        Expanded(
+                                          child: Text(
+                                            '${(100 - poke.percentage).toStringAsFixed(0)}%',
+                                            style:
+                                                const TextStyle(fontSize: 20),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                        Expanded(
+                                          flex: 2,
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              CircleAvatar(
+                                                child: CachedNetworkImage(
+                                                  placeholder: (_, __) =>
+                                                      const Center(
+                                                    child: PokeLoading(),
+                                                  ),
+                                                  imageUrl: poke.imageTarget,
+                                                  width: 40,
+                                                  height: 40,
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 40,
+                                                child: Text(
+                                                  poke.nameTarget,
+                                                  style: const TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                }).toList(),
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    child: Text('pokeDetailsToCompareListTargets'.tr),
                   ),
                 ],
               ),
