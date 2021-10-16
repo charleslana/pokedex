@@ -91,11 +91,14 @@ class PokeCard extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    PokeListTypes(
-                        types: 'languageCode'.tr == 'en'
-                            ? pokeType.en
-                            : pokeType.ptBr),
-                    Expanded(
+                    Flexible(
+                      child: PokeListTypes(
+                          types: 'languageCode'.tr == 'en'
+                              ? pokeType.en
+                              : pokeType.ptBr),
+                    ),
+                    Flexible(
+                      flex: 2,
                       child: Stack(
                         children: [
                           Opacity(

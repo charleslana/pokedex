@@ -30,10 +30,8 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/pokeball_white.png
-    - assets/images/pokeball_dark.png
-    - assets/images/pokeball_loading.png
-    - assets/images/pokemax.png
+    - assets/images/
+    - assets/images/types/
 
   fonts:
     - family: ProductSans

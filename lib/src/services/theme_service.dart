@@ -60,8 +60,8 @@ final ThemeData light = ThemeData(
     ),
     trackColor: MaterialStateProperty.all(Colors.black54),
   ),
-  primaryColor: Colors.white,
-  primaryColorLight: Colors.white,
+  primaryColor: Colors.grey,
+  primaryColorLight: Colors.grey[600],
 );
 
 final ThemeData dark = ThemeData(

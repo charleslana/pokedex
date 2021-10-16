@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pokedex/src/components/poke_loading.dart';
+import 'package:pokedex/src/constants/app_constants.dart';
 import 'package:pokedex/src/controllers/poke_home_controller.dart';
 import 'package:pokedex/src/models/poke_model.dart';
 import 'package:pokedex/src/routes/app_route_generator.dart';
@@ -206,7 +207,7 @@ class AppBarHome extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: Get.width * 0.90,
+              width: Get.width * 0.92,
               height: 50,
               child: Row(
                 children: [
@@ -257,6 +258,12 @@ class AppBarHome extends StatelessWidget {
     for (int index = 0; index < _options.length; index++) {
       final ChoiceChip choiceChip = ChoiceChip(
           selected: pokeHomeController.selectedIndex.value == index,
+          avatar: _options[index] != 'pokeHomeFilterAll'.tr
+              ? CircleAvatar(
+                  child:
+                      Image.asset(AppConstants().getImageType(_options[index])),
+                )
+              : null,
           label: Text(
             _options[index],
             style: const TextStyle(color: Colors.white),

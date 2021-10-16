@@ -50,4 +50,81 @@ class AppConstants {
         return Colors.grey;
     }
   }
+
+  String getImageType(String type) {
+    switch (type) {
+      case 'Normal':
+        return 'assets/images/types/normal.png';
+      case 'Fire':
+        return 'assets/images/types/fire.png';
+      case 'Fogo':
+        return 'assets/images/types/fire.png';
+      case 'Water':
+        return 'assets/images/types/water.png';
+      case 'Água':
+        return 'assets/images/types/water.png';
+      case 'Grass':
+        return 'assets/images/types/grass.png';
+      case 'Planta':
+        return 'assets/images/types/grass.png';
+      case 'Electric':
+        return 'assets/images/types/electric.png';
+      case 'Elétrico':
+        return 'assets/images/types/electric.png';
+      case 'Ice':
+        return 'assets/images/types/ice.png';
+      case 'Gelo':
+        return 'assets/images/types/ice.png';
+      case 'Fighting':
+        return 'assets/images/types/fighting.png';
+      case 'Lutador':
+        return 'assets/images/types/fighting.png';
+      case 'Poison':
+        return 'assets/images/types/poison.png';
+      case 'Veneno':
+        return 'assets/images/types/poison.png';
+      case 'Ground':
+        return 'assets/images/types/ground.png';
+      case 'Terrestre':
+        return 'assets/images/types/ground.png';
+      case 'Flying':
+        return 'assets/images/types/flying.png';
+      case 'Voador':
+        return 'assets/images/types/flying.png';
+      case 'Psychic':
+        return 'assets/images/types/psychic.png';
+      case 'Psíquico':
+        return 'assets/images/types/psychic.png';
+      case 'Bug':
+        return 'assets/images/types/bug.png';
+      case 'Inseto':
+        return 'assets/images/types/bug.png';
+      case 'Rock':
+        return 'assets/images/types/rock.png';
+      case 'Pedra':
+        return 'assets/images/types/rock.png';
+      case 'Ghost':
+        return 'assets/images/types/ghost.png';
+      case 'Fantasma':
+        return 'assets/images/types/ghost.png';
+      case 'Dark':
+        return 'assets/images/types/dark.png';
+      case 'Sombrio':
+        return 'assets/images/types/dark.png';
+      case 'Dragon':
+        return 'assets/images/types/dragon.png';
+      case 'Dragão':
+        return 'assets/images/types/dragon.png';
+      case 'Steel':
+        return 'assets/images/types/steel.png';
+      case 'Aço':
+        return 'assets/images/types/steel.png';
+      case 'Fairy':
+        return 'assets/images/types/fairy.png';
+      case 'Fada':
+        return 'assets/images/types/fairy.png';
+      default:
+        return 'assets/images/types/normal.png';
+    }
+  }
 }

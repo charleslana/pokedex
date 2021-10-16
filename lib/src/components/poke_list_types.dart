@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/src/constants/app_constants.dart';
 
 class PokeListTypes extends StatelessWidget {
   const PokeListTypes({
@@ -16,19 +17,30 @@ class PokeListTypes extends StatelessWidget {
       listWidgets.add(
         Column(
           children: [
-            Container(
-              padding: const EdgeInsets.all(0),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: const Color.fromARGB(80, 255, 255, 255)),
-              child: Padding(
-                padding: const EdgeInsets.all(6),
-                child: Text(
-                  name.trim(),
-                  style: const TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+            FittedBox(
+              fit: BoxFit.fitWidth,
+              child: Container(
+                padding: const EdgeInsets.all(0),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: const Color.fromARGB(80, 255, 255, 255)),
+                child: Padding(
+                  padding: const EdgeInsets.all(3),
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        AppConstants().getImageType(name),
+                        width: 20,
+                      ),
+                      Text(
+                        name.trim(),
+                        style: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
