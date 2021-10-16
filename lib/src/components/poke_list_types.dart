@@ -18,7 +18,7 @@ class PokeListTypes extends StatelessWidget {
         Column(
           children: [
             FittedBox(
-              fit: BoxFit.fitWidth,
+              fit: BoxFit.scaleDown,
               child: Container(
                 padding: const EdgeInsets.all(0),
                 decoration: BoxDecoration(

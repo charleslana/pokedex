@@ -178,7 +178,7 @@ class AppBarHome extends StatelessWidget {
                                             ),
                                           ),
                                           title: FittedBox(
-                                            fit: BoxFit.fitWidth,
+                                            fit: BoxFit.scaleDown,
                                             child: Text(option.name),
                                           ),
                                         ),

@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -308,7 +306,7 @@ class ToComparePokeDetails extends StatelessWidget {
                                     child: Row(
                                       children: [
                                         Expanded(
-                                          flex: 2,
+                                          flex: 3,
                                           child: Column(
                                             children: [
                                               CircleAvatar(
@@ -323,12 +321,16 @@ class ToComparePokeDetails extends StatelessWidget {
                                                 ),
                                               ),
                                               SizedBox(
-                                                height: 40,
-                                                child: Text(
-                                                  pokemon.name,
-                                                  style: const TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.bold,
+                                                height: 25,
+                                                child: FittedBox(
+                                                  fit: BoxFit.scaleDown,
+                                                  child: Text(
+                                                    pokemon.name,
+                                                    style: const TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
                                                   ),
                                                 ),
                                               ),
@@ -336,26 +338,34 @@ class ToComparePokeDetails extends StatelessWidget {
                                           ),
                                         ),
                                         Expanded(
-                                          child: Text(
-                                            '${poke.percentage.toStringAsFixed(0)}%',
-                                            style:
-                                                const TextStyle(fontSize: 20),
-                                            textAlign: TextAlign.center,
+                                          flex: 2,
+                                          child: FittedBox(
+                                            fit: BoxFit.scaleDown,
+                                            child: Text(
+                                              '${poke.percentage.toStringAsFixed(0)}%',
+                                              style:
+                                                  const TextStyle(fontSize: 20),
+                                              textAlign: TextAlign.center,
+                                            ),
                                           ),
                                         ),
                                         const Expanded(
                                           child: VerticalDivider(),
                                         ),
                                         Expanded(
-                                          child: Text(
-                                            '${(100 - poke.percentage).toStringAsFixed(0)}%',
-                                            style:
-                                                const TextStyle(fontSize: 20),
-                                            textAlign: TextAlign.center,
+                                          flex: 2,
+                                          child: FittedBox(
+                                            fit: BoxFit.scaleDown,
+                                            child: Text(
+                                              '${(100 - poke.percentage).toStringAsFixed(0)}%',
+                                              style:
+                                                  const TextStyle(fontSize: 20),
+                                              textAlign: TextAlign.center,
+                                            ),
                                           ),
                                         ),
                                         Expanded(
-                                          flex: 2,
+                                          flex: 3,
                                           child: Column(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
@@ -372,12 +382,16 @@ class ToComparePokeDetails extends StatelessWidget {
                                                 ),
                                               ),
                                               SizedBox(
-                                                height: 40,
-                                                child: Text(
-                                                  poke.nameTarget,
-                                                  style: const TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.bold,
+                                                height: 25,
+                                                child: FittedBox(
+                                                  fit: BoxFit.scaleDown,
+                                                  child: Text(
+                                                    poke.nameTarget,
+                                                    style: const TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
                                                   ),
                                                 ),
                                               ),

@@ -60,7 +60,7 @@ class PokeCard extends StatelessWidget {
                     Expanded(
                       flex: 2,
                       child: FittedBox(
-                        fit: BoxFit.fitHeight,
+                        fit: BoxFit.scaleDown,
                         alignment: Alignment.topLeft,
                         child: Text(
                           name,
