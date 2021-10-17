@@ -300,7 +300,7 @@ class ToComparePokeDetails extends StatelessWidget {
                             child: SingleChildScrollView(
                               physics: const BouncingScrollPhysics(),
                               child: Column(
-                                children: pokeDetailsController.bestPokeList
+                                children: pokeDetailsController.toCompareList
                                     .map((poke) {
                                   return IntrinsicHeight(
                                     child: Row(

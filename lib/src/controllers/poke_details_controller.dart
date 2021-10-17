@@ -27,7 +27,7 @@ class PokeDetailsController extends GetxController
   RxBool isVisible = false.obs;
   RxDouble chancePokemon = 0.0.obs;
   RxDouble chanceTargetPokemon = 0.0.obs;
-  RxList<BestPokeModel> bestPokeList = <BestPokeModel>[].obs;
+  RxList<BestPokeModel> toCompareList = <BestPokeModel>[].obs;
 
   @override
   void onInit() {
@@ -140,7 +140,7 @@ class PokeDetailsController extends GetxController
 
   void toComparePokemonAll(Pokemon pokemon, List<Pokemon> pokeList) {
     final List<BestPokeModel> reversedList = [];
-    bestPokeList.clear();
+    toCompareList.clear();
 
     for (final poke in pokeList) {
       if (poke != targetPokemon.value) {
@@ -160,6 +160,6 @@ class PokeDetailsController extends GetxController
     reversedList.sort((BestPokeModel a, BestPokeModel b) =>
         a.percentage.compareTo(b.percentage));
 
-    bestPokeList.value = reversedList.reversed.toList();
+    toCompareList.value = reversedList.reversed.toList();
   }
 }
